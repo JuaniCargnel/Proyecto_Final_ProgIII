@@ -10,7 +10,7 @@
 
 **Descripción general:** Hite*n*ran es un prototipo de juego roguelike incluyendo algunas características de los juegos bullet hell y haciéndolas más sencillas para un público más general. La idea central se basa en una táctica común en diferentes géneros de videojuegos llamada "Hit and Run", donde el jugador golpea al enemigo y corre para no ser alcanzado por un golpe innecesario. Hitenran intentara llevar esta mecánica a otro nivel por medio de diferentes tipos de enemigos y trampas de todo tipo.
 
-**Objetivo:** El objetivo final del juego es derrotar al último jefe en la mazmorra, la cual estará separada por niveles y áreas para crear un sistema de explotación.
+**Objetivo:** El objetivo final del juego es derrotar al último jefe en la mazmorra, la cual estará separada por niveles y áreas para crear un sistema de exploración.
 
 **Puntos clave:**
 
