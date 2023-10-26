@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cear0te3xny0l"
-path="res://.godot/imported/Wall Slide 48x48.png-6447e11a73f053b7c76cef04a7d4f851.ctex"
+uid="uid://v0uilp1y3y3j"
+path="res://.godot/imported/roll.png-9bc8830ab287fa45c7f6811eab72caeb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Proyecto_Final_ProgIII/Assets/Jugador/Wall Slide 48x48.png"
-dest_files=["res://.godot/imported/Wall Slide 48x48.png-6447e11a73f053b7c76cef04a7d4f851.ctex"]
+source_file="res://Proyecto_Final_ProgIII/Assets/Jugador/roll.png"
+dest_files=["res://.godot/imported/roll.png-9bc8830ab287fa45c7f6811eab72caeb.ctex"]
 
 [params]
 

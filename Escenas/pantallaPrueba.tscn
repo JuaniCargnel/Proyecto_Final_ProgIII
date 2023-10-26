@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://dd1bv4ft5d738"]
 
-[ext_resource type="PackedScene" uid="uid://dnuefdw5cng6h" path="res://Proyecto_Final_ProgIII/Escenas/personajePrincipal.tscn" id="1_n5t5s"]
+[ext_resource type="PackedScene" uid="uid://dnuefdw5cng6h" path="res://Proyecto_Final_ProgIII/Escenas/PersonajePrincipal.tscn" id="1_lgphv"]
 
-[node name="pantallaPrueba" type="Node2D"]
+[node name="PantallaPrueba" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -57.0
@@ -11,5 +11,5 @@ offset_right = 2035.0
 offset_bottom = 1096.0
 color = Color(0.34902, 0.301961, 0.254902, 1)
 
-[node name="personajePrincipal" parent="." instance=ExtResource("1_n5t5s")]
-position = Vector2(120, 109)
+[node name="PersonajePrincipal" parent="." instance=ExtResource("1_lgphv")]
+position = Vector2(353, 181)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpyx0byh2a8jc"
-path="res://.godot/imported/wall land 48x48.png-3139b4d289c6c51121ff0c0d6180671c.ctex"
+uid="uid://cjlyk8dgwey3h"
+path="res://.godot/imported/hurt.png-819b837fdc72d0e613ba116333bade95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Proyecto_Final_ProgIII/Assets/Jugador/wall land 48x48.png"
-dest_files=["res://.godot/imported/wall land 48x48.png-3139b4d289c6c51121ff0c0d6180671c.ctex"]
+source_file="res://Proyecto_Final_ProgIII/Assets/Jugador/hurt.png"
+dest_files=["res://.godot/imported/hurt.png-819b837fdc72d0e613ba116333bade95.ctex"]
 
 [params]
 
