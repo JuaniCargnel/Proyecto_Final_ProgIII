@@ -379,18 +379,18 @@ script = ExtResource("1_qp7oi")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tq0vl")
 animation = &"idle"
-frame_progress = 0.484017
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 1.5)
 shape = SubResource("RectangleShape2D_vrb56")
 
+[node name="RollTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="Roll" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
-[node name="RollTimer" type="Timer" parent="."]
-one_shot = true
-
-[connection signal="timeout" from="Roll" to="." method="_on_roll_timeout"]
 [connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]
+[connection signal="timeout" from="Roll" to="." method="_on_roll_timeout"]
