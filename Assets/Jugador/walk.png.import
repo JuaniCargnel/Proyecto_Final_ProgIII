@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bg8cmemj4iurm"
-path="res://.godot/imported/walk.png-139b9dfea93a8631efc7a60b066b36e1.ctex"
+path="res://.godot/imported/walk.png-416a4f36433dfdac04a3a29ad9afd699.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Proyecto_Final_ProgIII/Assets/Jugador/walk.png"
-dest_files=["res://.godot/imported/walk.png-139b9dfea93a8631efc7a60b066b36e1.ctex"]
+source_file="res://Assets/Jugador/walk.png"
+dest_files=["res://.godot/imported/walk.png-416a4f36433dfdac04a3a29ad9afd699.ctex"]
 
 [params]
 

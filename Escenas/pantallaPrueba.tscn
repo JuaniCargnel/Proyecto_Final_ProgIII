@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dd1bv4ft5d738"]
 
-[ext_resource type="PackedScene" uid="uid://dnuefdw5cng6h" path="res://Proyecto_Final_ProgIII/Escenas/PersonajePrincipal.tscn" id="1_lgphv"]
+[ext_resource type="PackedScene" uid="uid://dnuefdw5cng6h" path="res://Escenas/PersonajePrincipal.tscn" id="1_lgphv"]
 
 [node name="PantallaPrueba" type="Node2D"]
 

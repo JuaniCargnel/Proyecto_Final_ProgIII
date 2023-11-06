@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 const velWalk = 75
 const velRun = 150
-const velRoll = 250
+const velRoll = 260
+
+var direcRoll:Vector2
 
 var canRoll = true
 var canHitB = true
@@ -13,6 +15,10 @@ var idle = true
 var hitA = false
 var hitB = false
 var activeSword = false
+var comboA = false
+var comboB = false
+var rollX = false
+var rollY = false 
 
 func _ready():
 	$Sprite.play("idle")
@@ -33,27 +39,41 @@ func movimientos():
 	
 	if Input.is_action_pressed("Right"):
 		direccion.x += 1
+		direcRoll.x = 1
+		if roll:
+			rollX = true
 		$Sprite.set_flip_h(false)
 	if Input.is_action_pressed("Left"):
 		direccion.x -= 1
+		direcRoll.x = -1
+		if roll:
+			rollX = true
 		$Sprite.set_flip_h(true)
 	if Input.is_action_pressed("Up"):
 		direccion.y -= 1
+		direcRoll.y = -1
+		if roll:
+			rollY = true
 	if Input.is_action_pressed("Down"):
 		direccion.y += 1
-
+		direcRoll.y = 1
+		if roll:
+			rollY = true
+			
 	if Input.is_action_pressed("Sword"):
 		activeSword = true
-
+		
 	if Input.is_action_pressed("Hands"):
 		activeSword = false
-	
+		
 	if run:
 		velocity.x = direccion.normalized().x * velRun
 		velocity.y = direccion.normalized().y * velRun
 	elif roll:
-		velocity.x = direccion.normalized().x * velRoll
-		velocity.y = direccion.normalized().y * velRoll
+		if rollX:
+			velocity.x = direcRoll.normalized().x * velRoll
+		if rollY:
+			velocity.y = direcRoll.normalized().y * velRoll
 	else: 
 		velocity.x = direccion.normalized().x * velWalk
 		velocity.y = direccion.normalized().y * velWalk
@@ -80,12 +100,11 @@ func animations():
 		elif velocity != Vector2.ZERO and not roll:
 			$Sprite.play("walk")
 			idle = false
-		elif not idle and not roll:
-			idle = true
-			$Sprite.play("idle")
 		elif activeSword:
+			idle = true
 			$Sprite.play("swordIdle")
-		elif idle:
+		else:
+			idle = true
 			$Sprite.play("idle")
 
 func running():
@@ -95,15 +114,18 @@ func running():
 		run = false
 
 func rolling():
-	if Input.is_action_pressed("Roll") and not idle and canRoll and not hitA and not hitB:
+	if Input.is_action_pressed("Roll") and canRoll and not idle and not hitA and not hitB:
 		roll = true
 		canRoll = false
 		$Timers/Roll.start()
 	elif roll:
-		pass
+		if Input.is_action_pressed("Golpear"):
+			comboA = true
+		if Input.is_action_pressed("Fuerte"):
+			comboB = true
 	else: 
 		roll = false
-		
+
 func hitting():
 	if Input.is_action_pressed("Golpear") and canHitA and not roll:
 		hitA = true
@@ -125,6 +147,18 @@ func hitting():
 
 func _on_roll_timeout():
 	roll = false
+	rollY = false
+	rollX = false
+	
+	if comboA:
+		hitA = true
+		$Timers/HitA.start()
+		comboA = false
+	if comboB:
+		hitB = true
+		$Timers/HitB.start()
+		comboB = false
+	
 	$Timers/RollTimer.start()
 
 func _on_roll_timer_timeout():
@@ -134,7 +168,7 @@ func _on_hit_b_timeout():
 	hitB = false
 	$Sprite.play("idle")
 	$Timers/HitBTimer.start()
-	
+
 func _on_hit_b_timer_timeout():
 	canHitB = true
 
