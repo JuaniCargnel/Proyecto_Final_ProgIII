@@ -5,64 +5,42 @@ const velRun = 150
 const velRoll = 260
 
 var direcRoll:Vector2
+var direccion:Vector2
 
 var canRoll = true
 var canHitB = true
 var canHitA = true
+
+var walk = false
 var roll = false
 var run = false
 var idle = true
 var hitA = false
 var hitB = false
-var activeSword = false
 var comboA = false
 var comboB = false
 var rollX = false
 var rollY = false 
+var activeSword = false
 
 func _ready():
 	$Sprite.play("idle")
 
 func _physics_process(_delta):
 	estados()
-	move_and_slide()
 	animations()
+	move_and_slide()
 
 func estados():
-	movimientos()
+	walking()
 	running()
 	rolling()
 	hitting()
+	movimientos()
 
 func movimientos():
-	var direccion = Vector2()
-	
-	if Input.is_action_pressed("Right"):
-		direccion.x += 1
-		direcRoll.x = 1
-		if roll:
-			rollX = true
-		$Sprite.set_flip_h(false)
-	if Input.is_action_pressed("Left"):
-		direccion.x -= 1
-		direcRoll.x = -1
-		if roll:
-			rollX = true
-		$Sprite.set_flip_h(true)
-	if Input.is_action_pressed("Up"):
-		direccion.y -= 1
-		direcRoll.y = -1
-		if roll:
-			rollY = true
-	if Input.is_action_pressed("Down"):
-		direccion.y += 1
-		direcRoll.y = 1
-		if roll:
-			rollY = true
-			
 	if Input.is_action_pressed("Sword"):
 		activeSword = true
-		
 	if Input.is_action_pressed("Hands"):
 		activeSword = false
 		
@@ -79,55 +57,84 @@ func movimientos():
 		velocity.y = direccion.normalized().y * velWalk
 
 func animations():
-	if run and activeSword:
-		$Sprite.play("swordRun")
+	var animationName = get_animation_name()
+	$Sprite.play(animationName)
+
+func get_animation_name():
+	if velocity != Vector2.ZERO and not roll and not run:
+		if activeSword:
+			idle = false
+			return "swordWalk"
+		else: 
+			idle = false
+			return "walk"
 	elif run:
-		$Sprite.play("run")
+		if activeSword:
+			return "swordRun"
+		else:
+			return "run"
 	elif roll:
-		$Sprite.play("roll")
-	elif hitA and activeSword:
-		$Sprite.play("swordAttack")
-	elif hitB and activeSword:
-		$Sprite.play("swordStab")
+		return "roll"
 	elif hitA:
-		$Sprite.play("jab")
+		if activeSword:
+			return "swordAttack"
+		else: 
+			return "jab"
 	elif hitB:
-		$Sprite.play("cross")
+		if activeSword:
+			return "swordStab"
+		else:
+			return "cross"
 	else:
-		if velocity != Vector2.ZERO and not roll and activeSword:
-			$Sprite.play("swordWalk")
-			idle = false
-		elif velocity != Vector2.ZERO and not roll:
-			$Sprite.play("walk")
-			idle = false
-		elif activeSword:
+		if activeSword:
 			idle = true
-			$Sprite.play("swordIdle")
+			return "swordIdle"
 		else:
 			idle = true
-			$Sprite.play("idle")
+			return "idle"
+
+func walking():
+	direccion = Vector2()
+	
+	if Input.is_action_pressed("Right"):
+		direccion.x += 1
+		$Sprite.set_flip_h(false)
+	if Input.is_action_pressed("Left"):
+		direccion.x -= 1
+		$Sprite.set_flip_h(true)
+	if Input.is_action_pressed("Up"):
+		direccion.y -= 1
+	if Input.is_action_pressed("Down"):
+		direccion.y += 1
 
 func running():
-	if Input.is_action_pressed("Correr") and not roll and not idle and velocity != Vector2.ZERO and not hitA and not hitB:
+	if Input.is_action_pressed("Correr") and not roll and not hitA and not hitB and velocity != Vector2.ZERO:
 		run = true
 	else: 
 		run = false
 
 func rolling():
-	if Input.is_action_pressed("Roll") and canRoll and not idle and not hitA and not hitB:
+	if direccion.x == 1 and roll:
+		direcRoll.x = 1
+		rollX = true
+	elif direccion.x == -1 and roll:
+		direcRoll.x = -1
+		rollX = true
+	
+	if Input.is_action_pressed("Roll") and canRoll and not hitA and not hitB and velocity != Vector2.ZERO:
 		roll = true
 		canRoll = false
 		$Timers/Roll.start()
 	elif roll:
-		if Input.is_action_pressed("Golpear"):
+		if Input.is_action_pressed("GolpeA"):
 			comboA = true
-		if Input.is_action_pressed("Fuerte"):
+		if Input.is_action_pressed("GolpeB"):
 			comboB = true
 	else: 
 		roll = false
 
 func hitting():
-	if Input.is_action_pressed("Golpear") and canHitA and not roll:
+	if Input.is_action_pressed("GolpeA") and canHitA and not roll:
 		hitA = true
 		canHitA = false
 		$Timers/HitA.start()
@@ -136,7 +143,7 @@ func hitting():
 	else:
 		hitA = false
 		
-	if Input.is_action_pressed("Fuerte") and canHitB and not roll:
+	if Input.is_action_pressed("GolpeB") and canHitB and not roll:
 		hitB = true
 		canHitB = false
 		$Timers/HitB.start()
