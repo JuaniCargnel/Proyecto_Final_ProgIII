@@ -12,12 +12,11 @@ config_version=5
 
 config/name="Proyecto_Final_ProgIII"
 run/main_scene="res://Escenas/PantallaPrincipal.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/mode=3
 window/stretch/scale=2.0
 
 [input]

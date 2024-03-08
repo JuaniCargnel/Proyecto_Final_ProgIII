@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://dnuefdw5cng6h"]
+[gd_scene load_steps=121 format=3 uid="uid://dnuefdw5cng6h"]
 
 [ext_resource type="Texture2D" uid="uid://crdeedh54ma7d" path="res://Assets/Jugador/idle.png" id="1_jh4ac"]
 [ext_resource type="Script" path="res://Scripts/personajePrincipal.gd" id="1_qp7oi"]
@@ -653,7 +653,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"swordAttack",
-"speed": 15.0
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -805,18 +805,22 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrb56"]
-size = Vector2(20, 31)
+size = Vector2(19, 4)
 
-[node name="PersonajePrincipal" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpf4g"]
+size = Vector2(6, 6.75)
+
+[node name="PersonajePrincipal" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_qp7oi")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -14)
 sprite_frames = SubResource("SpriteFrames_tq0vl")
-animation = &"idle"
+animation = &"swordStab"
+frame = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-1, 1.5)
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_vrb56")
 
 [node name="Timers" type="Node" parent="."]
@@ -844,6 +848,15 @@ one_shot = true
 [node name="HitATimer" type="Timer" parent="Timers"]
 wait_time = 0.2
 one_shot = true
+
+[node name="AreaGolpes" type="Area2D" parent="." groups=["golpe"]]
+position = Vector2(1, -14)
+
+[node name="CollisionShapeGolpes" type="CollisionShape2D" parent="AreaGolpes"]
+position = Vector2(27, 2)
+scale = Vector2(4, 1)
+shape = SubResource("RectangleShape2D_hpf4g")
+disabled = true
 
 [connection signal="timeout" from="Timers/Roll" to="." method="_on_roll_timeout"]
 [connection signal="timeout" from="Timers/RollTimer" to="." method="_on_roll_timer_timeout"]
