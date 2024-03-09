@@ -3,11 +3,10 @@ extends Node2D
 @onready var prueba = get_node("PersonajePrincipal")
 
 func _process(_delta):
-	render($Dummy)
 	zonas_enemigos_on_hit()
 
 func render(sprite2):
-	if $PersonajePrincipal.position.y >= sprite2.position.y - 5:
+	if $PersonajePrincipal.position.y >= sprite2.position.y:
 		sprite2.z_index = 1
 		$PersonajePrincipal.z_index = 2
 	else:
@@ -25,4 +24,5 @@ func zonas_enemigos_on_hit():
 	
 	for enemigo in enemigos:
 		on_hit(enemigo)
+		render(enemigo)
 	
