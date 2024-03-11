@@ -5,6 +5,12 @@ extends StaticBody2D
 
 func _on_dummy_area_entered(area):
 	if area.is_in_group("golpe") and canBeHit:
+		$Sprite.stop()
+		if area.position.x < $AreaDummy.position.x: 
+			$Sprite.frame = 2
+		else:
+			$Sprite.frame = 1
+			
 		$Sprite.play("dummy")
 	else:
 		pass

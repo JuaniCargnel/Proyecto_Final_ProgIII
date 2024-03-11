@@ -1,5 +1,8 @@
 extends Node2D
 
+# Arreglar los golpes para que no se realicen si el personaje se mueve izquierda derecha
+# Agregar las sombras para que los golpes sean mas predecibles
+
 @onready var prueba = get_node("PersonajePrincipal")
 
 func _process(_delta):
