@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://dnuefdw5cng6h"]
+[gd_scene load_steps=122 format=3 uid="uid://dnuefdw5cng6h"]
 
 [ext_resource type="Texture2D" uid="uid://crdeedh54ma7d" path="res://Assets/Jugador/idle.png" id="1_jh4ac"]
 [ext_resource type="Script" path="res://Scripts/personajePrincipal.gd" id="1_qp7oi"]
@@ -810,10 +810,16 @@ size = Vector2(19, 4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpf4g"]
 size = Vector2(6, 6.75)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gr423"]
+size = Vector2(16, 27)
+
 [node name="PersonajePrincipal" type="CharacterBody2D" groups=["player"]]
+z_index = 1
+position = Vector2(0, -2)
 script = ExtResource("1_qp7oi")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprite"]]
+z_index = 1
 position = Vector2(1, -14)
 sprite_frames = SubResource("SpriteFrames_tq0vl")
 animation = &"idle"
@@ -856,6 +862,12 @@ position = Vector2(27, 2)
 scale = Vector2(4, 1)
 shape = SubResource("RectangleShape2D_hpf4g")
 disabled = true
+
+[node name="AreaSprite" type="Area2D" parent="." groups=["areaSprite"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaSprite"]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_gr423")
 
 [connection signal="timeout" from="Timers/Roll" to="." method="_on_roll_timeout"]
 [connection signal="timeout" from="Timers/RollTimer" to="." method="_on_roll_timer_timeout"]

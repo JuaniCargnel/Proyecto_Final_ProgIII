@@ -89,16 +89,18 @@ func walking():
 	var input_x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	var input_y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	
-	if Input.is_action_pressed("Right"):
-		$Sprite.set_flip_h(false)
-		$Hitbox.position = Vector2(-0.5,0)
-		derecha = true
-		izquierda = false
-	if Input.is_action_pressed("Left"):
-		$Sprite.set_flip_h(true)
-		$Hitbox.position = Vector2(2.5,0)
-		izquierda = true
-		derecha = false
+	if !hitA:
+		if !hitB:
+			if Input.is_action_pressed("Right"):
+				$Sprite.set_flip_h(false)
+				$Hitbox.position = Vector2(-0.5,0)
+				derecha = true
+				izquierda = false
+			if Input.is_action_pressed("Left"):
+				$Sprite.set_flip_h(true)
+				$Hitbox.position = Vector2(2.5,0)
+				izquierda = true
+				derecha = false
 	
 	direccion = Vector2(input_x, input_y)
 
@@ -134,40 +136,43 @@ func hitting():
 		canHitB = false
 		$Timers/HitB.start()
 	elif hitA:
+		direccion = Vector2.ZERO
 		if activeSword:
 			$AreaGolpes/CollisionShapeGolpes.scale = Vector2(2.5,4)
+			if $Sprite.frame == 3:
+				$AreaGolpes/CollisionShapeGolpes.disabled = false
 			if derecha:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(20,2)
 			if izquierda: 
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(-20,1)
 		elif !activeSword:
 			$AreaGolpes/CollisionShapeGolpes.scale = Vector2(2,1)
+			if $Sprite.frame == 1:
+				$AreaGolpes/CollisionShapeGolpes.disabled = false
 			if derecha:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(14,-1)
 			elif izquierda:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(-14,-1)
-		
-		direccion = Vector2.ZERO
-		$AreaGolpes/CollisionShapeGolpes.disabled = false
-		
 		if Input.is_action_pressed("GolpeB"):
 			comboB = true
 	elif hitB:
+		direccion = Vector2.ZERO
 		if activeSword:
+			if $Sprite.frame == 3:
+				$AreaGolpes/CollisionShapeGolpes.disabled = false
 			$AreaGolpes/CollisionShapeGolpes.scale = Vector2(4,1)
 			if derecha:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(27,2)
 			elif izquierda:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(-27,2)
 		elif !activeSword:
+			if $Sprite.frame == 2:
+				$AreaGolpes/CollisionShapeGolpes.disabled = false
 			$AreaGolpes/CollisionShapeGolpes.scale = Vector2(2,2)
 			if derecha:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(22,4)
 			elif izquierda:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(-22,4)
-		
-		direccion = Vector2.ZERO
-		$AreaGolpes/CollisionShapeGolpes.disabled = false
 	else:
 		hitB = false
 		hitA = false
@@ -175,7 +180,6 @@ func hitting():
 
 func _on_roll_timeout():
 	roll = false
-	
 	if comboA:
 		hitA = true
 		$Timers/HitA.start()
@@ -192,6 +196,7 @@ func _on_roll_timer_timeout():
 
 func _on_hit_a_timeout():
 	hitA = false
+	$AreaGolpes/CollisionShapeGolpes.disabled = true
 	$Timers/HitATimer.start()
 	if comboB:
 		hitB = true
@@ -203,6 +208,7 @@ func _on_hit_a_timer_timeout():
 
 func _on_hit_b_timeout():
 	hitB = false
+	$AreaGolpes/CollisionShapeGolpes.disabled = true
 	$Timers/HitBTimer.start()
 
 func _on_hit_b_timer_timeout():

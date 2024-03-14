@@ -1,41 +1,41 @@
 [gd_scene load_steps=14 format=3 uid="uid://dpfkju1d15fk2"]
 
-[ext_resource type="Texture2D" uid="uid://bjaawesv3bo6i" path="res://Assets/Dummy/Dummy1.png" id="1_w8xu2"]
-[ext_resource type="Texture2D" uid="uid://b61tdu7bq45oo" path="res://Assets/Dummy/Dummy2.png" id="2_x8e64"]
-[ext_resource type="Texture2D" uid="uid://bivqrxdsuon70" path="res://Assets/Dummy/Dummy3.png" id="3_ncuec"]
-[ext_resource type="Texture2D" uid="uid://txjx0jh0g1eh" path="res://Assets/Dummy/Dummy4.png" id="4_vjvco"]
-[ext_resource type="Texture2D" uid="uid://d27beew54lqgt" path="res://Assets/Dummy/Dummy5.png" id="5_adt3x"]
-[ext_resource type="Texture2D" uid="uid://c0w2qgnm0stsh" path="res://Assets/Dummy/Dummy6.png" id="6_ihk2i"]
-[ext_resource type="Texture2D" uid="uid://wv7f1lxg1lve" path="res://Assets/Dummy/Dummy7.png" id="7_dqgxm"]
-[ext_resource type="Texture2D" uid="uid://8o4hocwm5by7" path="res://Assets/Dummy/Dummy8.png" id="8_ea5mf"]
+[ext_resource type="Texture2D" uid="uid://bjaawesv3bo6i" path="res://Assets/Dummy/Dummy1.png" id="2_fiuop"]
+[ext_resource type="Texture2D" uid="uid://b61tdu7bq45oo" path="res://Assets/Dummy/Dummy2.png" id="3_q32sr"]
+[ext_resource type="Texture2D" uid="uid://bivqrxdsuon70" path="res://Assets/Dummy/Dummy3.png" id="4_yikuf"]
+[ext_resource type="Texture2D" uid="uid://txjx0jh0g1eh" path="res://Assets/Dummy/Dummy4.png" id="5_0prhu"]
+[ext_resource type="Texture2D" uid="uid://d27beew54lqgt" path="res://Assets/Dummy/Dummy5.png" id="6_6ts83"]
+[ext_resource type="Texture2D" uid="uid://c0w2qgnm0stsh" path="res://Assets/Dummy/Dummy6.png" id="7_2i1r3"]
+[ext_resource type="Texture2D" uid="uid://wv7f1lxg1lve" path="res://Assets/Dummy/Dummy7.png" id="8_7drlk"]
+[ext_resource type="Texture2D" uid="uid://8o4hocwm5by7" path="res://Assets/Dummy/Dummy8.png" id="9_f05q2"]
 [ext_resource type="Script" path="res://Scripts/dummy.gd" id="9_n4ddw"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_i7m71"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_4lc7h"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_w8xu2")
+"texture": ExtResource("2_fiuop")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_x8e64")
+"texture": ExtResource("3_q32sr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_ncuec")
+"texture": ExtResource("4_yikuf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_vjvco")
+"texture": ExtResource("5_0prhu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_adt3x")
+"texture": ExtResource("6_6ts83")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_ihk2i")
+"texture": ExtResource("7_2i1r3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_dqgxm")
+"texture": ExtResource("8_7drlk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_ea5mf")
+"texture": ExtResource("9_f05q2")
 }],
 "loop": true,
 "name": &"dummy",
@@ -54,10 +54,10 @@ radius = 42.107
 [node name="Dummy" type="StaticBody2D" groups=["enemy"]]
 script = ExtResource("9_n4ddw")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprite"]]
 position = Vector2(-2, -16)
 scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_i7m71")
+sprite_frames = SubResource("SpriteFrames_4lc7h")
 animation = &"dummy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -81,5 +81,6 @@ shape = SubResource("CircleShape2D_p4k3q")
 
 [connection signal="animation_looped" from="Sprite" to="." method="_on_sprite_animation_looped"]
 [connection signal="area_entered" from="AreaDummy" to="." method="_on_dummy_area_entered"]
+[connection signal="area_exited" from="AreaDummy" to="." method="_on_area_dummy_area_exited"]
 [connection signal="body_entered" from="HitboxCerca" to="." method="_on_hitbox_cerca_body_entered"]
 [connection signal="body_exited" from="HitboxCerca" to="." method="_on_hitbox_cerca_body_exited"]
