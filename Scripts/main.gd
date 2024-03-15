@@ -1,5 +1,7 @@
 extends Node2D
 
+# Pensar mejor el Z index
+
 func _ready():
 	crear_sombras($PersonajePrincipal)
 	var enemigos = get_tree().get_nodes_in_group("enemy")
