@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxmf1ql4w5xcq"
-path="res://.godot/imported/KnightJumpAndFall_strip.png-ac9b14d5570ed6fc2a2e09bdb0dcabe8.ctex"
+uid="uid://k4mk0gqh31f8"
+path="res://.godot/imported/attack.png-12eaa4f95456cfa506f19de114780dc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemies/Knight/KnightJumpAndFall_strip.png"
-dest_files=["res://.godot/imported/KnightJumpAndFall_strip.png-ac9b14d5570ed6fc2a2e09bdb0dcabe8.ctex"]
+source_file="res://Assets/Enemies/Knight/attack.png"
+dest_files=["res://.godot/imported/attack.png-12eaa4f95456cfa506f19de114780dc0.ctex"]
 
 [params]
 

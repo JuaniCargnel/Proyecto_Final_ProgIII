@@ -18,7 +18,6 @@ var hitB = false
 var comboA = false
 var comboB = false
 var activeSword = false
-var izquierda = false
 var derecha = true
 
 
@@ -93,13 +92,13 @@ func walking():
 		if !hitB:
 			if Input.is_action_pressed("Right"):
 				$Sprite.set_flip_h(false)
-				$Hitbox.position = Vector2(-0.5,0)
+				$Hitbox.position = Vector2(-1,14)
+				$AreaSprite/CollisionShape2D.position = Vector2(-1,1)
 				derecha = true
-				izquierda = false
 			if Input.is_action_pressed("Left"):
 				$Sprite.set_flip_h(true)
-				$Hitbox.position = Vector2(2.5,0)
-				izquierda = true
+				$Hitbox.position = Vector2(1,14)
+				$AreaSprite/CollisionShape2D.position = Vector2(1,1)
 				derecha = false
 	
 	direccion = Vector2(input_x, input_y)
@@ -143,16 +142,16 @@ func hitting():
 				$AreaGolpes/CollisionShapeGolpes.disabled = false
 			if derecha:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(20,2)
-			if izquierda: 
+			else:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(-20,1)
 		elif !activeSword:
-			$AreaGolpes/CollisionShapeGolpes.scale = Vector2(2,1)
+			$AreaGolpes/CollisionShapeGolpes.scale = Vector2(2,0.5)
 			if $Sprite.frame == 1:
 				$AreaGolpes/CollisionShapeGolpes.disabled = false
 			if derecha:
-				$AreaGolpes/CollisionShapeGolpes.position = Vector2(14,-1)
-			elif izquierda:
-				$AreaGolpes/CollisionShapeGolpes.position = Vector2(-14,-1)
+				$AreaGolpes/CollisionShapeGolpes.position = Vector2(12,-1)
+			else:
+				$AreaGolpes/CollisionShapeGolpes.position = Vector2(-12,-1)
 		if Input.is_action_pressed("GolpeB"):
 			comboB = true
 	elif hitB:
@@ -163,7 +162,7 @@ func hitting():
 			$AreaGolpes/CollisionShapeGolpes.scale = Vector2(4,1)
 			if derecha:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(27,2)
-			elif izquierda:
+			else:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(-27,2)
 		elif !activeSword:
 			if $Sprite.frame == 2:
@@ -171,7 +170,7 @@ func hitting():
 			$AreaGolpes/CollisionShapeGolpes.scale = Vector2(2,2)
 			if derecha:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(22,4)
-			elif izquierda:
+			else:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(-22,4)
 	else:
 		hitB = false

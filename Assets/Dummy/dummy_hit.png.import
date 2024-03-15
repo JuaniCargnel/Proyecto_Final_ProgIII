@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o1ma37c4crtw"
-path="res://.godot/imported/noBKG_KnightIdle_strip.png-3eb96083c3860037623385ab23ccac89.ctex"
+uid="uid://beqcc6n3u852e"
+path="res://.godot/imported/dummy_hit.png-593f786d9d897af3abbcd19237a6a2e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemies/Knight/noBKG_KnightIdle_strip.png"
-dest_files=["res://.godot/imported/noBKG_KnightIdle_strip.png-3eb96083c3860037623385ab23ccac89.ctex"]
+source_file="res://Assets/Dummy/dummy_hit.png"
+dest_files=["res://.godot/imported/dummy_hit.png-593f786d9d897af3abbcd19237a6a2e3.ctex"]
 
 [params]
 

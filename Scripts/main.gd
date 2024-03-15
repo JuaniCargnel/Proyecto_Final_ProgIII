@@ -1,7 +1,5 @@
 extends Node2D
 
-# Arreglar la wea de los sprites de los dummys
-
 func _ready():
 	crear_sombras($PersonajePrincipal)
 	var enemigos = get_tree().get_nodes_in_group("enemy")
@@ -9,14 +7,14 @@ func _ready():
 		crear_sombras(enemigo)
 
 func _process(_delta):
-	update_process()
+	update_enemy()
 	update_sombras($PersonajePrincipal)
 
 func render(sprite1, sprite2):
 	if sprite1.position.y >= sprite2.position.y and sprite2.inSprite:
 		sprite2.z_index = 1
 		sprite1.z_index = 2
-	if sprite1.position.y <= sprite2.position.y and sprite2.inSprite:
+	elif sprite1.position.y <= sprite2.position.y and sprite2.inSprite:
 		sprite1.z_index = 1
 		sprite2.z_index = 2
 
@@ -26,20 +24,23 @@ func on_hit(enemy):
 	else:
 		enemy.canBeHit = false
 
-func update_process():
+func update_enemy():
 	var enemigos = get_tree().get_nodes_in_group("enemy")
 	for enemigo in enemigos:
 		on_hit(enemigo)
 		render($PersonajePrincipal, enemigo)
 		update_sombras(enemigo)
+		
 func crear_sombras(sprite_p):
 	var sombra = AnimatedSprite2D.new()
 	var sprite_original = sprite_p.get_node("Sprite")
 	sombra.modulate = Color.BLACK
+	#sombra.modulate.a8 = 150
+	sombra.z_index = 0
+	sombra.z_as_relative = false
 	sombra.flip_v = true
 	sombra.skew = 45
-	sombra.z_index = 0
-	sombra.position = Vector2(sprite_original.position.x - 15, sprite_original.position.y - sprite_original.position.y + 11)
+	sombra.position = Vector2(sprite_original.position.x - 14, sprite_original.position.y + 24)
 	sombra.scale = Vector2(sprite_original.scale.x, sprite_original.scale.y)
 	sprite_p.add_child(sombra, true)
 

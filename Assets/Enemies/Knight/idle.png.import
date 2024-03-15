@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjaawesv3bo6i"
-path="res://.godot/imported/Dummy1.png-780c3b4a526dd8eaa1616c91893bdf52.ctex"
+uid="uid://2w6fwha07xt3"
+path="res://.godot/imported/idle.png-ca8176ae169a94e43ce39e8c3f37ddf5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Dummy/Dummy1.png"
-dest_files=["res://.godot/imported/Dummy1.png-780c3b4a526dd8eaa1616c91893bdf52.ctex"]
+source_file="res://Assets/Enemies/Knight/idle.png"
+dest_files=["res://.godot/imported/idle.png-ca8176ae169a94e43ce39e8c3f37ddf5.ctex"]
 
 [params]
 

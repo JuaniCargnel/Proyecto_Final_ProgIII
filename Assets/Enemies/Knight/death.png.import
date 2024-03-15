@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl6qa70u4kpto"
-path="res://.godot/imported/KnightDeath_strip.png-f6cd1d60b230f2c09ec1c1a3fafbdc75.ctex"
+uid="uid://cr1ek3fex1lp4"
+path="res://.godot/imported/death.png-80ae3a0d81c22344a8e22bfe23db5788.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemies/Knight/KnightDeath_strip.png"
-dest_files=["res://.godot/imported/KnightDeath_strip.png-f6cd1d60b230f2c09ec1c1a3fafbdc75.ctex"]
+source_file="res://Assets/Enemies/Knight/death.png"
+dest_files=["res://.godot/imported/death.png-80ae3a0d81c22344a8e22bfe23db5788.ctex"]
 
 [params]
 

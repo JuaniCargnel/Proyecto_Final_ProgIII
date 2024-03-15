@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd1bv4ft5d738"]
+[gd_scene load_steps=5 format=3 uid="uid://dd1bv4ft5d738"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_7mdi6"]
 [ext_resource type="PackedScene" uid="uid://dnuefdw5cng6h" path="res://Escenas/PersonajePrincipal.tscn" id="1_lgphv"]
 [ext_resource type="PackedScene" uid="uid://dpfkju1d15fk2" path="res://Escenas/Dummy.tscn" id="2_2m73a"]
+[ext_resource type="PackedScene" uid="uid://darogdmvmctat" path="res://Escenas/Knight.tscn" id="4_rrl83"]
 
 [node name="PantallaPrueba" type="Node2D"]
 script = ExtResource("1_7mdi6")
@@ -12,7 +13,7 @@ offset_left = -20.0
 offset_top = -17.0
 offset_right = 1167.0
 offset_bottom = 669.0
-color = Color(0.360784, 0.403922, 0.396078, 1)
+color = Color(0.486275, 0.352941, 0.34902, 1)
 
 [node name="PersonajePrincipal" parent="." instance=ExtResource("1_lgphv")]
 position = Vector2(353, 182)
@@ -26,7 +27,10 @@ position = Vector2(260, 112)
 position = Vector2(279, 171)
 
 [node name="Dummy3" parent="Dummys" instance=ExtResource("2_2m73a")]
-position = Vector2(263, 160)
+position = Vector2(184, 175)
 
 [node name="Dummy4" parent="Dummys" instance=ExtResource("2_2m73a")]
 position = Vector2(250, 301)
+
+[node name="Knight" parent="." instance=ExtResource("4_rrl83")]
+position = Vector2(439, 211)
