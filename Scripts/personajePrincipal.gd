@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const velWalk = 75
-const velRun = 150
+const velWalk = 3
+const velRun = 50
 const velRoll = 200
 
 var direccion:Vector2
@@ -27,7 +27,7 @@ func _ready():
 func _process(delta):
 	estados(delta)
 	animations()
-	move_and_slide()
+	move_and_collide(direccion)
 
 func estados(delta):
 	rolling()

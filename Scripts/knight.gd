@@ -6,9 +6,14 @@ extends CharacterBody2D
 
 var speed = 50 
 var direccion = Vector2(1, 0) 
+var posicionAnterior = Vector2()
 var derecha = true
 var movimiento = true
 var cambio = false
+var personaje = null
+
+func _ready():
+	posicionAnterior = position
 
 func _process(_delta):
 	if $AreaKnight.global_position.x >= 600:
@@ -16,7 +21,7 @@ func _process(_delta):
 			$Timers/Idle.start()
 			$Sprite.play("idle")
 			$Sprite.set_flip_h(true)
-			direccion.x = 0
+			direccion = Vector2(0,0)
 			derecha = false
 			movimiento = false
 		elif cambio and !movimiento:
@@ -29,7 +34,7 @@ func _process(_delta):
 			$Timers/Idle.start()
 			$Sprite.play("idle")
 			$Sprite.set_flip_h(false)
-			direccion.x = 0
+			direccion = Vector2(0,0)
 			derecha = true
 			movimiento = false
 		elif cambio and !movimiento:
@@ -37,11 +42,19 @@ func _process(_delta):
 			movimiento = true
 			direccion.x = 1
 			$Timers/Idle.stop()
+	elif personaje != null:
+		direccion = position.direction_to(personaje.position) * speed
+		if position.x > posicionAnterior.x:
+			$Sprite.set_flip_h(false)
+		elif position.x < posicionAnterior.x:
+			$Sprite.set_flip_h(true)
+			
+		posicionAnterior = position
 	else:
 		$Sprite.play("run")
 
 	#translate(direccion.normalized() * speed * delta)
-	move_and_collide(direccion)
+	move_and_collide(direccion.normalized())
 
 func _on_area_knight_area_entered(area):
 	if area.is_in_group("areaSprite"):
@@ -54,11 +67,13 @@ func _on_area_knight_area_exited(area):
 func _on_hitbox_cerca_body_entered(body):
 	if body.is_in_group("player"):
 		inArea = true
+		personaje = body
 
 func _on_hitbox_cerca_body_exited(body):
 	if body.is_in_group("player"):
 		inArea = false
-	
+		personaje = null
+		
 func _on_idle_timeout():
 	cambio = true
 	movimiento = false
