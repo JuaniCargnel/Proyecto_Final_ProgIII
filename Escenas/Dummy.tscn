@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dpfkju1d15fk2"]
+[gd_scene load_steps=14 format=3 uid="uid://dpfkju1d15fk2"]
 
 [ext_resource type="Script" path="res://Scripts/dummy.gd" id="9_n4ddw"]
 [ext_resource type="Texture2D" uid="uid://beqcc6n3u852e" path="res://Assets/Dummy/dummy_hit.png" id="10_ga15w"]
@@ -67,32 +67,23 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mpdk"]
-size = Vector2(16, 7)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ygqa"]
-size = Vector2(16, 33.0001)
+size = Vector2(11, 28.8751)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p4k3q"]
 radius = 42.107
 
-[node name="Dummy" type="StaticBody2D" groups=["enemy"]]
+[node name="Dummy" type="Area2D" groups=["areaEnemy", "enemigos", "sprites"]]
 z_index = 1
 script = ExtResource("9_n4ddw")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprite"]]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_4lc7h")
 animation = &"dummy"
 
-[node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(1, 14.5)
-shape = SubResource("RectangleShape2D_0mpdk")
-
-[node name="AreaDummy" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDummy"]
-position = Vector2(0.999991, 2.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.500002, -0.562498)
 scale = Vector2(0.999998, 0.999998)
 shape = SubResource("RectangleShape2D_6ygqa")
 
@@ -101,8 +92,8 @@ shape = SubResource("RectangleShape2D_6ygqa")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxCerca"]
 shape = SubResource("CircleShape2D_p4k3q")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="animation_looped" from="Sprite" to="." method="_on_sprite_animation_looped"]
-[connection signal="area_entered" from="AreaDummy" to="." method="_on_dummy_area_entered"]
-[connection signal="area_exited" from="AreaDummy" to="." method="_on_area_dummy_area_exited"]
 [connection signal="body_entered" from="HitboxCerca" to="." method="_on_hitbox_cerca_body_entered"]
 [connection signal="body_exited" from="HitboxCerca" to="." method="_on_hitbox_cerca_body_exited"]

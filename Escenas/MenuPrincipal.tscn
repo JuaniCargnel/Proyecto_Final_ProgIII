@@ -1,14 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://b38j3beja0otb"]
+[gd_scene load_steps=3 format=3 uid="uid://b38j3beja0otb"]
 
-[ext_resource type="Script" path="res://Scripts/pantallaPrincipal.gd" id="1_hsuiw"]
+[ext_resource type="Script" path="res://Scripts/menuPrincipal.gd" id="1_hsuiw"]
+[ext_resource type="Texture2D" uid="uid://dlb74lkran0jw" path="res://Assets/Botones/Rounded/Blue/Start 192x48.png" id="2_xnx51"]
 
 [node name="MenuPrincipal" type="Node2D"]
 script = ExtResource("1_hsuiw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1980, 1024)
-offset_left = -93.0
-offset_top = -114.0
-offset_right = 2094.0
-offset_bottom = 1164.0
+offset_left = -76.0
+offset_top = -85.0
+offset_right = 2060.0
+offset_bottom = 1107.0
 color = Color(0.843137, 0.364706, 0.305882, 1)
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 843.0
+offset_top = 463.0
+offset_right = 1035.0
+offset_bottom = 514.0
+texture_normal = ExtResource("2_xnx51")
+
+[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]

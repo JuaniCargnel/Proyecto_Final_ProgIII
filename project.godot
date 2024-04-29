@@ -15,10 +15,17 @@ run/main_scene="res://Escenas/MenuPrincipal.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Sombra="*res://Scripts/sombra.gd"
+GlobalStats="*res://Scripts/ScriptGlobales/globalStats.gd"
+NavigationManager="*res://Scripts/ScriptGlobales/navigationManager.gd"
+
 [display]
 
+window/size/viewport_width=1980
+window/size/viewport_height=1024
 window/size/mode=2
-window/stretch/scale=2.0
 
 [filesystem]
 

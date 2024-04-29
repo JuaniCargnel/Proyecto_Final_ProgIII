@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://darogdmvmctat"]
+[gd_scene load_steps=38 format=3 uid="uid://darogdmvmctat"]
 
 [ext_resource type="Script" path="res://Scripts/knight.gd" id="1_x6khp"]
 [ext_resource type="Texture2D" uid="uid://cccgf1krkb0mt" path="res://Assets/Enemies/Knight/defense.png" id="2_2wmmh"]
@@ -233,31 +233,22 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_up8bh"]
-size = Vector2(22, 15)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3t3ut"]
-size = Vector2(26.0001, 34.0001)
+size = Vector2(14.5, 28.0001)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j0h74"]
 radius = 66.0681
 
-[node name="Knight" type="CharacterBody2D" groups=["enemy"]]
+[node name="Knight" type="Area2D" groups=["areaEnemy", "enemigos", "sprites"]]
 z_index = 1
 script = ExtResource("1_x6khp")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5iaom")
-animation = &"run"
+animation = &"idle"
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(1, 9)
-shape = SubResource("RectangleShape2D_up8bh")
-
-[node name="AreaKnight" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaKnight"]
-position = Vector2(2, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 1)
 scale = Vector2(0.999998, 0.999998)
 shape = SubResource("RectangleShape2D_3t3ut")
 
@@ -271,8 +262,8 @@ shape = SubResource("CircleShape2D_j0h74")
 [node name="Idle" type="Timer" parent="Timers"]
 wait_time = 3.5
 
-[connection signal="area_entered" from="AreaKnight" to="." method="_on_area_knight_area_entered"]
-[connection signal="area_exited" from="AreaKnight" to="." method="_on_area_knight_area_exited"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="body_entered" from="HitboxCerca" to="." method="_on_hitbox_cerca_body_entered"]
 [connection signal="body_exited" from="HitboxCerca" to="." method="_on_hitbox_cerca_body_exited"]
 [connection signal="timeout" from="Timers/Idle" to="." method="_on_idle_timeout"]

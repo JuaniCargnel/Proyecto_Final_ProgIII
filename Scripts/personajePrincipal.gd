@@ -1,33 +1,36 @@
 extends CharacterBody2D
 
-const velWalk = 3
-const velRun = 50
-const velRoll = 200
+class_name personajeClass
 
 var direccion:Vector2
 var valor_tmp_roll = Vector2()
 
+var anim_roll = false
+var anim_run = false
+var anim_idle = true
+var anim_hitA = false
+var anim_hitB = false
+var anim_selfHit = false
+var anim_death = false
+
+var alive = true
 var canRoll = true
 var canHitB = true
 var canHitA = true
-var roll = false
-var run = false
-var idle = true
-var hitA = false
-var hitB = false
 var comboA = false
 var comboB = false
-var activeSword = false
-var derecha = true
-
+var iFrames = true
+var lookDerecha = true
 
 func _ready():
 	$Sprite.play("idle")
+	NavigationManager.onTriggerPlayer.connect(on_spawn)
 
 func _process(delta):
-	estados(delta)
-	animations()
-	move_and_collide(direccion)
+	if alive:
+		estados(delta)
+		animations()
+		move_and_slide()
 
 func estados(delta):
 	rolling()
@@ -35,170 +38,191 @@ func estados(delta):
 	walking()
 	running()
 	hitting()
+	player_self_hit()
+	player_death()
 
+func on_spawn(positionPlayer, _direction):
+	global_position = positionPlayer
+	
 func movimientos(delta):
 	if Input.is_action_pressed("Sword"):
-		activeSword = true
+		GlobalStats.activeSword = true
 	if Input.is_action_pressed("Hands"):
-		activeSword = false
+		GlobalStats.activeSword = false
 		
-	if run:
-		translate(direccion.normalized() * velRun * delta)
-	elif roll:
-		translate(direccion.normalized() * velRoll * delta)
+	if anim_run:
+		translate(direccion.normalized() * GlobalStats.velRun * delta)
+	elif anim_roll:
+		translate(direccion.normalized() * GlobalStats.velRoll * delta)
 	else: 
-		translate(direccion.normalized() * velWalk * delta)
+		translate(direccion.normalized() * GlobalStats.velWalk * delta)
 
 func animations():
 	var animationName = get_animation_name()
 	$Sprite.play(animationName)
 
 func get_animation_name():
-	if hitA:
-		if activeSword:
+	if anim_death:
+		return "death"
+	elif anim_hitA:
+		if GlobalStats.activeSword:
 			return "swordAttack"
 		else: 
 			return "jab"
-	elif hitB:
-		if activeSword:
+	elif anim_hitB:
+		if GlobalStats.activeSword:
 			return "swordStab"
 		else:
 			return "cross"
-	elif run:
-		if activeSword:
+	elif anim_selfHit:
+		return "damage"
+	elif anim_run:
+		if GlobalStats.activeSword:
 			return "swordRun"
 		else:
 			return "run"
-	elif roll:
+	elif anim_roll:
 		return "roll"
-	elif direccion != Vector2.ZERO and not roll and not run:
-		if activeSword:
+	elif direccion != Vector2.ZERO and not anim_roll and not anim_run:
+		if GlobalStats.activeSword:
 			return "swordWalk"
 		else: 
 			return "walk"
 	else:
-		if activeSword:
-			idle = true
+		if GlobalStats.activeSword:
+			anim_idle = true
 			return "swordIdle"
 		else:
-			idle = true
+			anim_idle = true
 			return "idle"
 
 func walking():
 	var input_x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	var input_y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	
-	if !hitA:
-		if !hitB:
+	if !anim_hitA:
+		if !anim_hitB:
 			if Input.is_action_pressed("Right"):
 				$Sprite.set_flip_h(false)
-				$Hitbox.position = Vector2(-1,14)
 				$AreaSprite/CollisionShape2D.position = Vector2(-1,1)
-				derecha = true
+				lookDerecha = true
 			if Input.is_action_pressed("Left"):
 				$Sprite.set_flip_h(true)
-				$Hitbox.position = Vector2(1,14)
 				$AreaSprite/CollisionShape2D.position = Vector2(1,1)
-				derecha = false
-	
+				lookDerecha = false
+				
 	direccion = Vector2(input_x, input_y)
 
 func running():
-	if Input.is_action_pressed("Correr") and not roll and not hitA and not hitB and direccion != Vector2.ZERO:
-		run = true
+	if Input.is_action_pressed("Correr") and not anim_roll and not anim_hitA and not anim_hitB and direccion != Vector2.ZERO:
+		anim_run = true
 	else: 
-		run = false
+		anim_run = false
 
 func rolling():
-	if Input.is_action_pressed("Roll") and canRoll and not hitA and not hitB and direccion != Vector2.ZERO:
-		roll = true
+	if Input.is_action_pressed("Roll") and canRoll and not anim_hitA and not anim_hitB and direccion != Vector2.ZERO:
+		anim_roll = true
 		canRoll = false
 		valor_tmp_roll = direccion
 		$Timers/Roll.start()
-	elif roll:
+	elif anim_roll:
 		if Input.is_action_pressed("GolpeA"):
 			comboA = true
 		if Input.is_action_pressed("GolpeB"):
 			comboB = true
 		direccion = valor_tmp_roll
 	else: 
-		roll = false
+		anim_roll = false
 		valor_tmp_roll = null
 
 func hitting():
-	if Input.is_action_pressed("GolpeA") and canHitA and not roll and not hitB:
-		hitA = true
+	if Input.is_action_pressed("GolpeA") and canHitA and not anim_roll and not anim_hitB:
+		anim_hitA = true
 		canHitA = false
 		$Timers/HitA.start()
-	elif Input.is_action_pressed("GolpeB") and canHitB and not roll and not hitA:
-		hitB = true
+	elif Input.is_action_pressed("GolpeB") and canHitB and not anim_roll and not anim_hitA:
+		anim_hitB = true
 		canHitB = false
 		$Timers/HitB.start()
-	elif hitA:
+	elif anim_hitA:
 		direccion = Vector2.ZERO
-		if activeSword:
+		if GlobalStats.activeSword:
 			$AreaGolpes/CollisionShapeGolpes.scale = Vector2(2.5,4)
 			if $Sprite.frame == 3:
 				$AreaGolpes/CollisionShapeGolpes.disabled = false
-			if derecha:
+			if lookDerecha:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(20,2)
 			else:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(-20,1)
-		elif !activeSword:
+		elif !GlobalStats.activeSword:
 			$AreaGolpes/CollisionShapeGolpes.scale = Vector2(2,0.5)
 			if $Sprite.frame == 1:
 				$AreaGolpes/CollisionShapeGolpes.disabled = false
-			if derecha:
+			if lookDerecha:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(12,-1)
 			else:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(-12,-1)
 		if Input.is_action_pressed("GolpeB"):
 			comboB = true
-	elif hitB:
+	elif anim_hitB:
 		direccion = Vector2.ZERO
-		if activeSword:
+		if GlobalStats.activeSword:
 			if $Sprite.frame == 3:
 				$AreaGolpes/CollisionShapeGolpes.disabled = false
 			$AreaGolpes/CollisionShapeGolpes.scale = Vector2(4,1)
-			if derecha:
+			if lookDerecha:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(27,2)
 			else:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(-27,2)
-		elif !activeSword:
+		elif !GlobalStats.activeSword:
 			if $Sprite.frame == 2:
 				$AreaGolpes/CollisionShapeGolpes.disabled = false
 			$AreaGolpes/CollisionShapeGolpes.scale = Vector2(2,2)
-			if derecha:
+			if lookDerecha:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(22,4)
 			else:
 				$AreaGolpes/CollisionShapeGolpes.position = Vector2(-22,4)
 	else:
-		hitB = false
-		hitA = false
+		anim_hitB = false
+		anim_hitA = false
 		$AreaGolpes/CollisionShapeGolpes.disabled = true
 
+func player_death():
+	if GlobalStats.playerLife <= 0:
+		alive = false
+		anim_death = true
+		$Timers/Death.start()
+
+func player_self_hit():
+	for area in $AreaSprite.get_overlapping_areas():
+		if area.is_in_group("areaEnemy") and iFrames:
+			GlobalStats.playerLife -= 1
+			anim_selfHit = true
+			iFrames = false
+			$Timers/IFrames.start()
+
 func _on_roll_timeout():
-	roll = false
+	anim_roll = false
 	if comboA:
-		hitA = true
+		anim_hitA = true
 		$Timers/HitA.start()
 		comboA = false
 	if comboB:
-		hitB = true
+		anim_hitB = true
 		$Timers/HitB.start()
 		comboB = false
-	
+		
 	$Timers/RollTimer.start()
 
 func _on_roll_timer_timeout():
 	canRoll = true
 
 func _on_hit_a_timeout():
-	hitA = false
+	anim_hitA = false
 	$AreaGolpes/CollisionShapeGolpes.disabled = true
 	$Timers/HitATimer.start()
 	if comboB:
-		hitB = true
+		anim_hitB = true
 		$Timers/HitB.start()
 		comboB = false
 
@@ -206,11 +230,20 @@ func _on_hit_a_timer_timeout():
 	canHitA = true
 
 func _on_hit_b_timeout():
-	hitB = false
+	anim_hitB = false
 	$AreaGolpes/CollisionShapeGolpes.disabled = true
 	$Timers/HitBTimer.start()
 
 func _on_hit_b_timer_timeout():
 	canHitB = true
 
+func _on_i_frames_timeout():
+	iFrames = true
 
+func _on_area_sprite_area_exited(area):
+	if area.is_in_group("areaEnemy"):
+		anim_selfHit = false
+
+func _on_death_timeout():
+	get_tree().reload_current_scene()
+	GlobalStats.playerLife = 10
