@@ -3,19 +3,13 @@ extends Area2D
 class_name dummy
 
 @export var inArea:bool = false
-@export var canBeHit:bool = false
-@export var inSprite:bool = false
+var canBeHit:bool = false
 
 func _on_sprite_animation_looped():
 	$Sprite.stop() 
 
-func _on_hitbox_cerca_body_entered(body):
-	if body.is_in_group("player"):
-		inArea = true
-
-func _on_hitbox_cerca_body_exited(body):
-	if body.is_in_group("player"):
-		inArea = false
+func _process(_delta):
+	on_hit()
 
 func _on_area_entered(area):
 	if area.is_in_group("golpe") and canBeHit:
@@ -26,8 +20,14 @@ func _on_area_entered(area):
 			$Sprite.frame = 1
 		$Sprite.play("dummy")
 	if area.is_in_group("areaSprite"):
-		inSprite = true
+		inArea = true
 
 func _on_area_exited(area):
 	if area.is_in_group("areaSprite"):
-		inSprite = false
+		inArea = false
+
+func on_hit():
+	if GlobalStats.positionPlayer.y >= global_position.y - 5 and GlobalStats.positionPlayer.y <= global_position.y + 4:
+		canBeHit = true
+	else:
+		canBeHit = false

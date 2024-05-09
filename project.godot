@@ -17,9 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Sombra="*res://Scripts/sombra.gd"
+Sombra="*res://Scripts/ScriptGlobales/sombra.gd"
 GlobalStats="*res://Scripts/ScriptGlobales/globalStats.gd"
 NavigationManager="*res://Scripts/ScriptGlobales/navigationManager.gd"
+GlobalManager="*res://Scripts/ScriptGlobales/globalManager.gd"
 
 [display]
 

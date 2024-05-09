@@ -2,32 +2,35 @@ extends CharacterBody2D
 
 class_name personajeClass
 
-var direccion:Vector2
+var direccion = Vector2()
 var valor_tmp_roll = Vector2()
 
-var anim_roll = false
-var anim_run = false
-var anim_idle = true
-var anim_hitA = false
-var anim_hitB = false
-var anim_selfHit = false
-var anim_death = false
+var anim_roll: bool = false
+var anim_run: bool = false
+var anim_idle: bool = true
+var anim_hitA: bool = false
+var anim_hitB: bool = false
+var anim_selfHit: bool = false
+var anim_death: bool = false
 
-var alive = true
-var canRoll = true
-var canHitB = true
-var canHitA = true
-var comboA = false
-var comboB = false
-var iFrames = true
-var lookDerecha = true
+var alive: bool = true
+var canRoll: bool = true
+var canHitB: bool = true
+var canHitA: bool = true
+var comboA: bool = false
+var comboB: bool = false
+var iFrames: bool = true
+var lookDerecha: bool = true
 
 func _ready():
 	$Sprite.play("idle")
 	NavigationManager.onTriggerPlayer.connect(on_spawn)
+	$Sprite.modulate = Color(GlobalStats.colorR, GlobalStats.colorG, GlobalStats.colorB)
 
 func _process(delta):
 	if alive:
+		GlobalStats.positionPlayer = global_position
+		z_index = GlobalStats.zindexPlayer 
 		estados(delta)
 		animations()
 		move_and_slide()
@@ -41,7 +44,7 @@ func estados(delta):
 	player_self_hit()
 	player_death()
 
-func on_spawn(positionPlayer, _direction):
+func on_spawn(positionPlayer: Vector2, _direction):
 	global_position = positionPlayer
 	
 func movimientos(delta):

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8i4s24m86jry"]
+
+[ext_resource type="Script" path="res://Scripts/pantallaEntrenamiento.gd" id="1_ehgs8"]
+[ext_resource type="PackedScene" uid="uid://dnuefdw5cng6h" path="res://Escenas/PersonajePrincipal.tscn" id="2_e1evu"]
+[ext_resource type="PackedScene" uid="uid://dpfkju1d15fk2" path="res://Escenas/Dummy.tscn" id="3_upro0"]
+[ext_resource type="Texture2D" uid="uid://dlb74lkran0jw" path="res://Assets/Botones/Rounded/Blue/Start 192x48.png" id="4_juo8o"]
+
+[node name="PantallaEntrenamiento" type="Node2D"]
+script = ExtResource("1_ehgs8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1790.0
+offset_bottom = 983.0
+color = Color(0.588235, 0.458824, 0.560784, 1)
+
+[node name="PersonajePrincipal" parent="." instance=ExtResource("2_e1evu")]
+position = Vector2(114, 110)
+
+[node name="Dummy" parent="." instance=ExtResource("3_upro0")]
+position = Vector2(250, 120)
+
+[node name="Dummy2" parent="." instance=ExtResource("3_upro0")]
+position = Vector2(350, 120)
+
+[node name="Dummy3" parent="." instance=ExtResource("3_upro0")]
+position = Vector2(250, 200)
+
+[node name="Dummy4" parent="." instance=ExtResource("3_upro0")]
+position = Vector2(350, 200)
+
+[node name="Start" type="TextureButton" parent="."]
+offset_left = 25.0
+offset_top = 20.0
+offset_right = 217.0
+offset_bottom = 68.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("4_juo8o")
+
+[connection signal="button_down" from="Start" to="." method="_on_start_button_down"]

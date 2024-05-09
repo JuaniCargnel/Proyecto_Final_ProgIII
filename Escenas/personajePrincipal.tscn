@@ -831,13 +831,14 @@ size = Vector2(6, 6.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gr423"]
 size = Vector2(12.875, 25.6875)
 
-[node name="PersonajePrincipal" type="CharacterBody2D" groups=["player", "sprites"]]
-z_index = 1
+[node name="PersonajePrincipal" type="CharacterBody2D" groups=["nodo", "player"]]
+z_index = 2
 script = ExtResource("1_qp7oi")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
 sprite_frames = SubResource("SpriteFrames_tq0vl")
-animation = &"death"
+animation = &"idle"
+metadata/SombraMark = Vector2(0, 0)
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 14)
@@ -888,6 +889,9 @@ disabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaSprite"]
 position = Vector2(-0.5625, 1.84375)
 shape = SubResource("RectangleShape2D_gr423")
+
+[node name="SombraMark" type="Marker2D" parent="."]
+position = Vector2(-14.5, 24.5)
 
 [connection signal="timeout" from="Timers/Roll" to="." method="_on_roll_timeout"]
 [connection signal="timeout" from="Timers/RollTimer" to="." method="_on_roll_timer_timeout"]
