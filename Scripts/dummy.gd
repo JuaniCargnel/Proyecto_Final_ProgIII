@@ -25,6 +25,7 @@ func _on_area_entered(area):
 func _on_area_exited(area):
 	if area.is_in_group("areaSprite"):
 		inArea = false
+		GlobalStats.zindexPlayer = 2
 
 func on_hit():
 	if GlobalStats.positionPlayer.y >= global_position.y - 5 and GlobalStats.positionPlayer.y <= global_position.y + 4:

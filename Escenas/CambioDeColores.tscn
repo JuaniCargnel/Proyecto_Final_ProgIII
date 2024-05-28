@@ -15,12 +15,6 @@ script = null
 [node name="Hitbox" parent="PersonajePrincipal" index="1"]
 visible = false
 
-[node name="AreaGolpes" parent="PersonajePrincipal" index="3"]
-visible = false
-
-[node name="AreaSprite" parent="PersonajePrincipal" index="4"]
-visible = false
-
 [node name="Start" type="TextureButton" parent="."]
 offset_left = 407.0
 offset_top = 26.0

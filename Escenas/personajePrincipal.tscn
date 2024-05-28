@@ -833,6 +833,7 @@ size = Vector2(12.875, 25.6875)
 
 [node name="PersonajePrincipal" type="CharacterBody2D" groups=["nodo", "player"]]
 z_index = 2
+motion_mode = 1
 script = ExtResource("1_qp7oi")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
@@ -870,28 +871,36 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
-[node name="IFrames" type="Timer" parent="Timers"]
-wait_time = 0.7
-
 [node name="Death" type="Timer" parent="Timers"]
 wait_time = 2.0
 
-[node name="AreaGolpes" type="Area2D" parent="." groups=["golpe"]]
+[node name="Dmg" type="Timer" parent="Timers"]
+wait_time = 0.7
 
-[node name="CollisionShapeGolpes" type="CollisionShape2D" parent="AreaGolpes"]
+[node name="HittingArea" type="Area2D" parent="." groups=["golpe"]]
+
+[node name="HitboxHit" type="CollisionShape2D" parent="HittingArea"]
 position = Vector2(12, -1)
 scale = Vector2(2, 0.5)
 shape = SubResource("RectangleShape2D_hpf4g")
 disabled = true
 
-[node name="AreaSprite" type="Area2D" parent="." groups=["areaSprite"]]
+[node name="DmgArea" type="Area2D" parent="." groups=["areaSprite"]]
+collision_layer = 3
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaSprite"]
+[node name="HitboxDmg" type="CollisionShape2D" parent="DmgArea"]
 position = Vector2(-0.5625, 1.84375)
 shape = SubResource("RectangleShape2D_gr423")
 
 [node name="SombraMark" type="Marker2D" parent="."]
 position = Vector2(-14.5, 24.5)
+
+[node name="LeftHitZone" type="Marker2D" parent="." groups=["leftzone"]]
+position = Vector2(-19, 2)
+
+[node name="RightHitZone" type="Marker2D" parent="." groups=["rightzone"]]
+position = Vector2(14, 2)
 
 [connection signal="timeout" from="Timers/Roll" to="." method="_on_roll_timeout"]
 [connection signal="timeout" from="Timers/RollTimer" to="." method="_on_roll_timer_timeout"]
@@ -899,6 +908,7 @@ position = Vector2(-14.5, 24.5)
 [connection signal="timeout" from="Timers/HitBTimer" to="." method="_on_hit_b_timer_timeout"]
 [connection signal="timeout" from="Timers/HitA" to="." method="_on_hit_a_timeout"]
 [connection signal="timeout" from="Timers/HitATimer" to="." method="_on_hit_a_timer_timeout"]
-[connection signal="timeout" from="Timers/IFrames" to="." method="_on_i_frames_timeout"]
 [connection signal="timeout" from="Timers/Death" to="." method="_on_death_timeout"]
-[connection signal="area_exited" from="AreaSprite" to="." method="_on_area_sprite_area_exited"]
+[connection signal="timeout" from="Timers/Dmg" to="." method="_on_dmg_timeout"]
+[connection signal="body_entered" from="DmgArea" to="." method="_on_dmg_area_body_entered"]
+[connection signal="body_exited" from="DmgArea" to="." method="_on_dmg_area_body_exited"]

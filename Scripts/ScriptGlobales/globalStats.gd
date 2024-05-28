@@ -1,15 +1,17 @@
 extends Node
 
-var playerLife = 10
+var playerLife: int = 10
 
-const velWalk = 75
-const velRun = 150
-const velRoll = 200
+const velWalk: int = 75
+const velRun: int = 150
+const velRoll: int = 200
 
 var positionPlayer: Vector2
-var zindexPlayer: int
-var activeSword = false
+var zindexPlayer: int = 2
+var activeSword: bool = false
 
-var colorR = 1
-var colorG = 1 
-var colorB = 1
+var alive: bool = true
+
+var colorR: int = 1
+var colorG: int = 1 
+var colorB: int = 1

@@ -1,7 +1,6 @@
 extends Node2D
 
 func _ready():
-	get_window().set_content_scale_factor(2)
 	var nodos = get_tree().get_nodes_in_group("nodo")
 	for sprites in nodos:
 		Sombra.crear_sombras(sprites)

@@ -8,5 +8,3 @@ func render():
 				GlobalStats.zindexPlayer = 3
 			elif GlobalStats.positionPlayer.y <= enemigo.global_position.y:
 				GlobalStats.zindexPlayer = 1
-			else: 
-				GlobalStats.zindexPlayer = 2

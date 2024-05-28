@@ -79,7 +79,7 @@ scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_4lc7h")
 animation = &"dummy"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0.500002, -0.562498)
 scale = Vector2(0.999998, 0.999998)
 shape = SubResource("RectangleShape2D_6ygqa")

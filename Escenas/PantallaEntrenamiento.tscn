@@ -13,6 +13,10 @@ offset_right = 1790.0
 offset_bottom = 983.0
 color = Color(0.588235, 0.458824, 0.560784, 1)
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(522, 272)
+zoom = Vector2(2, 2)
+
 [node name="PersonajePrincipal" parent="." instance=ExtResource("2_e1evu")]
 position = Vector2(114, 110)
 
@@ -29,10 +33,10 @@ position = Vector2(250, 200)
 position = Vector2(350, 200)
 
 [node name="Start" type="TextureButton" parent="."]
-offset_left = 25.0
-offset_top = 20.0
-offset_right = 217.0
-offset_bottom = 68.0
+offset_left = 40.0
+offset_top = 29.0
+offset_right = 232.0
+offset_bottom = 77.0
 scale = Vector2(0.4, 0.4)
 texture_normal = ExtResource("4_juo8o")
 

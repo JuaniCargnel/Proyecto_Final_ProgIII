@@ -2,9 +2,9 @@ extends Node2D
 
 #Revisar el tema de donde hace daño, no deberia hacer daño de todos lados... o si, hay que veer como lo planteo
 #Seguir armando de una manera mas correcta y adaptada el codigo, ademas de cambiar nombres y ordenar un poco todo
+#Arreglar el tema del golpe basico para que no puedas entrar al area y que los enemigos no bailen si entran al area del jugador 
 
 func _ready():
-	get_window().set_content_scale_factor(1)
 	var nodos = get_tree().get_nodes_in_group("nodo")
 	for sprites in nodos:
 		Sombra.crear_sombras(sprites)
