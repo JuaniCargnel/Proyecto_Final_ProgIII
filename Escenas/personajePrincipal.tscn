@@ -832,7 +832,7 @@ size = Vector2(6, 6.75)
 size = Vector2(12.875, 25.6875)
 
 [node name="PersonajePrincipal" type="CharacterBody2D" groups=["nodo", "player"]]
-z_index = 2
+z_index = 3
 motion_mode = 1
 script = ExtResource("1_qp7oi")
 

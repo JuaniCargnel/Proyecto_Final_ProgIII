@@ -36,6 +36,27 @@ position = Vector2(1, 23)
 navigation_polygon = SubResource("NavigationPolygon_qe0nb")
 
 [node name="SlimeVerde" parent="." instance=ExtResource("4_oo5ip")]
-position = Vector2(474, 263)
+position = Vector2(530, 260)
+
+[node name="SlimeVerde2" parent="." instance=ExtResource("4_oo5ip")]
+position = Vector2(656, 377)
+
+[node name="SlimeVerde3" parent="." instance=ExtResource("4_oo5ip")]
+position = Vector2(550, 83)
+
+[node name="SlimeVerde4" parent="." instance=ExtResource("4_oo5ip")]
+position = Vector2(441, 422)
+
+[node name="SlimeVerde5" parent="." instance=ExtResource("4_oo5ip")]
+position = Vector2(712, 300)
+
+[node name="SlimeVerde6" parent="." instance=ExtResource("4_oo5ip")]
+position = Vector2(532, 363)
+
+[node name="SlimeVerde7" parent="." instance=ExtResource("4_oo5ip")]
+position = Vector2(326, 379)
+
+[node name="SlimeVerde8" parent="." instance=ExtResource("4_oo5ip")]
+position = Vector2(638, 192)
 
 [editable path="Area_N"]
