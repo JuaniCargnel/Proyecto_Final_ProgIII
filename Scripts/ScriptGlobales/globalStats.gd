@@ -10,6 +10,9 @@ var positionPlayer: Vector2
 var zindexPlayer: int = 2
 var activeSword: bool = false
 
+var iFrames: bool = false
+var recibirDaño: bool = false
+
 var alive: bool = true
 
 var colorR: int = 1

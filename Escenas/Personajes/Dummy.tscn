@@ -68,7 +68,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ygqa"]
-size = Vector2(11, 28.8751)
+size = Vector2(11, 30.0001)
 
 [node name="Dummy" type="Area2D" groups=["enemigos", "nodo"]]
 z_index = 2
@@ -80,7 +80,7 @@ sprite_frames = SubResource("SpriteFrames_4lc7h")
 animation = &"dummy"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0.500002, -0.562498)
+position = Vector2(0.500002, -9.11951e-06)
 scale = Vector2(0.999998, 0.999998)
 shape = SubResource("RectangleShape2D_6ygqa")
 

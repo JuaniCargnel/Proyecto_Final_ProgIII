@@ -5,10 +5,11 @@ class_name dummy
 @export var inArea:bool = false
 var canBeHit:bool = false
 
-func _on_sprite_animation_looped():
-	$Sprite.stop() 
+func _ready():
+	Sombra.crear_sombras($Sprite, $SombraMark)
 
 func _process(_delta):
+	Sombra.update_sombras()
 	on_hit()
 
 func _on_area_entered(area):
@@ -32,3 +33,7 @@ func on_hit():
 		canBeHit = true
 	else:
 		canBeHit = false
+		
+
+func _on_sprite_animation_looped():
+	$Sprite.stop() 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckq2ya0cb567u"
-path="res://.godot/imported/LogoVacio.jpg-7c547144c53fbd1e5e8b0401b462beda.ctex"
+uid="uid://lggn387b3tre"
+path="res://.godot/imported/burning_end_1.png-42df7a34091e84c962891cdbf621111d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemies/Knight/LogoVacio.jpg"
-dest_files=["res://.godot/imported/LogoVacio.jpg-7c547144c53fbd1e5e8b0401b462beda.ctex"]
+source_file="res://Assets/Enemies/Fire/burning_end_1.png"
+dest_files=["res://.godot/imported/burning_end_1.png-42df7a34091e84c962891cdbf621111d.ctex"]
 
 [params]
 

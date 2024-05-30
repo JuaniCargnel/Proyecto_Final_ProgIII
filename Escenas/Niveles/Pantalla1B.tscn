@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://d3xi87oq78x0n"]
 
 [ext_resource type="Script" path="res://Scripts/pantalla1B.gd" id="1_qdwop"]
-[ext_resource type="PackedScene" uid="uid://cvb16uf1774tv" path="res://Escenas/CambioDeEscena.tscn" id="2_ts5ad"]
-[ext_resource type="PackedScene" uid="uid://dnuefdw5cng6h" path="res://Escenas/PersonajePrincipal.tscn" id="3_1lgbi"]
+[ext_resource type="PackedScene" uid="uid://cvb16uf1774tv" path="res://Escenas/Globales/CambioDeEscena.tscn" id="2_ts5ad"]
+[ext_resource type="PackedScene" uid="uid://dnuefdw5cng6h" path="res://Escenas/Personajes/PersonajePrincipal.tscn" id="3_1lgbi"]
 
 [node name="Pantalla1B" type="Node2D"]
 script = ExtResource("1_qdwop")

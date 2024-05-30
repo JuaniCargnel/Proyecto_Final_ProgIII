@@ -1,18 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://dibi57amadjkv"]
 
-[ext_resource type="PackedScene" uid="uid://dnuefdw5cng6h" path="res://Escenas/PersonajePrincipal.tscn" id="1_nc7io"]
-[ext_resource type="Script" path="res://Scripts/cambioDeColores.gd" id="1_vvgea"]
-[ext_resource type="Texture2D" uid="uid://dlb74lkran0jw" path="res://Assets/Botones/Rounded/Blue/Start 192x48.png" id="3_bwwkd"]
+[ext_resource type="Script" path="res://Scripts/cambioDeColores.gd" id="1_a32ca"]
+[ext_resource type="PackedScene" uid="uid://dnuefdw5cng6h" path="res://Escenas/Personajes/PersonajePrincipal.tscn" id="2_32wpd"]
+[ext_resource type="Texture2D" uid="uid://dlb74lkran0jw" path="res://Assets/Botones/Rounded/Blue/Start 192x48.png" id="3_wcj06"]
 
 [node name="CambioDeColores" type="Node2D"]
-script = ExtResource("1_vvgea")
+script = ExtResource("1_a32ca")
 
-[node name="PersonajePrincipal" parent="." instance=ExtResource("1_nc7io")]
+[node name="PersonajePrincipal" parent="." instance=ExtResource("2_32wpd")]
 position = Vector2(138, 147)
 scale = Vector2(5, 5)
 script = null
 
-[node name="Hitbox" parent="PersonajePrincipal" index="1"]
+[node name="Hitbox" parent="PersonajePrincipal" index="2"]
 visible = false
 
 [node name="Start" type="TextureButton" parent="."]
@@ -20,7 +20,7 @@ offset_left = 407.0
 offset_top = 26.0
 offset_right = 599.0
 offset_bottom = 74.0
-texture_normal = ExtResource("3_bwwkd")
+texture_normal = ExtResource("3_wcj06")
 
 [node name="R" type="HSlider" parent="."]
 offset_left = 700.0

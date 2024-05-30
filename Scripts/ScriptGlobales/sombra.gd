@@ -1,10 +1,8 @@
 extends Node
 
-class_name sombraGlobal
-
-func crear_sombras(nodo: Node2D):
-	var spriteOriginal = nodo.get_node("Sprite")
-	var marker = nodo.get_node("SombraMark")
+func crear_sombras(sprite: AnimatedSprite2D, sombraMarker: Marker2D):
+	var spriteOriginal = sprite
+	var marker = sombraMarker
 	var sombra = AnimatedSprite2D.new()
 	
 	sombra.modulate = Color.BLACK

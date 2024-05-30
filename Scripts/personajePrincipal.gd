@@ -20,16 +20,25 @@ var comboA: bool = false
 var comboB: bool = false
 var lookDerecha: bool = true
 
+var cameraZoom = 2
+
 func _ready():
-	NavigationManager.onTriggerPlayer.connect(on_spawn)
 	$Sprite.modulate = Color(GlobalStats.colorR, GlobalStats.colorG, GlobalStats.colorB)
+	Sombra.crear_sombras($Sprite, $SombraMark)
+	global_position = Vector2(500,500)
 
 func _process(delta):
+	#print(GlobalStats.playerLife)
 	if GlobalStats.alive:
 		GlobalStats.positionPlayer = global_position
 		z_index = GlobalStats.zindexPlayer 
 		estados(delta)
 		animations()
+	else:
+		cameraZoom += 0.05
+		$Camera2D.zoom = Vector2(cameraZoom, cameraZoom)
+		
+	Sombra.update_sombras()
 
 func estados(delta):
 	rolling()
@@ -37,11 +46,9 @@ func estados(delta):
 	walking()
 	running()
 	hitting()
+	recibir_dmg()
 	player_death()
 
-func on_spawn(positionPlayer: Vector2, _direction):
-	global_position = positionPlayer
-	
 func movimientos(delta):
 	if Input.is_action_pressed("Sword"):
 		GlobalStats.activeSword = true
@@ -104,11 +111,11 @@ func walking():
 		if !anim_hitB:
 			if Input.is_action_pressed("Right"):
 				$Sprite.set_flip_h(false)
-				$DmgArea/HitboxDmg.position = Vector2(-1,1)
+				$Hitbox.position = Vector2(-1,11)
 				lookDerecha = true
 			if Input.is_action_pressed("Left"):
 				$Sprite.set_flip_h(true)
-				$DmgArea/HitboxDmg.position = Vector2(1,1)
+				$Hitbox.position = Vector2(1,11)
 				lookDerecha = false
 				
 	direccion = Vector2(input_x, input_y)
@@ -125,7 +132,7 @@ func rolling():
 		canRoll = false
 		valor_tmp_roll = direccion
 		$Timers/Roll.start()
-		$DmgArea/HitboxDmg.disabled = true
+		$Hitbox.disabled = true
 	elif anim_roll:
 		if Input.is_action_pressed("GolpeA"):
 			comboA = true
@@ -133,7 +140,7 @@ func rolling():
 			comboB = true
 		direccion = valor_tmp_roll
 	else: 
-		$DmgArea/HitboxDmg.disabled = false
+		$Hitbox.disabled = false
 		anim_roll = false
 		valor_tmp_roll = null
 
@@ -177,7 +184,7 @@ func hitting():
 			else:
 				$HittingArea/HitboxHit.position = Vector2(-27,2)
 		elif !GlobalStats.activeSword:
-			if $Sprite.frame == 2:
+			if $Sprite.frame == 3:
 				$HittingArea/HitboxHit.disabled = false
 			$HittingArea/HitboxHit.scale = Vector2(2,2)
 			if lookDerecha:
@@ -193,7 +200,14 @@ func player_death():
 	if GlobalStats.playerLife <= 0:
 		GlobalStats.alive = false
 		anim_death = true
+		z_index = 1
 		$Timers/Death.start()
+
+func recibir_dmg():
+	if GlobalStats.recibirDaño:
+		anim_dmg = true
+	elif !GlobalStats.recibirDaño and $Sprite.frame == 2:
+		anim_dmg = false
 
 func _on_roll_timeout():
 	anim_roll = false
@@ -236,16 +250,21 @@ func _on_death_timeout():
 	GlobalStats.alive = true
 	GlobalStats.playerLife = 10
 
-func _on_dmg_area_body_entered(body):
-	if body.is_in_group("areaEnemy"):
-		GlobalStats.playerLife -= 1
-		anim_dmg = true
-		$Timers/Dmg.start()
+func _on_hitting_area_body_entered(body):
+	if body.is_in_group("enemigos"):
+		if anim_hitA and GlobalStats.activeSword:
+			body.life -= 2
+			body.recibirDmg = true
+		elif anim_hitA and !GlobalStats.activeSword:
+			body.life -= 1
+			body.recibirDmg = true
+		elif anim_hitB and GlobalStats.activeSword:
+			body.life -= 3
+			body.recibirDmg = true
+		elif anim_hitB and !GlobalStats.activeSword: 
+			body.life -= 2
+			body.recibirDmg = true
 
-func _on_dmg_area_body_exited(body):
-	if body.is_in_group("areaEnemy"):
-		anim_dmg = false
-		$Timers/Dmg.stop()
-
-func _on_dmg_timeout():
-	GlobalStats.playerLife -= 1
+func _on_hitting_area_body_exited(body):
+	if body.is_in_group("enemigos"):
+		body.recibirDmg = false

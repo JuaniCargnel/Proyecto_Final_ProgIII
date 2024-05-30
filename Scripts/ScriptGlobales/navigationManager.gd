@@ -1,7 +1,7 @@
 extends Node
 
-const sceneP1A = preload("res://Escenas/Pantalla1A.tscn")
-const sceneP1B = preload("res://Escenas/Pantalla1B.tscn")
+const sceneP1A = preload("res://Escenas/Niveles/Pantalla1A.tscn")
+const sceneP1B = preload("res://Escenas/Niveles/Pantalla1B.tscn")
 
 signal onTriggerPlayer
 

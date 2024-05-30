@@ -1,15 +1,11 @@
 extends Node2D
 
 func _ready():
-	var nodos = get_tree().get_nodes_in_group("nodo")
-	for sprites in nodos:
-		Sombra.crear_sombras(sprites)
-		
 	if NavigationManager.spawnDoorTag != null:
 		level_spawn(NavigationManager.spawnDoorTag)
 
 func _process(_delta):
-	Sombra.update_sombras()
+	pass
 
 func level_spawn(destinationTag: String):
 	var doorPath = "Area_" + destinationTag

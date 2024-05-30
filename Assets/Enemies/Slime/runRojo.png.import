@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clse60fntuewb"
-path="res://.godot/imported/dead.png-3c4e7b5110c2a6bb6b0130086a4e9f04.ctex"
+uid="uid://b57x0kudq5o62"
+path="res://.godot/imported/runRojo.png-9d0aac285db39efd7182a1d8ca137c22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemies/Slime/dead.png"
-dest_files=["res://.godot/imported/dead.png-3c4e7b5110c2a6bb6b0130086a4e9f04.ctex"]
+source_file="res://Assets/Enemies/Slime/runRojo.png"
+dest_files=["res://.godot/imported/runRojo.png-9d0aac285db39efd7182a1d8ca137c22.ctex"]
 
 [params]
 

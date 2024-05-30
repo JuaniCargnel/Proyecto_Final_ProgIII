@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkq2fomgelerl"
-path="res://.godot/imported/idle.png-36e6c582cfccc8abaa9ca3d0aab16599.ctex"
+uid="uid://c2ys1y6h6qsjk"
+path="res://.godot/imported/burning_start_1.png-55bb5ab71239e6aaa3d4ecafa672a6ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemies/Slime/idle.png"
-dest_files=["res://.godot/imported/idle.png-36e6c582cfccc8abaa9ca3d0aab16599.ctex"]
+source_file="res://Assets/Enemies/Fire/burning_start_1.png"
+dest_files=["res://.godot/imported/burning_start_1.png-55bb5ab71239e6aaa3d4ecafa672a6ec.ctex"]
 
 [params]
 
