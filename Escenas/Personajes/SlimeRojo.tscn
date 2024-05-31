@@ -406,6 +406,9 @@ wait_time = 1.43
 [node name="ExplosionTimer" type="Timer" parent="Timers"]
 wait_time = 1.57
 
+[node name="DmgTimer" type="Timer" parent="Timers"]
+wait_time = 0.7
+
 [connection signal="body_entered" from="FollowArea" to="." method="_on_follow_area_body_entered"]
 [connection signal="body_exited" from="FollowArea" to="." method="_on_follow_area_body_exited"]
 [connection signal="body_entered" from="DeathArea" to="." method="_on_death_area_body_entered"]
@@ -416,3 +419,4 @@ wait_time = 1.57
 [connection signal="timeout" from="Timers/DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_idle_timer_timeout"]
 [connection signal="timeout" from="Timers/ExplosionTimer" to="." method="_on_explosion_timer_timeout"]
+[connection signal="timeout" from="Timers/DmgTimer" to="." method="_on_dmg_timer_timeout"]

@@ -133,7 +133,13 @@ func _on_dmg_area_body_entered(body):
 	if body.is_in_group("player"):
 		GlobalStats.playerLife -= 1
 		GlobalStats.recibirDaño = true
+		$Timers/DmgTimer.start()
 
 func _on_dmg_area_body_exited(body):
 	if body.is_in_group("player"):
 		GlobalStats.recibirDaño = false
+		$Timers/DmgTimer.stop()
+
+
+func _on_dmg_timer_timeout():
+		GlobalStats.playerLife -= 1

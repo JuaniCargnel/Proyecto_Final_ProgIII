@@ -835,10 +835,15 @@ script = ExtResource("1_kresr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+limit_left = 130
+limit_top = 20
+limit_right = 1400
+limit_bottom = 1050
+limit_smoothed = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
 sprite_frames = SubResource("SpriteFrames_tq0vl")
-animation = &"damage"
+animation = &"idle"
 metadata/SombraMark = Vector2(0, 0)
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]

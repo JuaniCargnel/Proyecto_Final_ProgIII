@@ -8,3 +8,5 @@ func render():
 				enemigo.z_index = 1
 			else:
 				enemigo.z_index = 3
+		else:
+			enemigo.z_index = 2

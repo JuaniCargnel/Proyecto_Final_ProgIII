@@ -75,7 +75,7 @@ func death():
 	isDeath = true
 	$Sprite.play("death")
 	$Timers/DeathTimer.start()
-	$Hitbox.disabled = true
+	$DmgArea/CollisionShape2D.disabled = true
 	$FollowArea/CollisionShape2D.disabled = true
 
 func _on_timer_timeout():
