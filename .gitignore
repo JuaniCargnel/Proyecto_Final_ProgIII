@@ -1,2 +1,41 @@
-# Godot 4+ specific ignores
+# Godot-specific files
+.import/
+export.cfg
+export_presets.cfg
+
+# Godot 4.x specific directories and files
 .godot/
+.settings/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.swap
+*.swo
+*.swp
+
+# Backup files
+*.bak
+
+# Log files
+*.log
+
+# Compiled scripts (if any)
+*.pyc
+*.rbc
+*.mono/
+
+# Cache files
+.cache/
+
+# User-specific files
+.idea/
+.vscode/
+*.user
+
+# Godot 4.x specific caches and config
+config/
