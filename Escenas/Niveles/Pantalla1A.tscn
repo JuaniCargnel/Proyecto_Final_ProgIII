@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://dd1bv4ft5d738"]
 
 [ext_resource type="Script" path="res://Scripts/pantalla1A.gd" id="1_sww4n"]
-[ext_resource type="Texture2D" uid="uid://sfx70wp60tdy" path="res://Assets/Arena/Dungeon Arena9.png" id="2_3vrhl"]
-[ext_resource type="Texture2D" uid="uid://cog0tej8x8m12" path="res://Assets/Decoration/BackgroundMaker2.png" id="2_qt5sa"]
+[ext_resource type="Texture2D" uid="uid://bbjc53clce6gj" path="res://Assets/Arena/Dungeon Arena9.png" id="2_3vrhl"]
+[ext_resource type="Texture2D" uid="uid://6xw1te31obs8" path="res://Assets/Decoration/BackgroundMaker2.png" id="2_qt5sa"]
 [ext_resource type="PackedScene" uid="uid://bkk01sphksq7h" path="res://Escenas/Globales/SpawnPoint.tscn" id="3_vbeci"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jds5a"]
