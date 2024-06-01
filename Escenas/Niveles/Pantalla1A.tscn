@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dd1bv4ft5d738"]
+[gd_scene load_steps=13 format=3 uid="uid://dd1bv4ft5d738"]
 
 [ext_resource type="Script" path="res://Scripts/pantalla1A.gd" id="1_sww4n"]
 [ext_resource type="Texture2D" uid="uid://bbjc53clce6gj" path="res://Assets/Arena/Dungeon Arena9.png" id="2_3vrhl"]
 [ext_resource type="Texture2D" uid="uid://6xw1te31obs8" path="res://Assets/Decoration/BackgroundMaker2.png" id="2_qt5sa"]
 [ext_resource type="PackedScene" uid="uid://bkk01sphksq7h" path="res://Escenas/Globales/SpawnPoint.tscn" id="3_vbeci"]
+[ext_resource type="PackedScene" uid="uid://253vjf1eisuh" path="res://Escenas/Personajes/BWitch.tscn" id="5_mn6ju"]
+[ext_resource type="PackedScene" uid="uid://4b1wvqfa6gdw" path="res://Escenas/Personajes/RWitch.tscn" id="6_nydg6"]
+[ext_resource type="PackedScene" uid="uid://dj2ty64v47u2c" path="res://Escenas/Personajes/WWitch.tscn" id="7_id01m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jds5a"]
 texture = ExtResource("2_qt5sa")
@@ -1308,3 +1311,12 @@ navigation_polygon = SubResource("NavigationPolygon_qe0nb")
 
 [node name="SpawnPoint" parent="." instance=ExtResource("3_vbeci")]
 position = Vector2(732, 474)
+
+[node name="BWitch" parent="." instance=ExtResource("5_mn6ju")]
+position = Vector2(748, 600)
+
+[node name="RWitch" parent="." instance=ExtResource("6_nydg6")]
+position = Vector2(671, 603)
+
+[node name="WWitch" parent="." instance=ExtResource("7_id01m")]
+position = Vector2(711, 602)

@@ -1,9 +1,9 @@
 [gd_scene load_steps=24 format=3 uid="uid://bxivxintdvyo1"]
 
 [ext_resource type="Script" path="res://Scripts/fire.gd" id="1_ju0ih"]
-[ext_resource type="Texture2D" uid="uid://lggn387b3tre" path="res://Assets/Enemies/Fire/burning_end_1.png" id="2_3kiy7"]
-[ext_resource type="Texture2D" uid="uid://bds1r58t72upe" path="res://Assets/Enemies/Fire/burning_loop_1.png" id="3_k27bk"]
-[ext_resource type="Texture2D" uid="uid://c2ys1y6h6qsjk" path="res://Assets/Enemies/Fire/burning_start_1.png" id="4_4ne0p"]
+[ext_resource type="Texture2D" uid="uid://b73guotkd24fh" path="res://Assets/Enemies/Fire/burning_end_1.png" id="2_3kiy7"]
+[ext_resource type="Texture2D" uid="uid://cai85npxsfyc2" path="res://Assets/Enemies/Fire/burning_loop_1.png" id="3_k27bk"]
+[ext_resource type="Texture2D" uid="uid://es5co6v3fd6q" path="res://Assets/Enemies/Fire/burning_start_1.png" id="4_4ne0p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kp0xe"]
 atlas = ExtResource("2_3kiy7")

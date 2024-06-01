@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://4b1wvqfa6gdw"]
+
+[ext_resource type="Texture2D" uid="uid://bkpvpr5qdjpld" path="res://Assets/Enemies/R_Witch/R_witch_idle.png" id="1_6opvm"]
+[ext_resource type="Script" path="res://Scripts/rWitch.gd" id="1_nnihq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27vko"]
+atlas = ExtResource("1_6opvm")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp2sm"]
+atlas = ExtResource("1_6opvm")
+region = Rect2(0, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h0gy"]
+atlas = ExtResource("1_6opvm")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0too"]
+atlas = ExtResource("1_6opvm")
+region = Rect2(0, 192, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk84j"]
+atlas = ExtResource("1_6opvm")
+region = Rect2(0, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykwe7"]
+atlas = ExtResource("1_6opvm")
+region = Rect2(0, 320, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lu0ej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27vko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cp2sm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h0gy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0too")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk84j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykwe7")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cqu8g"]
+radius = 6.0
+height = 38.0
+
+[node name="RWitch" type="CharacterBody2D"]
+script = ExtResource("1_nnihq")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
+sprite_frames = SubResource("SpriteFrames_lu0ej")
+animation = &"Idle"
+frame_progress = 0.065132
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_cqu8g")
+
+[node name="SombraMark" type="Marker2D" parent="."]
+position = Vector2(-15, 28)

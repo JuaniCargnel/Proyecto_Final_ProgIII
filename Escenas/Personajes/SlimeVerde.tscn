@@ -1,10 +1,10 @@
 [gd_scene load_steps=36 format=3 uid="uid://dogqxg48ug7f8"]
 
 [ext_resource type="Script" path="res://Scripts/slimeVerde.gd" id="1_m42yw"]
-[ext_resource type="Texture2D" uid="uid://d12ifluu3ouod" path="res://Assets/Enemies/Slime/deadVerde.png" id="2_wh04h"]
-[ext_resource type="Texture2D" uid="uid://bsy7b10h5k6pm" path="res://Assets/Enemies/Slime/dmgVerde.png" id="3_she3x"]
-[ext_resource type="Texture2D" uid="uid://beybedbgoegfh" path="res://Assets/Enemies/Slime/idleVerde.png" id="4_j3ply"]
-[ext_resource type="Texture2D" uid="uid://dxlrb04o77a5l" path="res://Assets/Enemies/Slime/runVerde.png" id="5_rc5ln"]
+[ext_resource type="Texture2D" uid="uid://upo557fie4cs" path="res://Assets/Enemies/Slime/deadVerde.png" id="2_wh04h"]
+[ext_resource type="Texture2D" uid="uid://b54uimwpbogdd" path="res://Assets/Enemies/Slime/dmgVerde.png" id="3_she3x"]
+[ext_resource type="Texture2D" uid="uid://k6rmhubhuwvc" path="res://Assets/Enemies/Slime/idleVerde.png" id="4_j3ply"]
+[ext_resource type="Texture2D" uid="uid://ccyg5lhpjn0h1" path="res://Assets/Enemies/Slime/runVerde.png" id="5_rc5ln"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t80ab"]
 atlas = ExtResource("2_wh04h")

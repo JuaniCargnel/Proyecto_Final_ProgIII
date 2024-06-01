@@ -1,11 +1,11 @@
 [gd_scene load_steps=55 format=3 uid="uid://b2uosr2navw8m"]
 
 [ext_resource type="Script" path="res://Scripts/slimeRojo.gd" id="1_fhsas"]
-[ext_resource type="Texture2D" uid="uid://d4h80r7vqtev5" path="res://Assets/Enemies/Slime/deadRojo.png" id="2_ufan0"]
-[ext_resource type="Texture2D" uid="uid://dr5hk7war12n8" path="res://Assets/Enemies/Fire/Explosion 2 SpriteSheet.png" id="3_5hm2e"]
-[ext_resource type="Texture2D" uid="uid://du6yaj4ky16l0" path="res://Assets/Enemies/Slime/dmgRojo.png" id="3_i7yl2"]
-[ext_resource type="Texture2D" uid="uid://de67t4pvoqfk6" path="res://Assets/Enemies/Slime/idleRojo.png" id="4_m0ym3"]
-[ext_resource type="Texture2D" uid="uid://b57x0kudq5o62" path="res://Assets/Enemies/Slime/runRojo.png" id="5_wfjvd"]
+[ext_resource type="Texture2D" uid="uid://cg0eohjgfenha" path="res://Assets/Enemies/Slime/deadRojo.png" id="2_ufan0"]
+[ext_resource type="Texture2D" uid="uid://v8gbv4n0omru" path="res://Assets/Enemies/Fire/Explosion 2 SpriteSheet.png" id="3_5hm2e"]
+[ext_resource type="Texture2D" uid="uid://cy6gnn3xkoqgb" path="res://Assets/Enemies/Slime/dmgRojo.png" id="3_i7yl2"]
+[ext_resource type="Texture2D" uid="uid://cuf3j6ds2exf2" path="res://Assets/Enemies/Slime/idleRojo.png" id="4_m0ym3"]
+[ext_resource type="Texture2D" uid="uid://cdnvbf0gf111g" path="res://Assets/Enemies/Slime/runRojo.png" id="5_wfjvd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_td6v4"]
 atlas = ExtResource("2_ufan0")

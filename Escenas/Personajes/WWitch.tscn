@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://dj2ty64v47u2c"]
+
+[ext_resource type="Texture2D" uid="uid://12cl5ce4qp5c" path="res://Assets/Enemies/W_Witch/W_witch_idle.png" id="1_3bmql"]
+[ext_resource type="Script" path="res://Scripts/wWitch.gd" id="1_qvxa4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4je8s"]
+atlas = ExtResource("1_3bmql")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47hrx"]
+atlas = ExtResource("1_3bmql")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urlje"]
+atlas = ExtResource("1_3bmql")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp3gx"]
+atlas = ExtResource("1_3bmql")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0d71"]
+atlas = ExtResource("1_3bmql")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpabn"]
+atlas = ExtResource("1_3bmql")
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lu0ej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4je8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47hrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urlje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gp3gx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0d71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpabn")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cqu8g"]
+radius = 6.0
+height = 38.0
+
+[node name="WWitch" type="CharacterBody2D"]
+script = ExtResource("1_qvxa4")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
+position = Vector2(7, -13)
+sprite_frames = SubResource("SpriteFrames_lu0ej")
+animation = &"Idle"
+frame_progress = 0.134748
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -1)
+shape = SubResource("CapsuleShape2D_cqu8g")
+
+[node name="SombraMark" type="Marker2D" parent="."]
+position = Vector2(-17, 29)
