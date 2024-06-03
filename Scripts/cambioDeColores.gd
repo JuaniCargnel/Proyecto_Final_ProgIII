@@ -1,8 +1,5 @@
 extends Node2D
 
-func _on_start_button_down():
-	get_tree().change_scene_to_file("res://Escenas/Niveles/Pantalla1A.tscn")
-
 func _process(_delta):
 	$PersonajePrincipal/Sprite.modulate = Color($R.value, $G.value, $B.value)
 	

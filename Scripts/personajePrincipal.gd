@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-class_name personajeClass
-
 var direccion = Vector2()
 var valor_tmp_roll = Vector2()
 
@@ -26,7 +24,7 @@ func _ready():
 	$Sprite.modulate = Color(GlobalStats.colorR, GlobalStats.colorG, GlobalStats.colorB)
 	Sombra.crear_sombras($Sprite, $SombraMark)
 	global_position = Vector2(500,500)
-
+	
 func _process(delta):
 	#print(GlobalStats.playerLife)
 	if GlobalStats.alive:
@@ -112,10 +110,12 @@ func walking():
 			if Input.is_action_pressed("Right"):
 				$Sprite.set_flip_h(false)
 				$Hitbox.position = Vector2(-1,11)
+				$DmgArea/CollisionShape2D.position = Vector2(-1,11)
 				lookDerecha = true
 			if Input.is_action_pressed("Left"):
 				$Sprite.set_flip_h(true)
 				$Hitbox.position = Vector2(1,11)
+				$DmgArea/CollisionShape2D.position = Vector2(1,11)
 				lookDerecha = false
 				
 	direccion = Vector2(input_x, input_y)
@@ -132,7 +132,7 @@ func rolling():
 		canRoll = false
 		valor_tmp_roll = direccion
 		$Timers/Roll.start()
-		$Hitbox.disabled = true
+		$DmgArea/CollisionShape2D.disabled = true
 	elif anim_roll:
 		if Input.is_action_pressed("GolpeA"):
 			comboA = true
@@ -140,7 +140,7 @@ func rolling():
 			comboB = true
 		direccion = valor_tmp_roll
 	else: 
-		$Hitbox.disabled = false
+		$DmgArea/CollisionShape2D.disabled = false
 		anim_roll = false
 		valor_tmp_roll = null
 
@@ -200,14 +200,16 @@ func player_death():
 	if GlobalStats.playerLife <= 0:
 		GlobalStats.alive = false
 		anim_death = true
-		z_index = 1
+		$Sprite.material.set_shader_parameter("flicker_enabled", false)
 		$Timers/Death.start()
 
 func recibir_dmg():
 	if GlobalStats.recibirDaño:
 		anim_dmg = true
+		$Sprite.material.set_shader_parameter("flicker_enabled", true)
 	elif !GlobalStats.recibirDaño and $Sprite.frame == 2:
 		anim_dmg = false
+		$Sprite.material.set_shader_parameter("flicker_enabled", false)
 
 func _on_roll_timeout():
 	anim_roll = false
@@ -247,6 +249,7 @@ func _on_hit_b_timer_timeout():
 
 func _on_death_timeout():
 	get_tree().reload_current_scene()
+	GlobalStats.recibirDaño = false
 	GlobalStats.alive = true
 	GlobalStats.playerLife = 10
 

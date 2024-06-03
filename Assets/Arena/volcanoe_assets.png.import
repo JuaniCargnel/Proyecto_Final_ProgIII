@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwjty78qqtvvq"
-path="res://.godot/imported/Main Menu 192x48.png-2219cbfaf5354b312bc58b582df78582.ctex"
+uid="uid://dkgfbq1kybb72"
+path="res://.godot/imported/volcanoe_assets.png-e2294b90621989a29363607645aa9242.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Botones/Rounded/Purple/Main Menu 192x48.png"
-dest_files=["res://.godot/imported/Main Menu 192x48.png-2219cbfaf5354b312bc58b582df78582.ctex"]
+source_file="res://Assets/Arena/volcanoe_assets.png"
+dest_files=["res://.godot/imported/volcanoe_assets.png-e2294b90621989a29363607645aa9242.ctex"]
 
 [params]
 

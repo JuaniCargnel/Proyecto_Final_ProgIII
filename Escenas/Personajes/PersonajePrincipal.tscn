@@ -1,6 +1,7 @@
-[gd_scene load_steps=121 format=3 uid="uid://dnuefdw5cng6h"]
+[gd_scene load_steps=124 format=3 uid="uid://dnuefdw5cng6h"]
 
 [ext_resource type="Script" path="res://Scripts/personajePrincipal.gd" id="1_kresr"]
+[ext_resource type="Shader" path="res://Shaders/dmg.gdshader" id="2_0br16"]
 [ext_resource type="Texture2D" uid="uid://bihamjc7w0qp7" path="res://Assets/Jugador/cross.png" id="2_m6ula"]
 [ext_resource type="Texture2D" uid="uid://0l4y7v8fk8u7" path="res://Assets/Jugador/hurt.png" id="3_1jde0"]
 [ext_resource type="Texture2D" uid="uid://cqtjtb7012lw1" path="res://Assets/Jugador/death.png" id="4_1e56r"]
@@ -14,6 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://brcxty1ltkukq" path="res://Assets/Jugador/swordStab.png" id="12_2d8l5"]
 [ext_resource type="Texture2D" uid="uid://djiu04cungk6" path="res://Assets/Jugador/swordWalk.png" id="13_gexfh"]
 [ext_resource type="Texture2D" uid="uid://orrmh1613teo" path="res://Assets/Jugador/walk.png" id="14_3jgf0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6pkm1"]
+shader = ExtResource("2_0br16")
+shader_parameter/flicker_speed = 10.0
+shader_parameter/flicker_amount = 0.5
+shader_parameter/flicker_enabled = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rf363"]
 atlas = ExtResource("2_m6ula")
@@ -823,10 +830,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrb56"]
-size = Vector2(19, 9.75)
+size = Vector2(14, 9.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpf4g"]
 size = Vector2(6, 6.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7m76b"]
+size = Vector2(14, 10)
 
 [node name="PersonajePrincipal" type="CharacterBody2D" groups=["player"]]
 z_index = 3
@@ -835,13 +845,14 @@ script = ExtResource("1_kresr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
-limit_left = 130
-limit_top = 20
+limit_left = 0
+limit_top = 0
 limit_right = 1400
-limit_bottom = 1050
+limit_bottom = 1080
 limit_smoothed = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
+material = SubResource("ShaderMaterial_6pkm1")
 sprite_frames = SubResource("SpriteFrames_tq0vl")
 animation = &"idle"
 metadata/SombraMark = Vector2(0, 0)
@@ -862,6 +873,12 @@ position = Vector2(12, -1)
 scale = Vector2(2, 0.5)
 shape = SubResource("RectangleShape2D_hpf4g")
 disabled = true
+
+[node name="DmgArea" type="Area2D" parent="." groups=["playerDmg"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DmgArea"]
+position = Vector2(-1, 11)
+shape = SubResource("RectangleShape2D_7m76b")
 
 [node name="Timers" type="Node" parent="."]
 

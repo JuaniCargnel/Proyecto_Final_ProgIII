@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bppy6knex2vnh"
-path="res://.godot/imported/Formation 192x48.png-8f3fa0bc6a64ed3ad3b8280ea6bea15d.ctex"
+uid="uid://cpghqcjb7u1rg"
+path="res://.godot/imported/lava_variation1_spritesheet.png-602aed2273401b0df5a7289c8b1b459e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Botones/Rounded/Purple/Formation 192x48.png"
-dest_files=["res://.godot/imported/Formation 192x48.png-8f3fa0bc6a64ed3ad3b8280ea6bea15d.ctex"]
+source_file="res://Assets/Arena/lava_variation1_spritesheet.png"
+dest_files=["res://.godot/imported/lava_variation1_spritesheet.png-602aed2273401b0df5a7289c8b1b459e.ctex"]
 
 [params]
 

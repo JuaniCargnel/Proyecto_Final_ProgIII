@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b16m3aq5rwkr0"
-path="res://.godot/imported/Start Game 192x48.png-a283d050848b0bea9f99fa17c3ac8184.ctex"
+uid="uid://ddttqrny43338"
+path="res://.godot/imported/volcanoe_big_spritesheet.png-15936278e0c581801e83344553faf443.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Botones/Rounded/Purple/Start Game 192x48.png"
-dest_files=["res://.godot/imported/Start Game 192x48.png-a283d050848b0bea9f99fa17c3ac8184.ctex"]
+source_file="res://Assets/Arena/volcanoe_big_spritesheet.png"
+dest_files=["res://.godot/imported/volcanoe_big_spritesheet.png-15936278e0c581801e83344553faf443.ctex"]
 
 [params]
 

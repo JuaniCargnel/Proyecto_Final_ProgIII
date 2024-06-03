@@ -107,11 +107,16 @@ func _on_idle_timer_timeout():
 	estados = "movements"
 	randomMovement = true
 
-func _on_dmg_area_body_entered(body):
-	if body.is_in_group("player"):
+func _on_dmg_area_area_entered(area):
+	if area.is_in_group("playerDmg"):
 		GlobalStats.playerLife -= 1
 		GlobalStats.recibirDaño = true
+		$Timers/DmgTimer.start()
 
-func _on_dmg_area_body_exited(body):
-	if body.is_in_group("player"):
+func _on_dmg_area_area_exited(area):
+	if area.is_in_group("playerDmg"):
 		GlobalStats.recibirDaño = false
+		$Timers/DmgTimer.stop()
+
+func _on_dmg_timer_timeout():
+	GlobalStats.playerLife -= 1

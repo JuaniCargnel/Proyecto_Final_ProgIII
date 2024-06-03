@@ -119,27 +119,26 @@ func _on_explosion_timer_timeout():
 		$DeathArea/CollisionShape2D.disabled = false
 		$Timers/DeathTimer.start()
 
-func _on_death_area_body_entered(body):
-	if body.is_in_group("player"):
-		GlobalStats.playerLife -= 5
-		GlobalStats.recibirDaño = true
-		$DeathArea/CollisionShape2D.call_deferred("set_disabled", true)
-
-func _on_death_area_body_exited(body):
-	if body.is_in_group("player"):
-		GlobalStats.recibirDaño = false
-
-func _on_dmg_area_body_entered(body):
-	if body.is_in_group("player"):
+func _on_dmg_area_area_entered(area):
+	if area.is_in_group("playerDmg"):
 		GlobalStats.playerLife -= 1
 		GlobalStats.recibirDaño = true
 		$Timers/DmgTimer.start()
 
-func _on_dmg_area_body_exited(body):
-	if body.is_in_group("player"):
+func _on_dmg_area_area_exited(area):
+	if area.is_in_group("playerDmg"):
 		GlobalStats.recibirDaño = false
 		$Timers/DmgTimer.stop()
 
+func _on_death_area_area_entered(area):
+	if area.is_in_group("playerDmg"):
+		GlobalStats.playerLife -= 3
+		GlobalStats.recibirDaño = true
+		$DeathArea/CollisionShape2D.call_deferred("set_disabled", true)
 
+func _on_death_area_area_exited(area):
+	if area.is_in_group("playerDmg"):
+		GlobalStats.recibirDaño = false
+		
 func _on_dmg_timer_timeout():
 		GlobalStats.playerLife -= 1

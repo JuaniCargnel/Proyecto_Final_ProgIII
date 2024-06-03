@@ -29,6 +29,26 @@ region = Rect2(0, 320, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lu0ej"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Charge",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Dmg",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4je8s")
@@ -51,6 +71,11 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 8.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cqu8g"]
@@ -63,8 +88,7 @@ script = ExtResource("1_qvxa4")
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
 position = Vector2(7, -13)
 sprite_frames = SubResource("SpriteFrames_lu0ej")
-animation = &"Idle"
-frame_progress = 0.134748
+animation = &"Attack"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -1)

@@ -34,19 +34,16 @@ func _on_fire_start_timeout():
 func _on_fire_off_timeout():
 	fireOff = true
 
-func _on_body_entered(body):
-	if body.is_in_group("player"):
+func _on_area_entered(area):
+	if area.is_in_group("playerDmg"):
 		GlobalStats.playerLife -= 1
 		GlobalStats.recibirDaño = true
 		$Timers/DmgTimer.start()
 
-func _on_body_exited(body):
-	if body.is_in_group("player"):
+func _on_area_exited(area):
+	if area.is_in_group("playerDmg"):
 		$Timers/DmgTimer.stop()
 		GlobalStats.recibirDaño = false
 
 func _on_dmg_timer_timeout():
 	GlobalStats.playerLife -= 1
-
-
-

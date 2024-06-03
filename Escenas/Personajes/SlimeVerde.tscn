@@ -272,10 +272,14 @@ wait_time = 0.7
 
 [node name="IdleTimer" type="Timer" parent="Timers"]
 
+[node name="DmgTimer" type="Timer" parent="Timers"]
+wait_time = 0.7
+
 [connection signal="body_entered" from="FollowArea" to="." method="_on_follow_area_body_entered"]
 [connection signal="body_exited" from="FollowArea" to="." method="_on_follow_area_body_exited"]
-[connection signal="body_entered" from="DmgArea" to="." method="_on_dmg_area_body_entered"]
-[connection signal="body_exited" from="DmgArea" to="." method="_on_dmg_area_body_exited"]
+[connection signal="area_entered" from="DmgArea" to="." method="_on_dmg_area_area_entered"]
+[connection signal="area_exited" from="DmgArea" to="." method="_on_dmg_area_area_exited"]
 [connection signal="timeout" from="Navigation/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timers/DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="Timers/IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="Timers/DmgTimer" to="." method="_on_dmg_timer_timeout"]

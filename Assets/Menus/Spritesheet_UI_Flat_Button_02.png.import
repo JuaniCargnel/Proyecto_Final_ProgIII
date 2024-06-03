@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsmpor7aqkgn2"
-path="res://.godot/imported/Start 192x48.png-59f3c14d450e3c098974d75e86b5cbfe.ctex"
+uid="uid://3ijqo7mvc6g3"
+path="res://.godot/imported/Spritesheet_UI_Flat_Button_02.png-3c2a65b46035e0f1c17f4699b5d28232.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Botones/Rounded/Purple/Start 192x48.png"
-dest_files=["res://.godot/imported/Start 192x48.png-59f3c14d450e3c098974d75e86b5cbfe.ctex"]
+source_file="res://Assets/Menus/Spritesheet_UI_Flat_Button_02.png"
+dest_files=["res://.godot/imported/Spritesheet_UI_Flat_Button_02.png-3c2a65b46035e0f1c17f4699b5d28232.ctex"]
 
 [params]
 
