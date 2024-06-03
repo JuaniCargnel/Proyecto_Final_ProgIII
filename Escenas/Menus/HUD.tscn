@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dctf5dkuqnlbd"]
+
+[ext_resource type="Texture2D" uid="uid://dbkknqgsd8kdd" path="res://Assets/Menus/UI Package/Windows/6-3.png" id="1_eu4wb"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(110, 75)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_eu4wb")

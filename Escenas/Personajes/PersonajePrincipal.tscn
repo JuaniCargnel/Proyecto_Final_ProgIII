@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=3 uid="uid://dnuefdw5cng6h"]
+[gd_scene load_steps=125 format=3 uid="uid://dnuefdw5cng6h"]
 
 [ext_resource type="Script" path="res://Scripts/personajePrincipal.gd" id="1_kresr"]
 [ext_resource type="Shader" path="res://Shaders/dmg.gdshader" id="2_0br16"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://brcxty1ltkukq" path="res://Assets/Jugador/swordStab.png" id="12_2d8l5"]
 [ext_resource type="Texture2D" uid="uid://djiu04cungk6" path="res://Assets/Jugador/swordWalk.png" id="13_gexfh"]
 [ext_resource type="Texture2D" uid="uid://orrmh1613teo" path="res://Assets/Jugador/walk.png" id="14_3jgf0"]
+[ext_resource type="PackedScene" uid="uid://dctf5dkuqnlbd" path="res://Escenas/Menus/HUD.tscn" id="16_cgk50"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6pkm1"]
 shader = ExtResource("2_0br16")
@@ -844,12 +845,16 @@ motion_mode = 1
 script = ExtResource("1_kresr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(17, 0)
 zoom = Vector2(2, 2)
+process_callback = 0
 limit_left = 0
 limit_top = 0
 limit_right = 1400
 limit_bottom = 1080
 limit_smoothed = true
+
+[node name="HUD" parent="Camera2D" instance=ExtResource("16_cgk50")]
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
 material = SubResource("ShaderMaterial_6pkm1")

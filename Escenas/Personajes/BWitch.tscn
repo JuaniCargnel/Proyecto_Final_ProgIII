@@ -350,9 +350,11 @@ script = ExtResource("1_7w3b7")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
 sprite_frames = SubResource("SpriteFrames_lu0ej")
-animation = &"Charge"
+animation = &"Dmg"
+frame_progress = 0.799672
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, 1)
 shape = SubResource("CapsuleShape2D_cqu8g")
 
