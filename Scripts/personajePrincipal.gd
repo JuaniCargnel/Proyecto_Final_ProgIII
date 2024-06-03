@@ -30,6 +30,7 @@ func _process(delta):
 	if GlobalStats.alive:
 		GlobalStats.positionPlayer = global_position
 		z_index = GlobalStats.zindexPlayer 
+		regeneStamina()
 		estados(delta)
 		animations()
 	else:
@@ -46,6 +47,10 @@ func estados(delta):
 	hitting()
 	recibir_dmg()
 	player_death()
+
+func regeneStamina():
+	if GlobalStats.playerStamina < GlobalStats.maxStamina:
+		GlobalStats.playerStamina += GlobalStats.regenStamina
 
 func movimientos(delta):
 	if Input.is_action_pressed("Sword"):
@@ -68,37 +73,50 @@ func animations():
 
 func get_animation_name():
 	if anim_death:
+		GlobalStats.animacion = 8
 		return "death"
 	elif anim_hitA:
 		if GlobalStats.activeSword:
+			GlobalStats.animacion = 5.1
 			return "swordAttack"
 		else: 
+			GlobalStats.animacion = 5
 			return "jab"
 	elif anim_hitB:
 		if GlobalStats.activeSword:
+			GlobalStats.animacion = 4.1
 			return "swordStab"
 		else:
+			GlobalStats.animacion = 4
 			return "cross"
 	elif anim_dmg:
+		GlobalStats.animacion = 7
 		return "damage"
 	elif anim_run:
 		if GlobalStats.activeSword:
+			GlobalStats.animacion = 3.1
 			return "swordRun"
 		else:
+			GlobalStats.animacion = 3
 			return "run"
 	elif anim_roll:
+		GlobalStats.animacion = 6
 		return "roll"
 	elif direccion != Vector2.ZERO and not anim_roll and not anim_run:
 		if GlobalStats.activeSword:
+			GlobalStats.animacion = 2.1
 			return "swordWalk"
 		else: 
+			GlobalStats.animacion = 2
 			return "walk"
 	else:
 		if GlobalStats.activeSword:
 			anim_idle = true
+			GlobalStats.animacion = 1.1
 			return "swordIdle"
 		else:
 			anim_idle = true
+			GlobalStats.animacion = 1
 			return "idle"
 
 func walking():
@@ -121,18 +139,22 @@ func walking():
 	direccion = Vector2(input_x, input_y)
 
 func running():
-	if Input.is_action_pressed("Correr") and not anim_roll and not anim_hitA and not anim_hitB and direccion != Vector2.ZERO:
+	if Input.is_action_pressed("Correr") and not anim_roll and not anim_hitA and not anim_hitB and direccion != Vector2.ZERO and GlobalStats.playerStamina > 1:
 		anim_run = true
+		GlobalStats.playerStamina -= 1
+	elif GlobalStats.playerStamina <= 1:
+		Input.action_release("Correr")
 	else: 
 		anim_run = false
 
 func rolling():
-	if Input.is_action_pressed("Roll") and canRoll and not anim_hitA and not anim_hitB and direccion != Vector2.ZERO:
+	if Input.is_action_pressed("Roll") and canRoll and not anim_hitA and not anim_hitB and direccion != Vector2.ZERO and GlobalStats.playerStamina > 101:
 		anim_roll = true
 		canRoll = false
 		valor_tmp_roll = direccion
 		$Timers/Roll.start()
 		$DmgArea/CollisionShape2D.disabled = true
+		GlobalStats.playerStamina -= 100
 	elif anim_roll:
 		if Input.is_action_pressed("GolpeA"):
 			comboA = true
@@ -145,13 +167,15 @@ func rolling():
 		valor_tmp_roll = null
 
 func hitting():
-	if Input.is_action_pressed("GolpeA") and canHitA and not anim_roll and not anim_hitB:
+	if Input.is_action_pressed("GolpeA") and canHitA and not anim_roll and not anim_hitB and GlobalStats.playerStamina > 21:
 		anim_hitA = true
 		canHitA = false
+		GlobalStats.playerStamina -= 20
 		$Timers/HitA.start()
-	elif Input.is_action_pressed("GolpeB") and canHitB and not anim_roll and not anim_hitA:
+	elif Input.is_action_pressed("GolpeB") and canHitB and not anim_roll and not anim_hitA and GlobalStats.playerStamina > 51:
 		anim_hitB = true
 		canHitB = false
+		GlobalStats.playerStamina -= 50
 		$Timers/HitB.start()
 	elif anim_hitA:
 		direccion = Vector2.ZERO
@@ -204,10 +228,10 @@ func player_death():
 		$Timers/Death.start()
 
 func recibir_dmg():
-	if GlobalStats.recibirDaño:
+	if GlobalStats.recibirDanio:
 		anim_dmg = true
 		$Sprite.material.set_shader_parameter("flicker_enabled", true)
-	elif !GlobalStats.recibirDaño and $Sprite.frame == 2:
+	elif !GlobalStats.recibirDanio and $Sprite.frame == 2:
 		anim_dmg = false
 		$Sprite.material.set_shader_parameter("flicker_enabled", false)
 
@@ -249,9 +273,10 @@ func _on_hit_b_timer_timeout():
 
 func _on_death_timeout():
 	get_tree().reload_current_scene()
-	GlobalStats.recibirDaño = false
+	GlobalStats.recibirDanio = false
 	GlobalStats.alive = true
-	GlobalStats.playerLife = 10
+	GlobalStats.playerLife = GlobalStats.maxLife
+	GlobalStats.playerStamina = GlobalStats.maxStamina
 
 func _on_hitting_area_body_entered(body):
 	if body.is_in_group("enemigos"):

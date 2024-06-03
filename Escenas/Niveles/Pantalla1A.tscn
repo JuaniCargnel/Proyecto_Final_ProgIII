@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dd1bv4ft5d738"]
+[gd_scene load_steps=25 format=3 uid="uid://dd1bv4ft5d738"]
 
 [ext_resource type="Script" path="res://Scripts/pantalla1A.gd" id="1_sww4n"]
 [ext_resource type="Texture2D" uid="uid://cpghqcjb7u1rg" path="res://Assets/Arena/lava_variation1_spritesheet.png" id="3_4f7oe"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ddttqrny43338" path="res://Assets/Arena/volcanoe_big_spritesheet.png" id="7_rfihw"]
 [ext_resource type="Texture2D" uid="uid://dkgfbq1kybb72" path="res://Assets/Arena/volcanoe_assets.png" id="8_svr1r"]
 [ext_resource type="Texture2D" uid="uid://tconiwixirvf" path="res://Assets/Arena/volcanoe_small_spritesheet.png" id="10_ihkbj"]
+[ext_resource type="PackedScene" uid="uid://dctf5dkuqnlbd" path="res://Escenas/Menus/HUD.tscn" id="12_qwn2g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c4iq5"]
 texture = ExtResource("3_txpcb")
@@ -911,5 +912,30 @@ layer_0/tile_data = PackedInt32Array(-131100, 0, 0, -26, 393217, 0, 1900552, 0, 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_qe0nb")
 
-[node name="SpawnPoint" parent="." instance=ExtResource("3_vbeci")]
-position = Vector2(904, 425)
+[node name="HUD" parent="." instance=ExtResource("12_qwn2g")]
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="SpawnPoint" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
+position = Vector2(761, 459)
+
+[node name="SpawnPoint2" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
+position = Vector2(592, 460)
+
+[node name="SpawnPoint3" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
+position = Vector2(591, 632)
+
+[node name="SpawnPoint4" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
+position = Vector2(761, 635)
+
+[node name="SpawnPoint5" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
+position = Vector2(1197, 154)
+
+[node name="SpawnPoint6" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
+position = Vector2(193, 164)
+
+[node name="SpawnPoint7" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
+position = Vector2(196, 899)
+
+[node name="SpawnPoint8" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
+position = Vector2(1186, 896)

@@ -110,12 +110,12 @@ func _on_idle_timer_timeout():
 func _on_dmg_area_area_entered(area):
 	if area.is_in_group("playerDmg"):
 		GlobalStats.playerLife -= 1
-		GlobalStats.recibirDaño = true
+		GlobalStats.recibirDanio = true
 		$Timers/DmgTimer.start()
 
 func _on_dmg_area_area_exited(area):
 	if area.is_in_group("playerDmg"):
-		GlobalStats.recibirDaño = false
+		GlobalStats.recibirDanio = false
 		$Timers/DmgTimer.stop()
 
 func _on_dmg_timer_timeout():

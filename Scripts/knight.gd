@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name enemyClass
 
-# Arreglar para que se le pueda pegar y el knockback, y el ataque para que la hitbox haga daño desde el player 
+# Arreglar para que se le pueda pegar y el knockback, y el ataque para que la hitbox haga danio desde el player 
 
 @export var inArea:bool = false
 @onready var navigationAgent: NavigationAgent2D = $Navigation/NavigationAgent2D

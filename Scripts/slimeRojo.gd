@@ -122,23 +122,23 @@ func _on_explosion_timer_timeout():
 func _on_dmg_area_area_entered(area):
 	if area.is_in_group("playerDmg"):
 		GlobalStats.playerLife -= 1
-		GlobalStats.recibirDaño = true
+		GlobalStats.recibirDanio = true
 		$Timers/DmgTimer.start()
 
 func _on_dmg_area_area_exited(area):
 	if area.is_in_group("playerDmg"):
-		GlobalStats.recibirDaño = false
+		GlobalStats.recibirDanio = false
 		$Timers/DmgTimer.stop()
 
 func _on_death_area_area_entered(area):
 	if area.is_in_group("playerDmg"):
 		GlobalStats.playerLife -= 3
-		GlobalStats.recibirDaño = true
+		GlobalStats.recibirDanio = true
 		$DeathArea/CollisionShape2D.call_deferred("set_disabled", true)
 
 func _on_death_area_area_exited(area):
 	if area.is_in_group("playerDmg"):
-		GlobalStats.recibirDaño = false
+		GlobalStats.recibirDanio = false
 		
 func _on_dmg_timer_timeout():
 		GlobalStats.playerLife -= 1
