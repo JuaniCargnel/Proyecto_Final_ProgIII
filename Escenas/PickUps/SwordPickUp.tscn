@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://sisdnkxcj15x"]
+
+[ext_resource type="Texture2D" uid="uid://s6l2weq38tpr" path="res://Assets/Decoration/SwordAnimation.png" id="1_3jsse"]
+[ext_resource type="Script" path="res://Scripts/swordPickUp.gd" id="1_xji2s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olrnj"]
+atlas = ExtResource("1_3jsse")
+region = Rect2(0, 0, 25, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l4nb"]
+atlas = ExtResource("1_3jsse")
+region = Rect2(25, 0, 25, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekdwr"]
+atlas = ExtResource("1_3jsse")
+region = Rect2(50, 0, 25, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f84h5"]
+atlas = ExtResource("1_3jsse")
+region = Rect2(75, 0, 25, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0xpu"]
+atlas = ExtResource("1_3jsse")
+region = Rect2(100, 0, 25, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ptf2i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olrnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l4nb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekdwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f84h5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0xpu")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p2153"]
+radius = 13.0384
+
+[node name="Sword" type="Area2D"]
+z_index = 1
+script = ExtResource("1_xji2s")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ptf2i")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.847568
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_p2153")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

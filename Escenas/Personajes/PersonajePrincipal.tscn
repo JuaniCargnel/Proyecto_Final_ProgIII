@@ -89,6 +89,10 @@ one_shot = true
 [node name="Death" type="Timer" parent="Timers"]
 wait_time = 2.0
 
+[node name="SwordTimer" type="Timer" parent="Timers"]
+wait_time = 15.0
+one_shot = true
+
 [connection signal="body_entered" from="HittingArea" to="." method="_on_hitting_area_body_entered"]
 [connection signal="body_exited" from="HittingArea" to="." method="_on_hitting_area_body_exited"]
 [connection signal="timeout" from="Timers/Roll" to="." method="_on_roll_timeout"]
@@ -98,3 +102,4 @@ wait_time = 2.0
 [connection signal="timeout" from="Timers/HitA" to="." method="_on_hit_a_timeout"]
 [connection signal="timeout" from="Timers/HitATimer" to="." method="_on_hit_a_timer_timeout"]
 [connection signal="timeout" from="Timers/Death" to="." method="_on_death_timeout"]
+[connection signal="timeout" from="Timers/SwordTimer" to="." method="_on_sword_timer_timeout"]

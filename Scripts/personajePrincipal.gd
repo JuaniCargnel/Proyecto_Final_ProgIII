@@ -40,6 +40,7 @@ func _process(delta):
 	Sombra.update_sombras()
 
 func estados(delta):
+	activeSword()
 	rolling()
 	movimientos(delta)
 	walking()
@@ -52,12 +53,16 @@ func regeneStamina():
 	if GlobalStats.playerStamina < GlobalStats.maxStamina:
 		GlobalStats.playerStamina += GlobalStats.regenStamina
 
-func movimientos(delta):
-	if Input.is_action_pressed("Sword"):
-		GlobalStats.activeSword = true
-	if Input.is_action_pressed("Hands"):
-		GlobalStats.activeSword = false
+func activeSword():
+	if GlobalStats.activeSword:
+		$Timers/SwordTimer.set_wait_time(GlobalStats.maxSwordTime)
 		
+		if $Timers/SwordTimer.get_time_left() == 0:
+			$Timers/SwordTimer.start()
+			
+		GlobalStats.swordTime = $Timers/SwordTimer.get_time_left()
+
+func movimientos(delta):
 	if anim_run:
 		translate(direccion.normalized() * GlobalStats.velRun * delta)
 	elif anim_roll:
@@ -296,3 +301,6 @@ func _on_hitting_area_body_entered(body):
 func _on_hitting_area_body_exited(body):
 	if body.is_in_group("enemigos"):
 		body.recibirDmg = false
+
+func _on_sword_timer_timeout():
+	GlobalStats.activeSword = false

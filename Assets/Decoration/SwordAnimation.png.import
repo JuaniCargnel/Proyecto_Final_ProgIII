@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nssjgo8b6e70"
-path="res://.godot/imported/Status-1 Blueprint.png-d8922bc2b747308fa7974158dd9dbde7.ctex"
+uid="uid://s6l2weq38tpr"
+path="res://.godot/imported/SwordAnimation.png-e3f272c925df5d795270124eebb63d42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Menus/UI Package/Tutorial/Status-1 Blueprint.png"
-dest_files=["res://.godot/imported/Status-1 Blueprint.png-d8922bc2b747308fa7974158dd9dbde7.ctex"]
+source_file="res://Assets/Decoration/SwordAnimation.png"
+dest_files=["res://.godot/imported/SwordAnimation.png-e3f272c925df5d795270124eebb63d42.ctex"]
 
 [params]
 

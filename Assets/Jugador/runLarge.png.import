@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm230g6x8tpox"
-path="res://.godot/imported/Workbench Blueprint.png-7664060252a1ee52ee7580b664a186fc.ctex"
+uid="uid://rojrdm70c5kn"
+path="res://.godot/imported/runLarge.png-7960f5de2b91e0621d0774ab17eea576.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Menus/UI Package/Tutorial/Workbench Blueprint.png"
-dest_files=["res://.godot/imported/Workbench Blueprint.png-7664060252a1ee52ee7580b664a186fc.ctex"]
+source_file="res://Assets/Jugador/runLarge.png"
+dest_files=["res://.godot/imported/runLarge.png-7960f5de2b91e0621d0774ab17eea576.ctex"]
 
 [params]
 

@@ -5,6 +5,8 @@ var maxLife: float = 10
 var playerStamina: float = 500
 var maxStamina: float = 500
 var regenStamina: float = 0.5
+var swordTime: float = 0
+var maxSwordTime: float = 15
 
 const velWalk: int = 75
 const velRun: int = 150
