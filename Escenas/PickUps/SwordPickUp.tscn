@@ -53,14 +53,14 @@ radius = 13.0384
 z_index = 1
 script = ExtResource("1_xji2s")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ptf2i")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.847568
+frame_progress = 0.439243
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_p2153")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

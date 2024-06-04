@@ -26,7 +26,7 @@ func _ready():
 	global_position = Vector2(500,500)
 	
 func _process(delta):
-	#print(GlobalStats.playerLife)
+	print(GlobalStats.playerLife)
 	if GlobalStats.alive:
 		GlobalStats.positionPlayer = global_position
 		z_index = GlobalStats.zindexPlayer 

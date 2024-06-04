@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://cg0olqdrbqjef"]
+
+[ext_resource type="Script" path="res://Scripts/heathPickUp.gd" id="1_divpm"]
+[ext_resource type="Texture2D" uid="uid://deow7s3pb7qkd" path="res://Assets/Decoration/HeathAnimation.png" id="2_1c5m4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq0wq"]
+atlas = ExtResource("2_1c5m4")
+region = Rect2(0, 0, 25, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs7sp"]
+atlas = ExtResource("2_1c5m4")
+region = Rect2(25, 0, 25, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viicv"]
+atlas = ExtResource("2_1c5m4")
+region = Rect2(50, 0, 25, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv76i"]
+atlas = ExtResource("2_1c5m4")
+region = Rect2(75, 0, 25, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_781tv"]
+atlas = ExtResource("2_1c5m4")
+region = Rect2(100, 0, 25, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2d5lg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rq0wq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs7sp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_viicv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv76i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_781tv")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m2sqp"]
+radius = 13.0
+
+[node name="HeathPickUp" type="Area2D"]
+script = ExtResource("1_divpm")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2d5lg")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.00308662
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_m2sqp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

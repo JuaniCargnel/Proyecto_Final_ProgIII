@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Proyecto_Final_ProgIII"
+config/name="HIT-N-RUN"
 run/main_scene="res://Escenas/Menus/MenuPrincipal.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://logo.png"
+config/windows_native_icon="res://logo.ico"
 
 [autoload]
 
@@ -27,6 +28,7 @@ GlobalManager="*res://Scripts/ScriptGlobales/globalManager.gd"
 window/size/viewport_width=1980
 window/size/viewport_height=1024
 window/size/mode=2
+window/stretch/mode="viewport"
 
 [filesystem]
 
