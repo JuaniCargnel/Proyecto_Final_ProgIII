@@ -1,12 +1,10 @@
 extends Node2D
 
-# Arreglar el sol y la luna que por alguna razon no salen bien, terminar de arreglar el degrade
-
 var speeds = [1, 1, 1, 1]
 func _process(delta):
 	cambio_de_fondo(delta)
-	if speeds[3] <= 0.1:
-		speeds[0] += 0.01
+	if speeds[3] <= 0.5:
+		speeds[0] += 0.008
 		if speeds[0] >= 1:
 			speeds = [1, 1, 1, 1]
 			for i in range(speeds.size()):

@@ -30,7 +30,7 @@ func _process(delta):
 	if GlobalStats.alive:
 		GlobalStats.positionPlayer = global_position
 		z_index = GlobalStats.zindexPlayer 
-		regeneStamina()
+		regenStamina()
 		estados(delta)
 		animations()
 	else:
@@ -49,7 +49,7 @@ func estados(delta):
 	recibir_dmg()
 	player_death()
 
-func regeneStamina():
+func regenStamina():
 	if GlobalStats.playerStamina < GlobalStats.maxStamina:
 		GlobalStats.playerStamina += GlobalStats.regenStamina
 
