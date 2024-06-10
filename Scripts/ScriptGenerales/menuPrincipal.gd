@@ -43,7 +43,7 @@ func _on_exit_pressed():
 	get_tree().quit()
 
 func _on_credits_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Escenas/Menus/Credits.tscn")
 
 func _on_timer_timeout():
 	if $Title/Name0.modulate == Color(GlobalStats.hexColor):
