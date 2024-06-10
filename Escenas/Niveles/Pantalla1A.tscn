@@ -934,6 +934,7 @@ _data = {
 script = ExtResource("1_qguei")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 1)
 z_index = 10
 offset_right = 1362.0
@@ -971,28 +972,28 @@ visible = false
 [node name="SpawnPoints" type="Node" parent="."]
 
 [node name="SpawnPoint" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
-position = Vector2(761, 459)
+position = Vector2(855, 421)
 
 [node name="SpawnPoint2" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
-position = Vector2(592, 460)
+position = Vector2(513, 420)
 
 [node name="SpawnPoint3" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
-position = Vector2(591, 632)
+position = Vector2(512, 673)
 
 [node name="SpawnPoint4" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
-position = Vector2(761, 635)
+position = Vector2(848, 678)
 
 [node name="SpawnPoint5" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
-position = Vector2(1197, 154)
+position = Vector2(1101, 203)
 
 [node name="SpawnPoint6" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
-position = Vector2(193, 164)
+position = Vector2(248, 213)
 
 [node name="SpawnPoint7" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
-position = Vector2(196, 899)
+position = Vector2(230, 865)
 
 [node name="SpawnPoint8" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
-position = Vector2(1186, 896)
+position = Vector2(1150, 854)
 
 [node name="Ajustes" parent="." instance=ExtResource("15_xj402")]
 visible = false

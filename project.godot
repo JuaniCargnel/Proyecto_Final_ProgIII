@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://logo.png"
 config/windows_native_icon="res://logo.ico"
 
+[audio]
+
+buses/default_bus_layout="res://Assets/Sounds and Music/default_bus_layout.tres"
+
 [autoload]
 
 Sombra="*res://Scripts/ScriptGlobales/sombra.gd"

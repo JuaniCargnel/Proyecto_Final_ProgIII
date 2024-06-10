@@ -28,6 +28,7 @@ func cambio_de_fondo(delta):
 			speeds[i] = 0
 	
 func _on_start_pressed():
+	$AnimationPlayer.get_animation("fade").track_set_key_value(1,0,GlobalStats.musicVolume)
 	$AnimationPlayer.play("fade")
 	$Buttons/StartButton/Start.disabled = true
 	$Buttons/AjustesButton/Ajustes.disabled = true
@@ -61,9 +62,7 @@ func _on_timer_timeout():
 func _on_fade_timer_timeout():
 	get_tree().change_scene_to_file("res://Escenas/Niveles/Pantalla1A.tscn")
 
-
 func _on_musica_menu_finished():
-
 	$MusicaMenu.play()
 
 func _on_start_mouse_entered():
