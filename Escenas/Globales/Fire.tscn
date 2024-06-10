@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://bxivxintdvyo1"]
 
-[ext_resource type="Script" path="res://Scripts/fire.gd" id="1_ju0ih"]
+[ext_resource type="Script" path="res://Scripts/ScriptGenerales/fire.gd" id="1_hs6wr"]
 [ext_resource type="Texture2D" uid="uid://b73guotkd24fh" path="res://Assets/Enemies/Fire/burning_end_1.png" id="2_3kiy7"]
 [ext_resource type="Texture2D" uid="uid://cai85npxsfyc2" path="res://Assets/Enemies/Fire/burning_loop_1.png" id="3_k27bk"]
 [ext_resource type="Texture2D" uid="uid://es5co6v3fd6q" path="res://Assets/Enemies/Fire/burning_start_1.png" id="4_4ne0p"]
@@ -143,7 +143,7 @@ radius = 19.0
 
 [node name="Fire" type="Area2D" groups=["enemigos"]]
 z_index = 2
-script = ExtResource("1_ju0ih")
+script = ExtResource("1_hs6wr")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
 position = Vector2(0, -3)

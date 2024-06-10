@@ -1,6 +1,6 @@
 [gd_scene load_steps=53 format=3 uid="uid://253vjf1eisuh"]
 
-[ext_resource type="Script" path="res://Scripts/bWitch.gd" id="1_7w3b7"]
+[ext_resource type="Script" path="res://Scripts/ScriptCharacters/bWitch.gd" id="1_7w3b7"]
 [ext_resource type="Texture2D" uid="uid://6au3fmitw6to" path="res://Assets/Enemies/B_Witch/B_witch_attack.png" id="1_mxac5"]
 [ext_resource type="Texture2D" uid="uid://b5rewmcogna35" path="res://Assets/Enemies/B_Witch/B_witch_idle.png" id="1_plxl3"]
 [ext_resource type="Texture2D" uid="uid://b2esmeknbnxvx" path="res://Assets/Enemies/B_Witch/B_witch_charge.png" id="2_7j4s4"]

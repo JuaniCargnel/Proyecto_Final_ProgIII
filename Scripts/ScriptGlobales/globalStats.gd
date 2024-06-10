@@ -13,7 +13,6 @@ const velRun: int = 150
 const velRoll: int = 200
 
 var positionPlayer: Vector2
-var zindexPlayer: int = 2
 var activeSword: bool = false
 
 #var iFrames: bool = false
@@ -21,7 +20,9 @@ var recibirDanio: bool = false
 
 var alive: bool = true
 var animacion: float = 1
+var partidaComenzada = false
+var musicVolume: float = -10
+var sfxVolume: float
+var masterVolume: float
 
-var colorR: int = 1
-var colorG: int = 0
-var colorB: int = 0
+var hexColor:Color = Color("ffffff")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=55 format=3 uid="uid://b2uosr2navw8m"]
 
-[ext_resource type="Script" path="res://Scripts/slimeRojo.gd" id="1_fhsas"]
+[ext_resource type="Script" path="res://Scripts/ScriptCharacters/slimeRojo.gd" id="1_pibnr"]
 [ext_resource type="Texture2D" uid="uid://cg0eohjgfenha" path="res://Assets/Enemies/Slime/deadRojo.png" id="2_ufan0"]
 [ext_resource type="Texture2D" uid="uid://v8gbv4n0omru" path="res://Assets/Enemies/Fire/Explosion 2 SpriteSheet.png" id="3_5hm2e"]
 [ext_resource type="Texture2D" uid="uid://cy6gnn3xkoqgb" path="res://Assets/Enemies/Slime/dmgRojo.png" id="3_i7yl2"]
@@ -349,7 +349,7 @@ position = Vector2(0, -6)
 collision_layer = 2
 collision_mask = 2
 motion_mode = 1
-script = ExtResource("1_fhsas")
+script = ExtResource("1_pibnr")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
 position = Vector2(0, 6)

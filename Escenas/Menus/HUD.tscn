@@ -1,6 +1,6 @@
-[gd_scene load_steps=137 format=3 uid="uid://dctf5dkuqnlbd"]
+[gd_scene load_steps=143 format=3 uid="uid://dctf5dkuqnlbd"]
 
-[ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_foxvc"]
+[ext_resource type="Script" path="res://Scripts/ScriptGenerales/HUD.gd" id="1_foxvc"]
 [ext_resource type="Texture2D" uid="uid://oohkrcri714h" path="res://Assets/Menus/UI Package/Windows/6-2.png" id="1_ndv70"]
 [ext_resource type="Texture2D" uid="uid://0l4y7v8fk8u7" path="res://Assets/Jugador/hurt.png" id="2_5mdul"]
 [ext_resource type="Texture2D" uid="uid://cqtjtb7012lw1" path="res://Assets/Jugador/death.png" id="3_hw3rj"]
@@ -20,6 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://bvpovofd5yidq" path="res://Assets/Menus/UI Package/Status/1-4.png" id="18_8lbvp"]
 [ext_resource type="Texture2D" uid="uid://dqn5wr14uwmpu" path="res://Assets/Menus/UI Package/Status/3-1.png" id="18_r36en"]
 [ext_resource type="Texture2D" uid="uid://d1vtq6ym51vod" path="res://Assets/Menus/UI Package/Status/4-4.png" id="20_nlc71"]
+[ext_resource type="Texture2D" uid="uid://bi4t8agyfs8mj" path="res://Assets/Menus/UI Package/Elements/1-2.png" id="21_fbka7"]
+[ext_resource type="Texture2D" uid="uid://ty3svchwcl11" path="res://Assets/Menus/UI Package/Elements/1-1.png" id="22_li3ww"]
+[ext_resource type="FontFile" uid="uid://b4giw5b8c2ag0" path="res://Assets/Fonts/Pixeled.ttf" id="23_qc206"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f7ooy"]
 atlas = ExtResource("4_o5sxu")
@@ -858,6 +861,15 @@ colors = PackedColorArray(0.831373, 0.780392, 0.188235, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tyds2"]
 gradient = SubResource("Gradient_ehbl3")
 
+[sub_resource type="InputEventKey" id="InputEventKey_b3twp"]
+keycode = 4194309
+
+[sub_resource type="InputEventKey" id="InputEventKey_gdxuf"]
+keycode = 4194332
+
+[sub_resource type="Shortcut" id="Shortcut_kk047"]
+events = [SubResource("InputEventKey_b3twp"), SubResource("InputEventKey_gdxuf")]
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_foxvc")
 
@@ -871,14 +883,14 @@ scale = Vector2(1, 0.86)
 texture = ExtResource("1_ndv70")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Display/FondoDisplay"]
-position = Vector2(-3, 5.81395)
+position = Vector2(-3, 6.97676)
 scale = Vector2(2.8125, 3.48837)
 sprite_frames = SubResource("SpriteFrames_kwxtb")
 animation = &"8"
 
-[node name="DisplayPlayer" type="Sprite2D" parent="Display/FondoDisplay/AnimatedSprite2D"]
-position = Vector2(10.6667, -1.83334)
-scale = Vector2(0.355556, 0.283333)
+[node name="DisplayPlayer" type="Sprite2D" parent="Display/FondoDisplay"]
+position = Vector2(27.0001, -0.581413)
+scale = Vector2(1, 0.98837)
 texture = ExtResource("7_bgfyr")
 
 [node name="Stamina" type="Control" parent="."]
@@ -978,3 +990,46 @@ rounded = true
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_vi7up")
 texture_progress = SubResource("GradientTexture2D_tyds2")
+
+[node name="Pause" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 520.001
+offset_top = 301.001
+offset_right = 560.001
+offset_bottom = 341.001
+
+[node name="Pause" type="TextureButton" parent="Pause"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 34.75
+anchor_top = -6.25
+anchor_right = 34.75
+anchor_bottom = -6.25
+offset_left = -40.0
+offset_top = -39.0
+shortcut = SubResource("Shortcut_kk047")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+texture_normal = ExtResource("21_fbka7")
+texture_pressed = ExtResource("22_li3ww")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Pause"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 13.175
+anchor_top = -18.775
+anchor_right = 13.175
+anchor_bottom = -18.775
+offset_left = 837.0
+offset_top = 457.0
+offset_right = 999.0
+offset_bottom = 541.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("23_qc206")
+theme_override_font_sizes/font_size = 27
+text = "II"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Pause/Pause" to="." method="_on_pause_pressed"]

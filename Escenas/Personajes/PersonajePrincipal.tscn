@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnuefdw5cng6h"]
+[gd_scene load_steps=9 format=3 uid="uid://dnuefdw5cng6h"]
 
-[ext_resource type="Script" path="res://Scripts/personajePrincipal.gd" id="1_kresr"]
+[ext_resource type="Script" path="res://Scripts/ScriptCharacters/personajePrincipal.gd" id="1_svxvs"]
 [ext_resource type="Shader" path="res://Shaders/dmg.gdshader" id="2_0br16"]
 [ext_resource type="SpriteFrames" uid="uid://cs5af0g0oty7g" path="res://Assets/Jugador/PersonajePrincipalAnimation.tres" id="3_nta07"]
+[ext_resource type="AudioStream" uid="uid://d1ofol7gef45" path="res://Assets/Sounds and Music/foot-step-snow-4-189865.mp3" id="4_u3v40"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6pkm1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e75ik"]
 shader = ExtResource("2_0br16")
 shader_parameter/flicker_speed = 10.0
 shader_parameter/flicker_amount = 0.5
@@ -22,16 +23,16 @@ size = Vector2(14, 10)
 [node name="PersonajePrincipal" type="CharacterBody2D" groups=["player"]]
 z_index = 3
 motion_mode = 1
-script = ExtResource("1_kresr")
+script = ExtResource("1_svxvs")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
-material = SubResource("ShaderMaterial_6pkm1")
+material = SubResource("ShaderMaterial_e75ik")
 sprite_frames = ExtResource("3_nta07")
 animation = &"idle"
 metadata/SombraMark = Vector2(0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 limit_left = 0
 limit_top = 0
 limit_right = 1400
@@ -93,6 +94,17 @@ wait_time = 2.0
 wait_time = 15.0
 one_shot = true
 
+[node name="Steps" type="Timer" parent="Timers"]
+wait_time = 0.4
+one_shot = true
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="Pasos" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("4_u3v40")
+pitch_scale = 1.5
+bus = &"SFX"
+
 [connection signal="body_entered" from="HittingArea" to="." method="_on_hitting_area_body_entered"]
 [connection signal="body_exited" from="HittingArea" to="." method="_on_hitting_area_body_exited"]
 [connection signal="timeout" from="Timers/Roll" to="." method="_on_roll_timeout"]
@@ -103,3 +115,4 @@ one_shot = true
 [connection signal="timeout" from="Timers/HitATimer" to="." method="_on_hit_a_timer_timeout"]
 [connection signal="timeout" from="Timers/Death" to="." method="_on_death_timeout"]
 [connection signal="timeout" from="Timers/SwordTimer" to="." method="_on_sword_timer_timeout"]
+[connection signal="timeout" from="Timers/Steps" to="." method="_on_steps_timeout"]

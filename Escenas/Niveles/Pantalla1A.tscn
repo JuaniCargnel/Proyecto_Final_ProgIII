@@ -1,6 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://dd1bv4ft5d738"]
+[gd_scene load_steps=29 format=3 uid="uid://dd1bv4ft5d738"]
 
-[ext_resource type="Script" path="res://Scripts/pantalla1A.gd" id="1_sww4n"]
+[ext_resource type="Script" path="res://Scripts/ScriptGenerales/pantalla1A.gd" id="1_qguei"]
 [ext_resource type="Texture2D" uid="uid://cpghqcjb7u1rg" path="res://Assets/Arena/lava_variation1_spritesheet.png" id="3_4f7oe"]
 [ext_resource type="Texture2D" uid="uid://m0bfa64eijql" path="res://Assets/Arena/volcanoe_tiles.png" id="3_txpcb"]
 [ext_resource type="PackedScene" uid="uid://bkk01sphksq7h" path="res://Escenas/Globales/SpawnPoint.tscn" id="3_vbeci"]
@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dkgfbq1kybb72" path="res://Assets/Arena/volcanoe_assets.png" id="8_svr1r"]
 [ext_resource type="Texture2D" uid="uid://tconiwixirvf" path="res://Assets/Arena/volcanoe_small_spritesheet.png" id="10_ihkbj"]
 [ext_resource type="PackedScene" uid="uid://dctf5dkuqnlbd" path="res://Escenas/Menus/HUD.tscn" id="12_qwn2g"]
-[ext_resource type="PackedScene" uid="uid://sisdnkxcj15x" path="res://Escenas/PickUps/SwordPickUp.tscn" id="13_5ok4q"]
-[ext_resource type="PackedScene" uid="uid://cg0olqdrbqjef" path="res://Escenas/PickUps/HealthPickUp.tscn" id="14_27yov"]
+[ext_resource type="AudioStream" uid="uid://cq8rauku4t83r" path="res://Assets/Sounds and Music/8-bit-arcade-mode-158814.mp3" id="14_n70s6"]
+[ext_resource type="PackedScene" uid="uid://dibi57amadjkv" path="res://Escenas/Menus/Ajustes.tscn" id="15_xj402"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c4iq5"]
 texture = ExtResource("3_txpcb")
@@ -880,13 +880,64 @@ sources/1 = SubResource("TileSetAtlasSource_vntee")
 sources/2 = SubResource("TileSetAtlasSource_sq1qk")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qe0nb"]
-vertices = PackedVector2Array(1215, 136, 1218, 927, 169, 929, 170, 135)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(161, 125, 1225, 127, 1229, 937, 159, 940)])
+vertices = PackedVector2Array(787, 482, 787, 472, 1214, 138, 1218, 927, 785, 624, 563, 629, 599, 629, 596, 657, 169, 929, 757, 657, 754, 624, 599, 437, 599, 469, 564, 470, 170, 135, 756, 438, 756, 468)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 10, 4, 3), PackedInt32Array(11, 12, 13, 14), PackedInt32Array(9, 3, 8, 7), PackedInt32Array(5, 8, 14, 13), PackedInt32Array(11, 14, 2, 15), PackedInt32Array(15, 2, 1, 16)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(161, 125, 1226, 129, 777, 481, 747, 477, 746, 448, 609, 447, 610, 479, 574, 480, 573, 619, 610, 619, 607, 647, 746, 647, 743, 614, 775, 614, 777, 482, 923, 258, 1224, 129, 1229, 937, 159, 940)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
+[sub_resource type="Animation" id="Animation_nvk6c"]
+resource_name = "FadeIn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MusicGameplay:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-55.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_og8rv"]
+_data = {
+"FadeIn": SubResource("Animation_nvk6c")
+}
+
 [node name="Pantalla1A" type="Node2D"]
-script = ExtResource("1_sww4n")
+script = ExtResource("1_qguei")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 10
+offset_right = 1362.0
+offset_bottom = 920.0
 
 [node name="Arena" type="TileMap" parent="."]
 texture_filter = 1
@@ -915,6 +966,7 @@ layer_0/tile_data = PackedInt32Array(-131100, 0, 0, -26, 393217, 0, 1900552, 0, 
 navigation_polygon = SubResource("NavigationPolygon_qe0nb")
 
 [node name="HUD" parent="." instance=ExtResource("12_qwn2g")]
+visible = false
 
 [node name="SpawnPoints" type="Node" parent="."]
 
@@ -942,8 +994,17 @@ position = Vector2(196, 899)
 [node name="SpawnPoint8" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
 position = Vector2(1186, 896)
 
-[node name="Sword" parent="." instance=ExtResource("13_5ok4q")]
-position = Vector2(353, 828)
+[node name="Ajustes" parent="." instance=ExtResource("15_xj402")]
+visible = false
 
-[node name="HeathPickUp" parent="." instance=ExtResource("14_27yov")]
-position = Vector2(447, 850)
+[node name="MusicGameplay" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+position = Vector2(680, 553)
+stream = ExtResource("14_n70s6")
+volume_db = -55.0
+bus = &"Music"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_og8rv")
+}

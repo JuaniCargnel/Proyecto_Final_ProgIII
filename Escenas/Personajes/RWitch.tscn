@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://4b1wvqfa6gdw"]
 
 [ext_resource type="Texture2D" uid="uid://bkpvpr5qdjpld" path="res://Assets/Enemies/R_Witch/R_witch_idle.png" id="1_6opvm"]
-[ext_resource type="Script" path="res://Scripts/rWitch.gd" id="1_nnihq"]
+[ext_resource type="Script" path="res://Scripts/ScriptCharacters/rWitch.gd" id="1_nnihq"]
 [ext_resource type="Texture2D" uid="uid://c3ao1jnpibhbw" path="res://Assets/Enemies/R_Witch/R_witch_attack.png" id="2_saeb8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6ees"]
