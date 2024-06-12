@@ -19,10 +19,15 @@ var comboB: bool = false
 var lookDerecha: bool = true
 
 var cameraZoom = 3
+var vidaAnterior = GlobalStats.playerLife
 
 func _ready():
-	$Sprite.modulate = Color(GlobalStats.hexColor)
+	GlobalStats.recibirDanio = false
+	GlobalStats.alive = true
+	GlobalStats.playerLife = GlobalStats.maxLife
+	GlobalStats.playerStamina = GlobalStats.maxStamina
 	GlobalStats.partidaComenzada = true
+	$Sprite.modulate = Color(GlobalStats.hexColor)
 	$Sprite.material.set_shader_parameter("modulate_color", modulate)
 	Sombra.crear_sombras($Sprite, $SombraMark)
 	global_position = Vector2(500,500)
@@ -32,7 +37,7 @@ func _process(delta):
 	if GlobalStats.alive:
 		GlobalStats.positionPlayer = global_position
 		z_index = round(global_position.y)
-		regenStamina()
+		regen_stamina()
 		estados(delta)
 		animations()
 	else:
@@ -42,7 +47,7 @@ func _process(delta):
 	Sombra.update_sombras()
 
 func estados(delta):
-	activeSword()
+	active_sword()
 	rolling()
 	movimientos(delta)
 	walking()
@@ -51,11 +56,11 @@ func estados(delta):
 	recibir_dmg()
 	player_death()
 
-func regenStamina():
+func regen_stamina():
 	if GlobalStats.playerStamina < GlobalStats.maxStamina:
 		GlobalStats.playerStamina += GlobalStats.regenStamina
 
-func activeSword():
+func active_sword():
 	if GlobalStats.activeSword:
 		$Timers/SwordTimer.set_wait_time(GlobalStats.maxSwordTime)
 		
@@ -80,7 +85,6 @@ func animations():
 
 func get_animation_name():
 	if anim_death:
-		GlobalStats.animacion = 8
 		return "death"
 	elif anim_hitA:
 		if GlobalStats.activeSword:
@@ -158,7 +162,7 @@ func running():
 		GlobalStats.playerStamina -= 1
 		
 		if $Sprite.get_animation() == "run":
-			$SFX/Pasos.set_pitch_scale(1.75)
+			$SFX/Pasos.set_pitch_scale(1.25)
 			if $Timers/Steps.time_left <= 0:
 				$Timers/Steps.start()
 		elif !$Sprite.get_animation() == "walk" and !$Sprite.get_animation() == "run":
@@ -177,6 +181,7 @@ func rolling():
 		$Timers/Roll.start()
 		$DmgArea/CollisionShape2D.disabled = true
 		GlobalStats.playerStamina -= 100
+		$SFX/Roll.play()
 	elif anim_roll:
 		if Input.is_action_pressed("GolpeA"):
 			comboA = true
@@ -194,11 +199,19 @@ func hitting():
 		canHitA = false
 		GlobalStats.playerStamina -= 20
 		$Timers/HitA.start()
+		if GlobalStats.activeSword:
+			$SFX/Hit1S.play()
+		else: 
+			$SFX/Hit1.play()
 	elif Input.is_action_pressed("GolpeB") and canHitB and not anim_roll and not anim_hitA and GlobalStats.playerStamina > 51:
 		anim_hitB = true
 		canHitB = false
 		GlobalStats.playerStamina -= 50
 		$Timers/HitB.start()
+		if GlobalStats.activeSword:
+			$SFX/Hit2S.play()
+		else: 
+			$SFX/Hit2.play()
 	elif anim_hitA:
 		direccion = Vector2.ZERO
 		if GlobalStats.activeSword:
@@ -206,17 +219,17 @@ func hitting():
 			if $Sprite.frame == 3:
 				$HittingArea/HitboxHit.disabled = false
 			if lookDerecha:
-				$HittingArea/HitboxHit.position = Vector2(20,2)
+				$HittingArea/HitboxHit.position = Vector2(20,1.5)
 			else:
-				$HittingArea/HitboxHit.position = Vector2(-20,1)
+				$HittingArea/HitboxHit.position = Vector2(-20,1.5)
 		elif !GlobalStats.activeSword:
 			$HittingArea/HitboxHit.scale = Vector2(2,0.5)
 			if $Sprite.frame == 1:
 				$HittingArea/HitboxHit.disabled = false
 			if lookDerecha:
-				$HittingArea/HitboxHit.position = Vector2(12,-1)
+				$HittingArea/HitboxHit.position = Vector2(13,-0.5)
 			else:
-				$HittingArea/HitboxHit.position = Vector2(-12,-1)
+				$HittingArea/HitboxHit.position = Vector2(-13,-0.5)
 		if Input.is_action_pressed("GolpeB"):
 			comboB = true
 	elif anim_hitB:
@@ -226,17 +239,17 @@ func hitting():
 				$HittingArea/HitboxHit.disabled = false
 			$HittingArea/HitboxHit.scale = Vector2(4,1)
 			if lookDerecha:
-				$HittingArea/HitboxHit.position = Vector2(27,2)
+				$HittingArea/HitboxHit.position = Vector2(21.6,1.4)
 			else:
-				$HittingArea/HitboxHit.position = Vector2(-27,2)
+				$HittingArea/HitboxHit.position = Vector2(-21.6,1.4)
 		elif !GlobalStats.activeSword:
 			if $Sprite.frame == 3:
 				$HittingArea/HitboxHit.disabled = false
 			$HittingArea/HitboxHit.scale = Vector2(2,2)
 			if lookDerecha:
-				$HittingArea/HitboxHit.position = Vector2(22,4)
+				$HittingArea/HitboxHit.position = Vector2(18.6,2.5)
 			else:
-				$HittingArea/HitboxHit.position = Vector2(-22,4)
+				$HittingArea/HitboxHit.position = Vector2(-18.6,2.5)
 	else:
 		anim_hitB = false
 		anim_hitA = false
@@ -248,10 +261,14 @@ func player_death():
 		GlobalStats.partidaComenzada = false
 		anim_death = true
 		$Sprite.material.set_shader_parameter("flicker_enabled", false)
-		$Timers/Death.start()
+		$SFX/Death.play()
 
 func recibir_dmg():
 	if GlobalStats.recibirDanio:
+		if GlobalStats.playerLife < vidaAnterior:
+			$SFX/Dmg.play()
+			
+		vidaAnterior = GlobalStats.playerLife
 		anim_dmg = true
 		$Sprite.material.set_shader_parameter("flicker_enabled", true)
 	elif !GlobalStats.recibirDanio and $Sprite.frame == 2:
@@ -294,26 +311,19 @@ func _on_hit_b_timeout():
 func _on_hit_b_timer_timeout():
 	canHitB = true
 
-func _on_death_timeout():
-	get_tree().reload_current_scene()
-	GlobalStats.recibirDanio = false
-	GlobalStats.alive = true
-	GlobalStats.playerLife = GlobalStats.maxLife
-	GlobalStats.playerStamina = GlobalStats.maxStamina
-
 func _on_hitting_area_body_entered(body):
 	if body.is_in_group("enemigos"):
 		if anim_hitA and GlobalStats.activeSword:
-			body.life -= 2
+			body.life -= 2.5
 			body.recibirDmg = true
 		elif anim_hitA and !GlobalStats.activeSword:
-			body.life -= 1
+			body.life -= 1.5
 			body.recibirDmg = true
 		elif anim_hitB and GlobalStats.activeSword:
-			body.life -= 3
+			body.life -= 4
 			body.recibirDmg = true
 		elif anim_hitB and !GlobalStats.activeSword: 
-			body.life -= 2
+			body.life -= 2.5
 			body.recibirDmg = true
 
 func _on_hitting_area_body_exited(body):
@@ -325,3 +335,7 @@ func _on_sword_timer_timeout():
 
 func _on_steps_timeout():
 	$SFX/Pasos.play()
+
+func _on_death_finished():
+	pass
+	

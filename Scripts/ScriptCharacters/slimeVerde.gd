@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var recibirDmg:bool = false
 @onready var navigationAgent: NavigationAgent2D = $Navigation/NavigationAgent2D
 
-var life: int = 5
+var life: int = 7
 var speed: int = 70 
 var isDeath: bool = false
 var estados: String = "idle"
@@ -95,6 +95,7 @@ func _on_follow_area_body_exited(body):
 
 func recibir_dmg():
 	if recibirDmg:
+		$Dmg.play()
 		direccion = (global_position - GlobalStats.positionPlayer).normalized()
 		var force = direccion * 75
 		knockback(force)

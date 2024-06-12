@@ -5,7 +5,8 @@ var speeds = [1, 1, 1, 1]
 func _ready():
 	GlobalStats.partidaComenzada = false
 	$Title/Name1.modulate = GlobalStats.hexColor
-	$MusicaMenu.set_volume_db(GlobalStats.musicVolume)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	$AnimationPlayer.play("intro")
 
 func _process(delta):
 	$ParallaxBackground/Player.modulate = GlobalStats.hexColor
@@ -28,8 +29,8 @@ func cambio_de_fondo(delta):
 			speeds[i] = 0
 	
 func _on_start_pressed():
-	$AnimationPlayer.get_animation("fade").track_set_key_value(1,0,GlobalStats.musicVolume)
 	$AnimationPlayer.play("fade")
+	$Music_SFX/StartGame.play()
 	$Buttons/StartButton/Start.disabled = true
 	$Buttons/AjustesButton/Ajustes.disabled = true
 	$Buttons/ExitButton/Exit.disabled = true
@@ -63,20 +64,8 @@ func _on_fade_timer_timeout():
 	get_tree().change_scene_to_file("res://Escenas/Niveles/Pantalla1A.tscn")
 
 func _on_musica_menu_finished():
-	$MusicaMenu.play()
+	$Music_SFX/MusicaMenu.play()
 
-func _on_start_mouse_entered():
+func _on_button_mouse_entered():
 	if !$Buttons/StartButton/Start.disabled:
-		$SFXButtons.play()
-
-func _on_credits_mouse_entered():
-	if !$Buttons/CreditsButton/Credits.disabled:
-		$SFXButtons.play()
-
-func _on_exit_mouse_entered():
-	if !$Buttons/ExitButton/Exit.disabled:
-		$SFXButtons.play()
-
-func _on_ajustes_mouse_entered():
-	if !$Buttons/AjustesButton/Ajustes.disabled:
-		$SFXButtons.play()
+		$Music_SFX/SFXButtons.play()

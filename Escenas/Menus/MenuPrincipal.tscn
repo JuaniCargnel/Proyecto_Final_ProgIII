@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b38j3beja0otb"]
+[gd_scene load_steps=36 format=3 uid="uid://b38j3beja0otb"]
 
 [ext_resource type="Script" path="res://Scripts/ScriptGenerales/menuPrincipal.gd" id="1_hsuiw"]
 [ext_resource type="Texture2D" uid="uid://c8oyw36wdjhc" path="res://Assets/Menus/UI Package/Elements/4-2.png" id="2_fi35q"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://blbivdegy7x36" path="res://Assets/Sounds and Music/multi-pop-1-188165.mp3" id="13_cmodt"]
 [ext_resource type="Texture2D" uid="uid://c43f27w0ut8a6" path="res://Assets/Menus/UI Package/Elements/4-3.png" id="13_tgurp"]
 [ext_resource type="PackedScene" uid="uid://dibi57amadjkv" path="res://Escenas/Menus/Ajustes.tscn" id="14_5horq"]
+[ext_resource type="AudioStream" uid="uid://gqw2fsrgxf5m" path="res://Assets/Sounds and Music/confirm-38513.mp3" id="17_dvd6g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jk3yo"]
 texture = ExtResource("2_w51ds")
@@ -958,7 +959,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MusicaMenu:volume_db")
+tracks/1/path = NodePath("Music_SFX/MusicaMenu:volume_db")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -968,9 +969,25 @@ tracks/1/keys = {
 "values": [0.0, -35.0]
 }
 
+[sub_resource type="Animation" id="Animation_g51d3"]
+resource_name = "intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Music_SFX/MusicaMenu:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-15.0, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vknok"]
 _data = {
-"fade": SubResource("Animation_5lhts")
+"fade": SubResource("Animation_5lhts"),
+"intro": SubResource("Animation_g51d3")
 }
 
 [node name="MenuPrincipal" type="Node2D"]
@@ -1337,18 +1354,6 @@ theme_override_font_sizes/font_size = 27
 text = "CREDITS"
 metadata/_edit_use_anchors_ = true
 
-[node name="MusicaMenu" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(958, 527)
-stream = ExtResource("13_1i3h4")
-autoplay = true
-max_polyphony = 5
-bus = &"Music"
-
-[node name="SFXButtons" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("13_cmodt")
-max_polyphony = 5
-bus = &"SFX"
-
 [node name="Ajustes" parent="." instance=ExtResource("14_5horq")]
 visible = false
 
@@ -1360,14 +1365,33 @@ libraries = {
 "": SubResource("AnimationLibrary_vknok")
 }
 
+[node name="Music_SFX" type="Node" parent="."]
+
+[node name="MusicaMenu" type="AudioStreamPlayer2D" parent="Music_SFX"]
+position = Vector2(1029, 552)
+stream = ExtResource("13_1i3h4")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
+
+[node name="SFXButtons" type="AudioStreamPlayer2D" parent="Music_SFX"]
+position = Vector2(71, 25)
+stream = ExtResource("13_cmodt")
+bus = &"SFX"
+
+[node name="StartGame" type="AudioStreamPlayer2D" parent="Music_SFX"]
+stream = ExtResource("17_dvd6g")
+volume_db = 15.0
+bus = &"SFX"
+
 [connection signal="timeout" from="Title/Timer" to="." method="_on_timer_timeout"]
-[connection signal="mouse_entered" from="Buttons/StartButton/Start" to="." method="_on_start_mouse_entered"]
+[connection signal="mouse_entered" from="Buttons/StartButton/Start" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Buttons/StartButton/Start" to="." method="_on_start_pressed"]
-[connection signal="mouse_entered" from="Buttons/AjustesButton/Ajustes" to="." method="_on_ajustes_mouse_entered"]
+[connection signal="mouse_entered" from="Buttons/AjustesButton/Ajustes" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Buttons/AjustesButton/Ajustes" to="." method="_on_ajustes_pressed"]
-[connection signal="mouse_entered" from="Buttons/ExitButton/Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="mouse_entered" from="Buttons/ExitButton/Exit" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Buttons/ExitButton/Exit" to="." method="_on_exit_pressed"]
-[connection signal="mouse_entered" from="Buttons/CreditsButton/Credits" to="." method="_on_credits_mouse_entered"]
+[connection signal="mouse_entered" from="Buttons/CreditsButton/Credits" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Buttons/CreditsButton/Credits" to="." method="_on_credits_pressed"]
-[connection signal="finished" from="MusicaMenu" to="." method="_on_musica_menu_finished"]
 [connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]
+[connection signal="finished" from="Music_SFX/MusicaMenu" to="." method="_on_musica_menu_finished"]

@@ -519,6 +519,21 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h0ugc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0ugc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0ugc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0ugc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0ugc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0ugc")
 }],
 "loop": true,
 "name": &"death",

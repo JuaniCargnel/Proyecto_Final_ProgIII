@@ -1,9 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnuefdw5cng6h"]
+[gd_scene load_steps=16 format=3 uid="uid://dnuefdw5cng6h"]
 
 [ext_resource type="Script" path="res://Scripts/ScriptCharacters/personajePrincipal.gd" id="1_svxvs"]
 [ext_resource type="Shader" path="res://Shaders/dmg.gdshader" id="2_0br16"]
 [ext_resource type="SpriteFrames" uid="uid://cs5af0g0oty7g" path="res://Assets/Jugador/PersonajePrincipalAnimation.tres" id="3_nta07"]
-[ext_resource type="AudioStream" uid="uid://d1ofol7gef45" path="res://Assets/Sounds and Music/foot-step-snow-4-189865.mp3" id="4_u3v40"]
+[ext_resource type="AudioStream" uid="uid://dpprcpxtnkhvc" path="res://Assets/Sounds and Music/running-2-104276.mp3" id="4_2ttxb"]
+[ext_resource type="AudioStream" uid="uid://c4yqmlyqiab4v" path="res://Assets/Sounds and Music/kl-peach-game-over-iii-142453.mp3" id="5_k5p0p"]
+[ext_resource type="AudioStream" uid="uid://do5b8xnems33g" path="res://Assets/Sounds and Music/dmg.wav" id="6_p4lvj"]
+[ext_resource type="AudioStream" uid="uid://diomehr21somf" path="res://Assets/Sounds and Music/Hit1.mp3" id="7_ji6ju"]
+[ext_resource type="AudioStream" uid="uid://d3g05epdhf7x" path="res://Assets/Sounds and Music/Hit2.mp3" id="8_jh7dc"]
+[ext_resource type="AudioStream" uid="uid://cnyieqgmm1yp4" path="res://Assets/Sounds and Music/Hit1S.mp3" id="9_cd136"]
+[ext_resource type="AudioStream" uid="uid://dbf5jrvoud3wr" path="res://Assets/Sounds and Music/Hit2S.mp3" id="10_lvwyx"]
+[ext_resource type="AudioStream" uid="uid://pcebtmn6kvpl" path="res://Assets/Sounds and Music/roll.mp3" id="11_cyrcm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e75ik"]
 shader = ExtResource("2_0br16")
@@ -15,7 +22,7 @@ shader_parameter/flicker_enabled = false
 size = Vector2(14, 9.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpf4g"]
-size = Vector2(6, 6.75)
+size = Vector2(10.3469, 8.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7m76b"]
 size = Vector2(14, 10)
@@ -28,7 +35,8 @@ script = ExtResource("1_svxvs")
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
 material = SubResource("ShaderMaterial_e75ik")
 sprite_frames = ExtResource("3_nta07")
-animation = &"idle"
+animation = &"swordAttack"
+frame = 3
 metadata/SombraMark = Vector2(0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -50,8 +58,8 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="HitboxHit" type="CollisionShape2D" parent="HittingArea"]
-position = Vector2(12, -1)
-scale = Vector2(2, 0.5)
+position = Vector2(19.0664, 1.5)
+scale = Vector2(2.5, 4)
 shape = SubResource("RectangleShape2D_hpf4g")
 disabled = true
 
@@ -87,9 +95,6 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
-[node name="Death" type="Timer" parent="Timers"]
-wait_time = 2.0
-
 [node name="SwordTimer" type="Timer" parent="Timers"]
 wait_time = 15.0
 one_shot = true
@@ -101,8 +106,39 @@ one_shot = true
 [node name="SFX" type="Node2D" parent="."]
 
 [node name="Pasos" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("4_u3v40")
-pitch_scale = 1.5
+stream = ExtResource("4_2ttxb")
+volume_db = 5.0
+pitch_scale = 5.0
+bus = &"SFX"
+
+[node name="Death" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("5_k5p0p")
+bus = &"SFX"
+
+[node name="Dmg" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("6_p4lvj")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Hit1" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("7_ji6ju")
+bus = &"SFX"
+
+[node name="Hit2" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("8_jh7dc")
+bus = &"SFX"
+
+[node name="Hit1S" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("9_cd136")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="Hit2S" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("10_lvwyx")
+bus = &"SFX"
+
+[node name="Roll" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("11_cyrcm")
 bus = &"SFX"
 
 [connection signal="body_entered" from="HittingArea" to="." method="_on_hitting_area_body_entered"]
@@ -113,6 +149,6 @@ bus = &"SFX"
 [connection signal="timeout" from="Timers/HitBTimer" to="." method="_on_hit_b_timer_timeout"]
 [connection signal="timeout" from="Timers/HitA" to="." method="_on_hit_a_timeout"]
 [connection signal="timeout" from="Timers/HitATimer" to="." method="_on_hit_a_timer_timeout"]
-[connection signal="timeout" from="Timers/Death" to="." method="_on_death_timeout"]
 [connection signal="timeout" from="Timers/SwordTimer" to="." method="_on_sword_timer_timeout"]
 [connection signal="timeout" from="Timers/Steps" to="." method="_on_steps_timeout"]
+[connection signal="finished" from="SFX/Death" to="." method="_on_death_finished"]

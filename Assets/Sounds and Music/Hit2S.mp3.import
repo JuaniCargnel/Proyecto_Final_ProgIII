@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dbf5jrvoud3wr"
+path="res://.godot/imported/Hit2S.mp3-4c01923450d02f9f8b9d0a0eca8e555a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds and Music/Hit2S.mp3"
+dest_files=["res://.godot/imported/Hit2S.mp3-4c01923450d02f9f8b9d0a0eca8e555a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

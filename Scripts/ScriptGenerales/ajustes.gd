@@ -2,11 +2,8 @@ extends CanvasLayer
 
 func _ready():
 	$SoundChange/Master.connect("value_changed", Callable(self, "_on_master_value_change"))
-	$SoundChange/Master.value = GlobalStats.masterVolume 
-	$SoundChange/Music.connect("value_changed", Callable(self, "_on_master_value_change"))
-	$SoundChange/Music.value = GlobalStats.musicVolume 
-	$SoundChange/SFX.connect("value_changed", Callable(self, "_on_master_value_change"))
-	$SoundChange/SFX.value = GlobalStats.musicVolume 
+	$SoundChange/Music.connect("value_changed", Callable(self, "_on_music_value_change"))
+	$SoundChange/SFX.connect("value_changed", Callable(self, "_on_sfx_value_change"))
 
 func _process(_delta):
 	if !visible:
@@ -22,11 +19,16 @@ func _process(_delta):
 		if get_tree().paused:
 			get_tree().paused = false
 			visible = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		else:
 			visible = true
 			get_tree().paused = true
 			$Buttons/Menu.visible = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			
+	$SoundChange/Music.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))
+	$SoundChange/SFX.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))
+	$SoundChange/Master.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
 	$ColorChange/ColorPicker/Player.modulate = Color(GlobalStats.hexColor)
 
 func _on_color_picker_color_changed(color):
@@ -62,7 +64,7 @@ func _on_2button_pressed():
 		$MenuName.position = Vector2(930,450)
 		$MenuName.size = Vector2(500,240)
 		$MenuName.scale = Vector2(0.8,0.8)
-		$Buttons.position = Vector2(88,-4)
+		$Buttons.position = Vector2(-30,100)
 		$Window.scale = Vector2(2,1.6)
 		$ColorChange.visible = false
 		$SoundChange.visible = false
@@ -85,13 +87,15 @@ func _on_menu_pressed():
 	get_tree().change_scene_to_file("res://Escenas/Menus/MenuPrincipal.tscn")
 
 func _on_master_value_changed(value):
-	GlobalStats.masterVolume = value
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), GlobalStats.masterVolume)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
 
 func _on_music_value_changed(value):
-	GlobalStats.musicVolume = value
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), GlobalStats.musicVolume)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value)
 
 func _on_sfx_value_changed(value):
-	GlobalStats.sfxVolume = value
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), GlobalStats.sfxVolume)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), value)
+
+func _on_button_mouse_entered():
+	$SFXButtons.play()
+
+

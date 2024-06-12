@@ -21,8 +21,5 @@ var recibirDanio: bool = false
 var alive: bool = true
 var animacion: float = 1
 var partidaComenzada = false
-var musicVolume: float = -10
-var sfxVolume: float
-var masterVolume: float
 
 var hexColor:Color = Color("ffffff")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dpprcpxtnkhvc"
+path="res://.godot/imported/running-2-104276.mp3-a758b39bd7b6c9a52684a329eee35cf3.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds and Music/running-2-104276.mp3"
+dest_files=["res://.godot/imported/running-2-104276.mp3-a758b39bd7b6c9a52684a329eee35cf3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

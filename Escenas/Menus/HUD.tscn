@@ -1,9 +1,8 @@
-[gd_scene load_steps=143 format=3 uid="uid://dctf5dkuqnlbd"]
+[gd_scene load_steps=127 format=3 uid="uid://dctf5dkuqnlbd"]
 
 [ext_resource type="Script" path="res://Scripts/ScriptGenerales/HUD.gd" id="1_foxvc"]
 [ext_resource type="Texture2D" uid="uid://oohkrcri714h" path="res://Assets/Menus/UI Package/Windows/6-2.png" id="1_ndv70"]
 [ext_resource type="Texture2D" uid="uid://0l4y7v8fk8u7" path="res://Assets/Jugador/hurt.png" id="2_5mdul"]
-[ext_resource type="Texture2D" uid="uid://cqtjtb7012lw1" path="res://Assets/Jugador/death.png" id="3_hw3rj"]
 [ext_resource type="Texture2D" uid="uid://dxgbju2okta1r" path="res://Assets/Jugador/swordIdle.png" id="4_ebng2"]
 [ext_resource type="Texture2D" uid="uid://dx04cir1m6rdc" path="res://Assets/Jugador/idle.png" id="4_o5sxu"]
 [ext_resource type="Texture2D" uid="uid://c74655i3mc32f" path="res://Assets/Jugador/run.png" id="5_ai4l7"]
@@ -20,8 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://bvpovofd5yidq" path="res://Assets/Menus/UI Package/Status/1-4.png" id="18_8lbvp"]
 [ext_resource type="Texture2D" uid="uid://dqn5wr14uwmpu" path="res://Assets/Menus/UI Package/Status/3-1.png" id="18_r36en"]
 [ext_resource type="Texture2D" uid="uid://d1vtq6ym51vod" path="res://Assets/Menus/UI Package/Status/4-4.png" id="20_nlc71"]
-[ext_resource type="Texture2D" uid="uid://bi4t8agyfs8mj" path="res://Assets/Menus/UI Package/Elements/1-2.png" id="21_fbka7"]
-[ext_resource type="Texture2D" uid="uid://ty3svchwcl11" path="res://Assets/Menus/UI Package/Elements/1-1.png" id="22_li3ww"]
 [ext_resource type="FontFile" uid="uid://b4giw5b8c2ag0" path="res://Assets/Fonts/Pixeled.ttf" id="23_qc206"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f7ooy"]
@@ -396,46 +393,6 @@ region = Rect2(96, 0, 48, 30)
 atlas = ExtResource("2_5mdul")
 region = Rect2(144, 0, 48, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lkyro"]
-atlas = ExtResource("3_hw3rj")
-region = Rect2(0, 10, 64, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_11dr3"]
-atlas = ExtResource("3_hw3rj")
-region = Rect2(64, 10, 64, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4twtj"]
-atlas = ExtResource("3_hw3rj")
-region = Rect2(128, 10, 64, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bjwpk"]
-atlas = ExtResource("3_hw3rj")
-region = Rect2(192, 10, 64, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i8rmv"]
-atlas = ExtResource("3_hw3rj")
-region = Rect2(256, 10, 64, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_agay6"]
-atlas = ExtResource("3_hw3rj")
-region = Rect2(320, 10, 64, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gao4t"]
-atlas = ExtResource("3_hw3rj")
-region = Rect2(384, 10, 64, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hicmg"]
-atlas = ExtResource("3_hw3rj")
-region = Rect2(448, 10, 64, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sfh83"]
-atlas = ExtResource("3_hw3rj")
-region = Rect2(512, 10, 64, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4q8sd"]
-atlas = ExtResource("3_hw3rj")
-region = Rect2(576, 10, 64, 30)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_kwxtb"]
 animations = [{
 "frames": [{
@@ -776,47 +733,6 @@ animations = [{
 "loop": true,
 "name": &"7",
 "speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lkyro")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_11dr3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4twtj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bjwpk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i8rmv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_agay6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gao4t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hicmg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sfh83")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4q8sd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4q8sd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4q8sd")
-}],
-"loop": true,
-"name": &"8",
-"speed": 6.0
 }]
 
 [sub_resource type="Gradient" id="Gradient_wrfvg"]
@@ -861,21 +777,16 @@ colors = PackedColorArray(0.831373, 0.780392, 0.188235, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tyds2"]
 gradient = SubResource("Gradient_ehbl3")
 
-[sub_resource type="InputEventKey" id="InputEventKey_b3twp"]
-keycode = 4194309
-
-[sub_resource type="InputEventKey" id="InputEventKey_gdxuf"]
-keycode = 4194332
-
-[sub_resource type="Shortcut" id="Shortcut_kk047"]
-events = [SubResource("InputEventKey_b3twp"), SubResource("InputEventKey_gdxuf")]
-
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_foxvc")
 
 [node name="Display" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_left = -17.0
+offset_top = -28.0
+offset_right = -17.0
+offset_bottom = -28.0
 
 [node name="FondoDisplay" type="Sprite2D" parent="Display"]
 position = Vector2(125, 108)
@@ -886,7 +797,7 @@ texture = ExtResource("1_ndv70")
 position = Vector2(-3, 6.97676)
 scale = Vector2(2.8125, 3.48837)
 sprite_frames = SubResource("SpriteFrames_kwxtb")
-animation = &"8"
+animation = &"1"
 
 [node name="DisplayPlayer" type="Sprite2D" parent="Display/FondoDisplay"]
 position = Vector2(27.0001, -0.581413)
@@ -896,10 +807,10 @@ texture = ExtResource("7_bgfyr")
 [node name="Stamina" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 320.0
-offset_top = 152.0
-offset_right = 360.0
-offset_bottom = 192.0
+offset_left = 303.0
+offset_top = 124.0
+offset_right = 343.0
+offset_bottom = 164.0
 
 [node name="Bar" type="Sprite2D" parent="Stamina"]
 modulate = Color(0.439216, 0.439216, 0.439216, 1)
@@ -928,10 +839,10 @@ texture_progress = SubResource("GradientTexture2D_m1roq")
 [node name="Health" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 321.0
-offset_top = 105.0
-offset_right = 361.0
-offset_bottom = 145.0
+offset_left = 304.0
+offset_top = 77.0
+offset_right = 344.0
+offset_bottom = 117.0
 
 [node name="Heart" type="Sprite2D" parent="Health"]
 position = Vector2(-16, -33)
@@ -960,10 +871,10 @@ texture_progress = SubResource("GradientTexture2D_ovmgg")
 [node name="Sword" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 322.0
-offset_top = 176.0
-offset_right = 362.0
-offset_bottom = 216.0
+offset_left = 305.0
+offset_top = 148.0
+offset_right = 345.0
+offset_bottom = 188.0
 
 [node name="Sword" type="Sprite2D" parent="Sword"]
 modulate = Color(1, 1, 0.258824, 1)
@@ -991,45 +902,17 @@ nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_vi7up")
 texture_progress = SubResource("GradientTexture2D_tyds2")
 
-[node name="Pause" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 520.001
-offset_top = 301.001
-offset_right = 560.001
-offset_bottom = 341.001
-
-[node name="Pause" type="TextureButton" parent="Pause"]
-layout_mode = 1
+[node name="Label" type="Label" parent="."]
 anchors_preset = -1
-anchor_left = 34.75
-anchor_top = -6.25
-anchor_right = 34.75
-anchor_bottom = -6.25
-offset_left = -40.0
-offset_top = -39.0
-shortcut = SubResource("Shortcut_kk047")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-texture_normal = ExtResource("21_fbka7")
-texture_pressed = ExtResource("22_li3ww")
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="Pause"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 13.175
-anchor_top = -18.775
-anchor_right = 13.175
-anchor_bottom = -18.775
-offset_left = 837.0
-offset_top = 457.0
-offset_right = 999.0
-offset_bottom = 541.0
-scale = Vector2(0.5, 0.5)
+anchor_left = 0.149998
+anchor_top = -0.125
+anchor_right = 0.149998
+anchor_bottom = -0.125
+offset_left = 1560.0
+offset_top = 129.0
+offset_right = 1722.0
+offset_bottom = 213.0
 theme_override_fonts/font = ExtResource("23_qc206")
-theme_override_font_sizes/font_size = 27
-text = "II"
+theme_override_font_sizes/font_size = 20
+text = "ESC"
 metadata/_edit_use_anchors_ = true
-
-[connection signal="pressed" from="Pause/Pause" to="." method="_on_pause_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://b2uosr2navw8m"]
+[gd_scene load_steps=56 format=3 uid="uid://b2uosr2navw8m"]
 
 [ext_resource type="Script" path="res://Scripts/ScriptCharacters/slimeRojo.gd" id="1_pibnr"]
 [ext_resource type="Texture2D" uid="uid://cg0eohjgfenha" path="res://Assets/Enemies/Slime/deadRojo.png" id="2_ufan0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cy6gnn3xkoqgb" path="res://Assets/Enemies/Slime/dmgRojo.png" id="3_i7yl2"]
 [ext_resource type="Texture2D" uid="uid://cuf3j6ds2exf2" path="res://Assets/Enemies/Slime/idleRojo.png" id="4_m0ym3"]
 [ext_resource type="Texture2D" uid="uid://cdnvbf0gf111g" path="res://Assets/Enemies/Slime/runRojo.png" id="5_wfjvd"]
+[ext_resource type="AudioStream" uid="uid://clofkfg3dasam" path="res://Assets/Sounds and Music/slimeHit.wav" id="7_uf004"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_td6v4"]
 atlas = ExtResource("2_ufan0")
@@ -408,6 +409,9 @@ wait_time = 1.57
 
 [node name="DmgTimer" type="Timer" parent="Timers"]
 wait_time = 0.7
+
+[node name="Dmg" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_uf004")
 
 [connection signal="body_entered" from="FollowArea" to="." method="_on_follow_area_body_entered"]
 [connection signal="body_exited" from="FollowArea" to="." method="_on_follow_area_body_exited"]

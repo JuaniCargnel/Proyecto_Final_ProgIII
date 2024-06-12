@@ -6,12 +6,13 @@ func _process(_delta):
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		var plusStamina = GlobalStats.maxStamina * 0.25
+		$Pickup.play()
+		$Timer.start()
 		if GlobalStats.playerStamina < GlobalStats.maxStamina:
 			if GlobalStats.playerStamina + plusStamina > GlobalStats.maxStamina:
 				GlobalStats.playerStamina = GlobalStats.maxStamina
 			else: 
 				GlobalStats.playerStamina += plusStamina
-			queue_free()
-		else:
-			queue_free()
 
+func _on_timer_timeout():
+	queue_free()

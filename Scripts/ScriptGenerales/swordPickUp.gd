@@ -5,5 +5,9 @@ func _process(_delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
+		$Pickup.play()
+		$Timer.start()
 		GlobalStats.activeSword = true
-		queue_free()
+
+func _on_timer_timeout():
+	queue_free()

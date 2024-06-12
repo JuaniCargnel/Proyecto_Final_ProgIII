@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var navigationAgent: NavigationAgent2D = $Navigation/NavigationAgent2D
 var fuego: PackedScene = preload("res://Escenas/Globales/Fire.tscn")
 
-var life: int = 5
+var life: int = 7
 var speed: int = 70 
 var estados: String = "idle"
 var direccion: Vector2 = Vector2.ZERO
@@ -80,6 +80,7 @@ func death():
 	$Timers/ExplosionTimer.start()
 	$FollowArea/CollisionShape2D.disabled = true
 	$DmgArea/CollisionShape2D.disabled = true
+	$Hitbox.disabled = true
 
 func _on_timer_timeout():
 	navigationAgent.target_position = Vector2(GlobalStats.positionPlayer.x , GlobalStats.positionPlayer.y + 12)
@@ -97,6 +98,7 @@ func _on_follow_area_body_exited(body):
 
 func recibir_dmg():
 	if recibirDmg:
+
 		direccion = (global_position - GlobalStats.positionPlayer).normalized()
 		var force = direccion * 75
 		knockback(force)
