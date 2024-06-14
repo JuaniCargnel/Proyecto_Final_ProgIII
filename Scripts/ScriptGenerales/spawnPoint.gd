@@ -1,34 +1,29 @@
 extends Marker2D
 
-var enemy_scenes: Array = []
-var spawn_interval_range: Vector2 = Vector2(7, 14)
-var max_enemies: Dictionary = {"SlimeVerde": 20, "SlimeRojo": 10}
+# Un Marker2D que se utiliza como spawner de enemigos. 
 
-func _ready():
-	# Preload the enemy scenes
-	enemy_scenes.append({"name": "SlimeVerde", "scene": preload("res://Escenas/Personajes/SlimeVerde.tscn")})
-	enemy_scenes.append({"name": "SlimeRojo", "scene": preload("res://Escenas/Personajes/SlimeRojo.tscn")})
-	
-	# Start the timer with a random interval
-	$Timer.set_wait_time(spawn_interval_range.x + randf() * (spawn_interval_range.y - spawn_interval_range.x))
+var enemyScenes: Array = [] # Array que contiene las escenas de los enemigos
+var spawnIntervalRange: Vector2 = Vector2(7, 14) # Rango de spawn entre cada enemigo
+# Crea un diccionario con las caracteristicas de los enemigos (su nombre y su respectivo maximo de enemigos en pantalla)
+var maxEnemies: Dictionary = {"SlimeVerde": GlobalStats.maxSlimeVerde, "SlimeRojo": GlobalStats.maxSlimeRojo, "SlimeMage": GlobalStats.maxSlimeMage} 
+
+func _ready(): # Instancia las escenas de los enemigos
+	enemyScenes.append({"name": "SlimeVerde", "scene": preload("res://Escenas/Personajes/SlimeVerde.tscn")})
+	enemyScenes.append({"name": "SlimeRojo", "scene": preload("res://Escenas/Personajes/SlimeRojo.tscn")})
+	enemyScenes.append({"name": "SlimeMage", "scene": preload("res://Escenas/Personajes/SlimeMage.tscn")})
+	$Timer.set_wait_time(spawnIntervalRange.x + randf() * (spawnIntervalRange.y - spawnIntervalRange.x))
 	$Timer.start()
 
-func spawn_enemy():
+func spawn_enemy(): #  Spawnea enemigos si el jugador esta vivo
 	if GlobalStats.alive:
-		# Choose a random enemy scene
-		var enemy_info = enemy_scenes[randi() % enemy_scenes.size()]
-		
-		# Check if we have reached the maximum number of this enemy type
-		if get_tree().get_nodes_in_group(enemy_info["name"]).size() < max_enemies[enemy_info["name"]]:
-			# Instantiate the enemy and add it to the scene
-			var new_enemy = enemy_info["scene"].instantiate()
-			new_enemy.add_to_group(enemy_info["name"])
-			add_child(new_enemy)
+		var enemyInfo = enemyScenes[randi() % enemyScenes.size()] # Informacion del enemigo
+		if get_tree().get_nodes_in_group(enemyInfo["name"]).size() < maxEnemies[enemyInfo["name"]]: # Instancia el enemigo si hay menos enemigos en pantalla
+			var newEnemy = enemyInfo["scene"].instantiate()
+			newEnemy.add_to_group(enemyInfo["name"])
+			add_child(newEnemy)
 
 func _on_timer_timeout():
-	# Spawn an enemy
 	spawn_enemy()
 	
-	# Reset the timer with a new random interval
-	$Timer.set_wait_time(spawn_interval_range.x + randf() * (spawn_interval_range.y - spawn_interval_range.x))
+	$Timer.set_wait_time(spawnIntervalRange.x + randf() * (spawnIntervalRange.y - spawnIntervalRange.x)) # Cambia el wait time del spawner y lo vuelve a iniciar
 	$Timer.start()

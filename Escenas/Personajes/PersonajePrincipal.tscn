@@ -35,8 +35,7 @@ script = ExtResource("1_svxvs")
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
 material = SubResource("ShaderMaterial_e75ik")
 sprite_frames = ExtResource("3_nta07")
-animation = &"swordAttack"
-frame = 3
+animation = &"idle"
 metadata/SombraMark = Vector2(0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -122,10 +121,12 @@ bus = &"SFX"
 
 [node name="Hit1" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("7_ji6ju")
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="Hit2" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("8_jh7dc")
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="Hit1S" type="AudioStreamPlayer2D" parent="SFX"]

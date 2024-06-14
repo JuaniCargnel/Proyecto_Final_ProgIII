@@ -1,20 +1,20 @@
-[gd_scene load_steps=127 format=3 uid="uid://dctf5dkuqnlbd"]
+[gd_scene load_steps=131 format=3 uid="uid://dctf5dkuqnlbd"]
 
 [ext_resource type="Script" path="res://Scripts/ScriptGenerales/HUD.gd" id="1_foxvc"]
-[ext_resource type="Texture2D" uid="uid://oohkrcri714h" path="res://Assets/Menus/UI Package/Windows/6-2.png" id="1_ndv70"]
 [ext_resource type="Texture2D" uid="uid://0l4y7v8fk8u7" path="res://Assets/Jugador/hurt.png" id="2_5mdul"]
+[ext_resource type="Texture2D" uid="uid://kmugs5dgddsq" path="res://Assets/Menus/UI Package/Windows/7-2.png" id="2_8f85u"]
 [ext_resource type="Texture2D" uid="uid://dxgbju2okta1r" path="res://Assets/Jugador/swordIdle.png" id="4_ebng2"]
 [ext_resource type="Texture2D" uid="uid://dx04cir1m6rdc" path="res://Assets/Jugador/idle.png" id="4_o5sxu"]
 [ext_resource type="Texture2D" uid="uid://c74655i3mc32f" path="res://Assets/Jugador/run.png" id="5_ai4l7"]
 [ext_resource type="Texture2D" uid="uid://djiu04cungk6" path="res://Assets/Jugador/swordWalk.png" id="6_pdw6r"]
 [ext_resource type="Texture2D" uid="uid://orrmh1613teo" path="res://Assets/Jugador/walk.png" id="6_y7pep"]
-[ext_resource type="Texture2D" uid="uid://ca5wrotdudwj1" path="res://Assets/Menus/UI Package/Windows/6-1.png" id="7_bgfyr"]
 [ext_resource type="Texture2D" uid="uid://c1iqdwa8k6a23" path="res://Assets/Jugador/swordRun.png" id="8_c6icl"]
 [ext_resource type="Texture2D" uid="uid://bihamjc7w0qp7" path="res://Assets/Jugador/cross.png" id="9_c6k22"]
 [ext_resource type="Texture2D" uid="uid://brcxty1ltkukq" path="res://Assets/Jugador/swordStab.png" id="10_ya664"]
 [ext_resource type="Texture2D" uid="uid://byfmubqd083xw" path="res://Assets/Jugador/jab.png" id="11_0qf46"]
 [ext_resource type="Texture2D" uid="uid://u1n6cjrt06ry" path="res://Assets/Jugador/swordAttack.png" id="12_7imgi"]
 [ext_resource type="Texture2D" uid="uid://x1a36esai0qq" path="res://Assets/Jugador/roll.png" id="13_icyjj"]
+[ext_resource type="Texture2D" uid="uid://c63c2xsrldcke" path="res://Assets/Menus/UI Package/Windows/7-1.png" id="15_srk21"]
 [ext_resource type="Texture2D" uid="uid://by5ml67srdp0i" path="res://Assets/Menus/UI Package/Status/5-2.png" id="17_5ejt6"]
 [ext_resource type="Texture2D" uid="uid://bvpovofd5yidq" path="res://Assets/Menus/UI Package/Status/1-4.png" id="18_8lbvp"]
 [ext_resource type="Texture2D" uid="uid://dqn5wr14uwmpu" path="res://Assets/Menus/UI Package/Status/3-1.png" id="18_r36en"]
@@ -749,6 +749,20 @@ colors = PackedColorArray(0.607843, 0.215686, 0.760784, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_m1roq"]
 gradient = SubResource("Gradient_wlg42")
 
+[sub_resource type="Gradient" id="Gradient_lmby1"]
+offsets = PackedFloat32Array(0.548077)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d5y3p"]
+gradient = SubResource("Gradient_lmby1")
+
+[sub_resource type="Gradient" id="Gradient_fops8"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.299547, 0.299547, 0.299547, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fvaj5"]
+gradient = SubResource("Gradient_fops8")
+
 [sub_resource type="Gradient" id="Gradient_4e8ys"]
 offsets = PackedFloat32Array(0.548077)
 colors = PackedColorArray(0.454902, 0.0117647, 0.0117647, 1)
@@ -791,7 +805,7 @@ offset_bottom = -28.0
 [node name="FondoDisplay" type="Sprite2D" parent="Display"]
 position = Vector2(125, 108)
 scale = Vector2(1, 0.86)
-texture = ExtResource("1_ndv70")
+texture = ExtResource("2_8f85u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Display/FondoDisplay"]
 position = Vector2(-3, 6.97676)
@@ -800,35 +814,35 @@ sprite_frames = SubResource("SpriteFrames_kwxtb")
 animation = &"1"
 
 [node name="DisplayPlayer" type="Sprite2D" parent="Display/FondoDisplay"]
-position = Vector2(27.0001, -0.581413)
+position = Vector2(-0.999901, -0.581413)
 scale = Vector2(1, 0.98837)
-texture = ExtResource("7_bgfyr")
+texture = ExtResource("15_srk21")
 
 [node name="Stamina" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 303.0
+offset_left = 236.0
 offset_top = 124.0
-offset_right = 343.0
+offset_right = 276.0
 offset_bottom = 164.0
 
 [node name="Bar" type="Sprite2D" parent="Stamina"]
 modulate = Color(0.439216, 0.439216, 0.439216, 1)
-position = Vector2(111.35, -44.4)
+position = Vector2(110.75, -44)
 scale = Vector2(1.41156, 1.66667)
 texture = ExtResource("17_5ejt6")
 
-[node name="Heart" type="Sprite2D" parent="Stamina"]
+[node name="Stamina" type="Sprite2D" parent="Stamina"]
 position = Vector2(-14.4, -44.4)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("18_r36en")
 
 [node name="StaminaBar" type="TextureProgressBar" parent="Stamina"]
 layout_mode = 0
-offset_left = 12.0
-offset_top = -50.0
-offset_right = 210.0
-offset_bottom = -40.0
+offset_left = 11.3996
+offset_top = -49.6
+offset_right = 209.4
+offset_bottom = -39.6
 max_value = 10.0
 value = 9.0
 rounded = true
@@ -836,12 +850,55 @@ nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_qwaw1")
 texture_progress = SubResource("GradientTexture2D_m1roq")
 
+[node name="Level" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 546.0
+offset_top = 169.0
+offset_right = 586.0
+offset_bottom = 209.0
+
+[node name="Bar" type="Sprite2D" parent="Level"]
+modulate = Color(0.439216, 0.439216, 0.439216, 1)
+position = Vector2(466.75, -107)
+scale = Vector2(1.41156, 1.66667)
+texture = ExtResource("17_5ejt6")
+
+[node name="LevelBar" type="TextureProgressBar" parent="Level"]
+layout_mode = 0
+offset_left = 367.399
+offset_top = -112.6
+offset_right = 565.4
+offset_bottom = -102.6
+max_value = 10.0
+value = 9.0
+rounded = true
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_d5y3p")
+texture_progress = SubResource("GradientTexture2D_fvaj5")
+
+[node name="Level" type="Label" parent="Level"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -22.1499
+anchor_top = -0.05
+anchor_right = -22.1499
+anchor_bottom = -0.05
+offset_left = 1296.0
+offset_top = -172.0
+offset_right = 1458.0
+offset_bottom = -88.0
+theme_override_fonts/font = ExtResource("23_qc206")
+theme_override_font_sizes/font_size = 20
+text = "LEVEL"
+metadata/_edit_use_anchors_ = true
+
 [node name="Health" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 304.0
+offset_left = 237.0
 offset_top = 77.0
-offset_right = 344.0
+offset_right = 277.0
 offset_bottom = 117.0
 
 [node name="Heart" type="Sprite2D" parent="Health"]
@@ -872,29 +929,29 @@ texture_progress = SubResource("GradientTexture2D_ovmgg")
 layout_mode = 3
 anchors_preset = 0
 offset_left = 305.0
-offset_top = 148.0
+offset_top = 149.0
 offset_right = 345.0
-offset_bottom = 188.0
+offset_bottom = 189.0
 
 [node name="Sword" type="Sprite2D" parent="Sword"]
 modulate = Color(1, 1, 0.258824, 1)
-position = Vector2(-16, -33)
+position = Vector2(-83, -33)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("20_nlc71")
 flip_v = true
 
 [node name="Bar" type="Sprite2D" parent="Sword"]
 modulate = Color(0.439216, 0.439216, 0.439216, 1)
-position = Vector2(109.75, -34)
+position = Vector2(41.75, -32)
 scale = Vector2(1.41156, 1.66667)
 texture = ExtResource("17_5ejt6")
 
 [node name="SwordBar" type="TextureProgressBar" parent="Sword"]
 layout_mode = 0
-offset_left = 11.0
-offset_top = -39.0
-offset_right = 209.0
-offset_bottom = -29.0
+offset_left = -57.0
+offset_top = -37.0
+offset_right = 141.0
+offset_bottom = -27.0
 max_value = 10.0
 value = 9.0
 rounded = true
@@ -909,9 +966,9 @@ anchor_top = -0.125
 anchor_right = 0.149998
 anchor_bottom = -0.125
 offset_left = 1560.0
-offset_top = 129.0
+offset_top = 127.0
 offset_right = 1722.0
-offset_bottom = 213.0
+offset_bottom = 211.0
 theme_override_fonts/font = ExtResource("23_qc206")
 theme_override_font_sizes/font_size = 20
 text = "ESC"

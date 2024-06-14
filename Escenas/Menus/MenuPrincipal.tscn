@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b38j3beja0otb"]
+[gd_scene load_steps=37 format=3 uid="uid://b38j3beja0otb"]
 
 [ext_resource type="Script" path="res://Scripts/ScriptGenerales/menuPrincipal.gd" id="1_hsuiw"]
 [ext_resource type="Texture2D" uid="uid://c8oyw36wdjhc" path="res://Assets/Menus/UI Package/Elements/4-2.png" id="2_fi35q"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://blbivdegy7x36" path="res://Assets/Sounds and Music/multi-pop-1-188165.mp3" id="13_cmodt"]
 [ext_resource type="Texture2D" uid="uid://c43f27w0ut8a6" path="res://Assets/Menus/UI Package/Elements/4-3.png" id="13_tgurp"]
 [ext_resource type="PackedScene" uid="uid://dibi57amadjkv" path="res://Escenas/Menus/Ajustes.tscn" id="14_5horq"]
+[ext_resource type="PackedScene" uid="uid://o1nyy8i03d02" path="res://Escenas/Menus/Credits.tscn" id="15_awfed"]
 [ext_resource type="AudioStream" uid="uid://gqw2fsrgxf5m" path="res://Assets/Sounds and Music/confirm-38513.mp3" id="17_dvd6g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jk3yo"]
@@ -994,6 +995,7 @@ _data = {
 position = Vector2(71, 25)
 script = ExtResource("1_hsuiw")
 metadata/_edit_horizontal_guides_ = [346.0]
+metadata/_edit_vertical_guides_ = [361.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -1228,6 +1230,105 @@ theme_override_font_sizes/font_size = 27
 text = "START"
 metadata/_edit_use_anchors_ = true
 
+[node name="Play" type="Control" parent="Buttons"]
+visible = false
+layout_mode = 1
+anchor_left = -7.25
+anchor_top = 3.5
+anchor_right = -7.25
+anchor_bottom = 3.5
+offset_left = 16.0
+offset_top = -64.0
+offset_right = 56.0
+offset_bottom = -24.0
+scale = Vector2(0.7, 0.7)
+metadata/_edit_use_anchors_ = true
+
+[node name="Play" type="TextureButton" parent="Buttons/Play"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 22.775
+anchor_top = 12.525
+anchor_right = 22.775
+anchor_bottom = 12.525
+offset_left = -105.0
+offset_top = -39.0
+offset_right = -21.0001
+offset_bottom = -3.05176e-05
+scale = Vector2(2.5, 2)
+shortcut_feedback = false
+shortcut_in_tooltip = false
+texture_normal = ExtResource("2_fi35q")
+texture_pressed = ExtResource("13_tgurp")
+texture_hover = ExtResource("3_6imu0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Buttons/Play"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.424998
+anchor_top = -0.125
+anchor_right = 0.424998
+anchor_bottom = -0.125
+offset_left = 837.0
+offset_top = 457.0
+offset_right = 999.0
+offset_bottom = 541.0
+theme_override_fonts/font = ExtResource("4_u1xfb")
+theme_override_font_sizes/font_size = 27
+text = "PLAY"
+metadata/_edit_use_anchors_ = true
+
+[node name="Tutorial" type="Control" parent="Buttons"]
+visible = false
+layout_mode = 1
+anchor_left = -7.25
+anchor_top = 5.075
+anchor_right = -7.25
+anchor_bottom = 5.075
+offset_left = 16.0
+offset_top = -64.0
+offset_right = 56.0
+offset_bottom = -24.0
+scale = Vector2(0.7, 0.7)
+metadata/_edit_use_anchors_ = true
+
+[node name="Tutorial" type="TextureButton" parent="Buttons/Tutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 22.775
+anchor_top = 12.525
+anchor_right = 22.775
+anchor_bottom = 12.525
+offset_left = -105.0
+offset_top = -39.0
+offset_right = -21.0001
+offset_bottom = -3.05176e-05
+scale = Vector2(2.5, 2)
+shortcut_feedback = false
+shortcut_in_tooltip = false
+texture_normal = ExtResource("2_fi35q")
+texture_pressed = ExtResource("13_tgurp")
+texture_hover = ExtResource("3_6imu0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Buttons/Tutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.2
+anchor_top = 0.075
+anchor_right = 1.0
+anchor_bottom = 0.075
+offset_left = 837.0
+offset_top = 457.0
+offset_right = 999.0
+offset_bottom = 541.0
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("4_u1xfb")
+theme_override_font_sizes/font_size = 27
+text = "TUTORIAL"
+metadata/_edit_use_anchors_ = true
+
 [node name="AjustesButton" type="Control" parent="Buttons"]
 anchors_preset = 0
 offset_left = 16.0
@@ -1270,54 +1371,12 @@ theme_override_font_sizes/font_size = 27
 text = "OPTIONS"
 metadata/_edit_use_anchors_ = true
 
-[node name="ExitButton" type="Control" parent="Buttons"]
-anchors_preset = 0
-offset_left = 16.0
-offset_top = -64.0
-offset_right = 56.0
-offset_bottom = -24.0
-
-[node name="Exit" type="TextureButton" parent="Buttons/ExitButton"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -19.075
-anchor_top = 0.15
-anchor_right = -19.075
-anchor_bottom = 0.15
-offset_left = 804.0
-offset_top = 668.0
-offset_right = 888.0
-offset_bottom = 707.0
-scale = Vector2(2.5, 2)
-shortcut_feedback = false
-shortcut_in_tooltip = false
-texture_normal = ExtResource("2_fi35q")
-texture_pressed = ExtResource("13_tgurp")
-texture_hover = ExtResource("3_6imu0")
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="Buttons/ExitButton"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -18.5
-anchor_top = 5.15
-anchor_right = -17.3
-anchor_bottom = 5.15
-offset_left = 837.0
-offset_top = 457.0
-offset_right = 999.0
-offset_bottom = 541.0
-theme_override_fonts/font = ExtResource("4_u1xfb")
-theme_override_font_sizes/font_size = 27
-text = "EXIT"
-metadata/_edit_use_anchors_ = true
-
 [node name="CreditsButton" type="Control" parent="Buttons"]
 anchors_preset = 0
 offset_left = 16.0
-offset_top = 35.0
+offset_top = -62.0
 offset_right = 56.0
-offset_bottom = 75.0
+offset_bottom = -22.0
 
 [node name="Credits" type="TextureButton" parent="Buttons/CreditsButton"]
 layout_mode = 1
@@ -1354,7 +1413,53 @@ theme_override_font_sizes/font_size = 27
 text = "CREDITS"
 metadata/_edit_use_anchors_ = true
 
+[node name="ExitButton" type="Control" parent="Buttons"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 30.0
+offset_right = 56.0
+offset_bottom = 70.0
+
+[node name="Exit" type="TextureButton" parent="Buttons/ExitButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -19.075
+anchor_top = 0.15
+anchor_right = -19.075
+anchor_bottom = 0.15
+offset_left = 804.0
+offset_top = 668.0
+offset_right = 888.0
+offset_bottom = 707.0
+scale = Vector2(2.5, 2)
+shortcut_feedback = false
+shortcut_in_tooltip = false
+texture_normal = ExtResource("2_fi35q")
+texture_pressed = ExtResource("13_tgurp")
+texture_hover = ExtResource("3_6imu0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Buttons/ExitButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -18.5
+anchor_top = 5.15
+anchor_right = -17.3
+anchor_bottom = 5.15
+offset_left = 837.0
+offset_top = 457.0
+offset_right = 999.0
+offset_bottom = 541.0
+theme_override_fonts/font = ExtResource("4_u1xfb")
+theme_override_font_sizes/font_size = 27
+text = "EXIT"
+metadata/_edit_use_anchors_ = true
+
 [node name="Ajustes" parent="." instance=ExtResource("14_5horq")]
+visible = false
+
+[node name="Credits" parent="." instance=ExtResource("15_awfed")]
 visible = false
 
 [node name="FadeTimer" type="Timer" parent="."]
@@ -1387,11 +1492,15 @@ bus = &"SFX"
 [connection signal="timeout" from="Title/Timer" to="." method="_on_timer_timeout"]
 [connection signal="mouse_entered" from="Buttons/StartButton/Start" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Buttons/StartButton/Start" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="Buttons/Play/Play" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Buttons/Play/Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="Buttons/Tutorial/Tutorial" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Buttons/Tutorial/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="mouse_entered" from="Buttons/AjustesButton/Ajustes" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Buttons/AjustesButton/Ajustes" to="." method="_on_ajustes_pressed"]
-[connection signal="mouse_entered" from="Buttons/ExitButton/Exit" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="Buttons/ExitButton/Exit" to="." method="_on_exit_pressed"]
 [connection signal="mouse_entered" from="Buttons/CreditsButton/Credits" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Buttons/CreditsButton/Credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_entered" from="Buttons/ExitButton/Exit" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Buttons/ExitButton/Exit" to="." method="_on_exit_pressed"]
 [connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]
 [connection signal="finished" from="Music_SFX/MusicaMenu" to="." method="_on_musica_menu_finished"]

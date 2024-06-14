@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dd1bv4ft5d738"]
+[gd_scene load_steps=46 format=3 uid="uid://dd1bv4ft5d738"]
 
 [ext_resource type="Script" path="res://Scripts/ScriptGenerales/pantalla1A.gd" id="1_qguei"]
 [ext_resource type="Texture2D" uid="uid://cpghqcjb7u1rg" path="res://Assets/Arena/lava_variation1_spritesheet.png" id="3_4f7oe"]
@@ -13,10 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://tconiwixirvf" path="res://Assets/Arena/volcanoe_small_spritesheet.png" id="10_ihkbj"]
 [ext_resource type="PackedScene" uid="uid://dctf5dkuqnlbd" path="res://Escenas/Menus/HUD.tscn" id="12_qwn2g"]
 [ext_resource type="AudioStream" uid="uid://cq8rauku4t83r" path="res://Assets/Sounds and Music/8-bit-arcade-mode-158814.mp3" id="14_n70s6"]
-[ext_resource type="PackedScene" uid="uid://sisdnkxcj15x" path="res://Escenas/PickUps/SwordPickUp.tscn" id="15_gm4rg"]
-[ext_resource type="PackedScene" uid="uid://cg0olqdrbqjef" path="res://Escenas/PickUps/HealthPickUp.tscn" id="15_vdu3m"]
+[ext_resource type="PackedScene" uid="uid://btf450usnug7x" path="res://Escenas/Menus/StatSelect.tscn" id="14_wnsh1"]
 [ext_resource type="PackedScene" uid="uid://dibi57amadjkv" path="res://Escenas/Menus/Ajustes.tscn" id="15_xj402"]
-[ext_resource type="PackedScene" uid="uid://b1pcxxqggw2nc" path="res://Escenas/PickUps/StaminaPickUp.tscn" id="16_n0cnw"]
+[ext_resource type="AudioStream" uid="uid://q5uc3i5k5qw8" path="res://Assets/Sounds and Music/8-bit-game-158815.mp3" id="16_yl5em"]
+[ext_resource type="Texture2D" uid="uid://x6rv6avro62g" path="res://Assets/Decoration/OrangePortal.png" id="19_4nyp0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c4iq5"]
 texture = ExtResource("3_txpcb")
@@ -883,9 +883,9 @@ sources/1 = SubResource("TileSetAtlasSource_vntee")
 sources/2 = SubResource("TileSetAtlasSource_sq1qk")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qe0nb"]
-vertices = PackedVector2Array(787, 482, 787, 472, 1214, 138, 1218, 927, 785, 624, 563, 629, 599, 629, 596, 657, 169, 929, 757, 657, 754, 624, 599, 437, 599, 469, 564, 470, 170, 135, 756, 438, 756, 468)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 10, 4, 3), PackedInt32Array(11, 12, 13, 14), PackedInt32Array(9, 3, 8, 7), PackedInt32Array(5, 8, 14, 13), PackedInt32Array(11, 14, 2, 15), PackedInt32Array(15, 2, 1, 16)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(161, 125, 1226, 129, 777, 481, 747, 477, 746, 448, 609, 447, 610, 479, 574, 480, 573, 619, 610, 619, 607, 647, 746, 647, 743, 614, 775, 614, 777, 482, 923, 258, 1224, 129, 1229, 937, 159, 940)])
+vertices = PackedVector2Array(1214, 138, 1218, 927, 169, 929, 170, 135)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(161, 125, 1226, 129, 1224, 129, 1229, 937, 159, 940)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="Animation" id="Animation_nvk6c"]
@@ -894,7 +894,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MusicGameplay:volume_db")
+tracks/0/path = NodePath("MusicGameplay1:volume_db")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -956,23 +956,141 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_3g0bf"]
+resource_name = "FadeOutFast"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MusicGameplay1:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -55.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MusicGameplay2:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -55.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_og8rv"]
 _data = {
 "FadeIn": SubResource("Animation_nvk6c"),
-"FadeOut": SubResource("Animation_c5fmc")
+"FadeOut": SubResource("Animation_c5fmc"),
+"FadeOutFast": SubResource("Animation_3g0bf")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w25fh"]
+atlas = ExtResource("19_4nyp0")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_av2n8"]
+atlas = ExtResource("19_4nyp0")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkvqp"]
+atlas = ExtResource("19_4nyp0")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6f8k"]
+atlas = ExtResource("19_4nyp0")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckkha"]
+atlas = ExtResource("19_4nyp0")
+region = Rect2(1280, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73qk8"]
+atlas = ExtResource("19_4nyp0")
+region = Rect2(1600, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vklpx"]
+atlas = ExtResource("19_4nyp0")
+region = Rect2(1920, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knos7"]
+atlas = ExtResource("19_4nyp0")
+region = Rect2(2240, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sajq"]
+atlas = ExtResource("19_4nyp0")
+region = Rect2(2560, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txwg4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w25fh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_av2n8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkvqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6f8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckkha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73qk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vklpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knos7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sajq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_homc5"]
+size = Vector2(60, 86)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj6d1"]
+size = Vector2(1013, 765)
 
 [node name="Pantalla1A" type="Node2D"]
 script = ExtResource("1_qguei")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 modulate = Color(0, 0, 0, 1)
 z_index = 10
-offset_left = -171.0
+offset_left = -166.0
 offset_top = -70.0
-offset_right = 1775.0
+offset_right = 1780.0
 offset_bottom = 1162.0
+color = Color(0, 0, 0, 1)
 
 [node name="Arena" type="TileMap" parent="."]
 texture_filter = 1
@@ -1003,40 +1121,76 @@ navigation_polygon = SubResource("NavigationPolygon_qe0nb")
 [node name="HUD" parent="." instance=ExtResource("12_qwn2g")]
 visible = false
 
-[node name="SpawnPoints" type="Node" parent="."]
+[node name="SpawnPointsA" type="Node" parent="."]
 
-[node name="SpawnPoint" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
+[node name="SpawnPoint" parent="SpawnPointsA" instance=ExtResource("3_vbeci")]
 position = Vector2(855, 421)
 
-[node name="SpawnPoint2" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
+[node name="SpawnPoint2" parent="SpawnPointsA" instance=ExtResource("3_vbeci")]
 position = Vector2(513, 420)
 
-[node name="SpawnPoint3" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
+[node name="SpawnPoint3" parent="SpawnPointsA" instance=ExtResource("3_vbeci")]
 position = Vector2(512, 673)
 
-[node name="SpawnPoint4" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
+[node name="SpawnPoint4" parent="SpawnPointsA" instance=ExtResource("3_vbeci")]
 position = Vector2(848, 678)
 
-[node name="SpawnPoint5" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
+[node name="SpawnPoint5" parent="SpawnPointsA" instance=ExtResource("3_vbeci")]
 position = Vector2(1101, 203)
 
-[node name="SpawnPoint6" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
+[node name="SpawnPoint6" parent="SpawnPointsA" instance=ExtResource("3_vbeci")]
 position = Vector2(248, 213)
 
-[node name="SpawnPoint7" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
+[node name="SpawnPoint7" parent="SpawnPointsA" instance=ExtResource("3_vbeci")]
 position = Vector2(230, 865)
 
-[node name="SpawnPoint8" parent="SpawnPoints" instance=ExtResource("3_vbeci")]
+[node name="SpawnPoint8" parent="SpawnPointsA" instance=ExtResource("3_vbeci")]
 position = Vector2(1150, 854)
+
+[node name="SpawnPointsB" type="Node" parent="."]
+process_mode = 4
+
+[node name="SpawnPoint" parent="SpawnPointsB" instance=ExtResource("3_vbeci")]
+position = Vector2(828, 289)
+
+[node name="SpawnPoint2" parent="SpawnPointsB" instance=ExtResource("3_vbeci")]
+position = Vector2(522, 284)
+
+[node name="SpawnPoint3" parent="SpawnPointsB" instance=ExtResource("3_vbeci")]
+position = Vector2(387, 564)
+
+[node name="SpawnPoint4" parent="SpawnPointsB" instance=ExtResource("3_vbeci")]
+position = Vector2(991, 576)
+
+[node name="SpawnPoint5" parent="SpawnPointsB" instance=ExtResource("3_vbeci")]
+position = Vector2(1058, 330)
+
+[node name="SpawnPoint6" parent="SpawnPointsB" instance=ExtResource("3_vbeci")]
+position = Vector2(275, 343)
+
+[node name="SpawnPoint7" parent="SpawnPointsB" instance=ExtResource("3_vbeci")]
+position = Vector2(515, 847)
+
+[node name="SpawnPoint8" parent="SpawnPointsB" instance=ExtResource("3_vbeci")]
+position = Vector2(933, 861)
 
 [node name="Ajustes" parent="." instance=ExtResource("15_xj402")]
 visible = false
 
-[node name="MusicGameplay" type="AudioStreamPlayer2D" parent="."]
+[node name="StatSelect" parent="." instance=ExtResource("14_wnsh1")]
+visible = false
+
+[node name="MusicGameplay1" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 position = Vector2(680, 553)
 stream = ExtResource("14_n70s6")
 volume_db = -55.0
+bus = &"Music"
+
+[node name="MusicGameplay2" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+position = Vector2(680, 553)
+stream = ExtResource("16_yl5em")
 bus = &"Music"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -1044,11 +1198,33 @@ libraries = {
 "": SubResource("AnimationLibrary_og8rv")
 }
 
-[node name="HeathPickUp" parent="." instance=ExtResource("15_vdu3m")]
-position = Vector2(216, 654)
+[node name="Portal" type="AnimatedSprite2D" parent="."]
+process_mode = 4
+visible = false
+position = Vector2(1158, 535)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_txwg4")
+animation = &"idle"
+autoplay = "idle"
 
-[node name="StaminaPickUp" parent="." instance=ExtResource("16_n0cnw")]
-position = Vector2(304, 793)
+[node name="Area2D" type="Area2D" parent="Portal"]
 
-[node name="SwordPickUp" parent="." instance=ExtResource("15_gm4rg")]
-position = Vector2(314, 695)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal/Area2D"]
+position = Vector2(20, 5)
+shape = SubResource("RectangleShape2D_homc5")
+
+[node name="PickUpTimer" type="Timer" parent="."]
+wait_time = 12.0
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(689.5, 533.5)
+shape = SubResource("RectangleShape2D_rj6d1")
+
+[connection signal="finished" from="MusicGameplay1" to="." method="_on_music_gameplay_finished"]
+[connection signal="finished" from="MusicGameplay2" to="." method="_on_music_gameplay_2_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="Portal/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="PickUpTimer" to="." method="_on_pick_up_timer_timeout"]

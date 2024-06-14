@@ -1,4 +1,10 @@
-extends Node2D
+extends CanvasLayer
 
-func _on_menu_pressed():
-	get_tree().change_scene_to_file("res://Escenas/Menus/MenuPrincipal.tscn")
+# Muestra los creditos (Los sfx no estan colocados ya que son demasiados. 
+# Los assets no utilizados en el proyecto visible no estan colocados pero si en los diversos notepads de las carpetas
+
+func _on_regresar_pressed():
+	visible = false
+
+func _on_regresar_mouse_entered():
+	$SFXButtons.play()

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/ScriptGenerales/healthPickUp.gd" id="1_divpm"]
 [ext_resource type="Texture2D" uid="uid://deow7s3pb7qkd" path="res://Assets/Decoration/HeathAnimation.png" id="2_1c5m4"]
-[ext_resource type="AudioStream" uid="uid://dvgjd8uattipd" path="res://Assets/Sounds and Music/pickup.wav" id="3_8vxxq"]
+[ext_resource type="AudioStream" uid="uid://lxnm0mmxqja6" path="res://Assets/Sounds and Music/coin-pickup-98269.mp3" id="3_gjgjt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rq0wq"]
 atlas = ExtResource("2_1c5m4")
@@ -64,11 +64,12 @@ position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_m2sqp")
 
 [node name="Pickup" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_8vxxq")
+stream = ExtResource("3_gjgjt")
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.2
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

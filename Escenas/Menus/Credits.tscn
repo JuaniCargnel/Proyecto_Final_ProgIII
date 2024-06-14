@@ -1,16 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://o1nyy8i03d02"]
+[gd_scene load_steps=8 format=3 uid="uid://o1nyy8i03d02"]
 
 [ext_resource type="Script" path="res://Scripts/ScriptGenerales/credits.gd" id="1_te7dh"]
 [ext_resource type="Texture2D" uid="uid://b5kvkxxxfec8l" path="res://Assets/Menus/UI Package/Windows/2-3.png" id="2_4d8l7"]
 [ext_resource type="FontFile" uid="uid://b4giw5b8c2ag0" path="res://Assets/Fonts/Pixeled.ttf" id="3_s0cpu"]
-[ext_resource type="Texture2D" uid="uid://bi4t8agyfs8mj" path="res://Assets/Menus/UI Package/Elements/1-2.png" id="4_yxstt"]
-[ext_resource type="Texture2D" uid="uid://ty3svchwcl11" path="res://Assets/Menus/UI Package/Elements/1-1.png" id="5_1ub08"]
-[ext_resource type="Texture2D" uid="uid://c4juy2svmhkdu" path="res://Assets/Decoration/back.png" id="6_4oadw"]
+[ext_resource type="Texture2D" uid="uid://c8oyw36wdjhc" path="res://Assets/Menus/UI Package/Elements/4-2.png" id="4_fim4w"]
+[ext_resource type="Texture2D" uid="uid://c43f27w0ut8a6" path="res://Assets/Menus/UI Package/Elements/4-3.png" id="5_8t52o"]
+[ext_resource type="Texture2D" uid="uid://dyfon2ge4fy1m" path="res://Assets/Menus/UI Package/Elements/4-1.png" id="6_34b24"]
+[ext_resource type="AudioStream" uid="uid://blbivdegy7x36" path="res://Assets/Sounds and Music/multi-pop-1-188165.mp3" id="7_cfjsf"]
 
-[node name="Credits" type="Node2D"]
+[node name="Credits" type="CanvasLayer"]
 script = ExtResource("1_te7dh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.313726)
 offset_left = -16.0
 offset_top = -41.0
 offset_right = 1944.0
@@ -18,49 +20,149 @@ offset_bottom = 1105.0
 color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(968, 576)
+position = Vector2(995.001, 526)
 rotation = 1.5708
-scale = Vector2(3, 3)
+scale = Vector2(3, 2.3)
 texture = ExtResource("2_4d8l7")
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 anchors_preset = -1
 anchor_left = 0.149998
 anchor_top = -0.125
 anchor_right = 0.149998
 anchor_bottom = -0.125
-offset_left = 656.0
-offset_top = -60.0
-offset_right = 1316.0
-offset_bottom = 220.0
+offset_left = 480.004
+offset_top = 292.0
+offset_right = 1140.0
+offset_bottom = 572.0
 theme_override_fonts/font = ExtResource("3_s0cpu")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 70
 text = "CREDITS"
-metadata/_edit_use_anchors_ = true
 
-[node name="Menu" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -681.0
-offset_top = -297.0
-offset_right = -641.0
-offset_bottom = -257.0
+[node name="Art" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.149998
+anchor_top = -0.125
+anchor_right = 0.149998
+anchor_bottom = -0.125
+offset_left = 391.004
+offset_top = 473.0
+offset_right = 1051.0
+offset_bottom = 753.0
+theme_override_fonts/font = ExtResource("3_s0cpu")
+theme_override_font_sizes/font_size = 30
+text = "ART"
 
-[node name="Menu" type="TextureButton" parent="Menu"]
+[node name="ArtCredits" type="Label" parent="Art"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.65
-anchor_right = 1.65
-offset_left = 656.0
-offset_top = 332.0
-offset_right = 696.0
-offset_bottom = 372.0
-scale = Vector2(2, 2)
-texture_normal = ExtResource("4_yxstt")
-texture_pressed = ExtResource("5_1ub08")
+anchor_left = 0.149998
+anchor_top = -0.125
+anchor_right = 0.149998
+anchor_bottom = -0.125
+offset_left = -238.999
+offset_top = 110.0
+offset_right = 421.001
+offset_bottom = 525.0
+theme_override_fonts/font = ExtResource("3_s0cpu")
+theme_override_font_sizes/font_size = 12
+text = "- schwarnhild - Map Tiles - ITCH.IO
+- evercrazy - Background Sky - ITCH.IO
+- littlesmith - Parallax - ITCH.IO
+- rauszy - Slime - ITCHI.IO
+- brullov - Fire Animation - ITCH.IO
+- pimen - Explosion Animation - ITCH.IO
+- zegley - Main Character - ITCH.IO
+- harbingersh - UI Assets - ITCH.IO
+- Grappe - Pixel Portal - ITCH.IO
+- OmegaPC777 - Pixeled Font - DaFonts
 
-[node name="Sprite2D" type="Sprite2D" parent="Menu"]
-position = Vector2(759, 366)
-texture = ExtResource("6_4oadw")
+"
 
-[connection signal="pressed" from="Menu/Menu" to="." method="_on_menu_pressed"]
+[node name="Music" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.149998
+anchor_top = -0.125
+anchor_right = 0.149998
+anchor_bottom = -0.125
+offset_left = 902.004
+offset_top = 473.0
+offset_right = 1562.0
+offset_bottom = 753.0
+theme_override_fonts/font = ExtResource("3_s0cpu")
+theme_override_font_sizes/font_size = 30
+text = "MUSIC
+"
+
+[node name="MusicCredits" type="Label" parent="Music"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.149998
+anchor_top = -0.125
+anchor_right = 0.149998
+anchor_bottom = -0.125
+offset_left = -289.999
+offset_top = 110.0
+offset_right = 370.001
+offset_bottom = 525.0
+theme_override_fonts/font = ExtResource("3_s0cpu")
+theme_override_font_sizes/font_size = 12
+text = "- Lightyeartraxx - KL Peach Game Over III - Pixabay 
+- Moodmode - 8 bit Arcade - Pixabay
+- Moodmode - 8 bit Arcade Mode - Pixabay
+- Moodmode - 8 bit Arcade Game - Pixabay
+
+
+"
+
+[node name="Regresar" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = 454.001
+offset_top = 187.0
+offset_right = 494.001
+offset_bottom = 227.0
+
+[node name="Regresar" type="TextureButton" parent="Regresar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 3.275
+anchor_top = 1.675
+anchor_right = 3.275
+anchor_bottom = 1.675
+offset_left = -105.0
+offset_top = -39.0
+offset_right = -21.0001
+offset_bottom = -3.05176e-05
+scale = Vector2(2.5, 2)
+shortcut_feedback = false
+shortcut_in_tooltip = false
+texture_normal = ExtResource("4_fim4w")
+texture_pressed = ExtResource("5_8t52o")
+texture_hover = ExtResource("6_34b24")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Regresar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -19.025
+anchor_top = -11.0
+anchor_right = -19.025
+anchor_bottom = -11.0
+offset_left = 837.0
+offset_top = 457.0
+offset_right = 999.0
+offset_bottom = 541.0
+theme_override_fonts/font = ExtResource("3_s0cpu")
+theme_override_font_sizes/font_size = 27
+text = "BACK"
+metadata/_edit_use_anchors_ = true
+
+[node name="SFXButtons" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_cfjsf")
+max_polyphony = 5
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="Regresar/Regresar" to="." method="_on_regresar_mouse_entered"]
+[connection signal="pressed" from="Regresar/Regresar" to="." method="_on_regresar_pressed"]

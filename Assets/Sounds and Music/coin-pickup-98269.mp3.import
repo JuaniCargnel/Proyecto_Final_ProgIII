@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://lxnm0mmxqja6"
+path="res://.godot/imported/coin-pickup-98269.mp3-95fb524c563a513ec0ffa44bc5e9edde.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds and Music/coin-pickup-98269.mp3"
+dest_files=["res://.godot/imported/coin-pickup-98269.mp3-95fb524c563a513ec0ffa44bc5e9edde.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

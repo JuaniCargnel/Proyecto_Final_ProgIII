@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://q5uc3i5k5qw8"
+path="res://.godot/imported/8-bit-game-158815.mp3-aaf7df5cce096ff3ea2c77479b9360a3.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds and Music/8-bit-game-158815.mp3"
+dest_files=["res://.godot/imported/8-bit-game-158815.mp3-aaf7df5cce096ff3ea2c77479b9360a3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

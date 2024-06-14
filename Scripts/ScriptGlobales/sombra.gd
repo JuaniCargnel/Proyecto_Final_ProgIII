@@ -1,6 +1,8 @@
 extends Node
 
-func crear_sombras(sprite: AnimatedSprite2D, sombraMarker: Marker2D):
+# Script de las sombras. Genera una sombra en el marker de cada sprite que reproduce las animaciones del sprite
+
+func crear_sombras(sprite: AnimatedSprite2D, sombraMarker: Marker2D): # Crea la sombra y setea las caracteristicas necesarias para su funcionamiento
 	var spriteOriginal = sprite
 	var marker = sombraMarker
 	var sombra = AnimatedSprite2D.new()
@@ -14,7 +16,7 @@ func crear_sombras(sprite: AnimatedSprite2D, sombraMarker: Marker2D):
 	sombra.position = Vector2(marker.position)
 	spriteOriginal.add_child(sombra, true)
 
-func update_sombras():
+func update_sombras(): # Updatea las sombras segun el animated sprite padre
 	var spriteOriginal = get_tree().get_nodes_in_group("sprites")
 	
 	for sprite in spriteOriginal:

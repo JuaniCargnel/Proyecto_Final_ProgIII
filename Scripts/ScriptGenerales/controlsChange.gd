@@ -1,24 +1,24 @@
 extends Control
 
-var awaiting_input = false
-var current_action = ""
+var awaitingInput = false
+var currentAction = ""
 
-func _ready():
+func _ready(): # Al comenzar updatea los labels a las teclas que el player haya decidido
 	update_labels()
 
-func _process(_delta):
-	if !visible:
-		awaiting_input = false
+func _process(_delta): # Si no esta visible actualiza los labels y deja de esperar una tecla
+	if !visible: 
+		awaitingInput = false
 		update_labels()
 
-func _input(event):
-	if awaiting_input and event is InputEventKey and event.pressed:
-		InputMap.action_erase_event(current_action, InputMap.action_get_events(current_action)[0])
-		InputMap.action_add_event(current_action, event)
-		awaiting_input = false
+func _input(event): # Obtiene la tecla presionada al cumplirse las condiciones y la cambia en el mapeo
+	if awaitingInput and event is InputEventKey and event.pressed:
+		InputMap.action_erase_event(currentAction, InputMap.action_get_events(currentAction)[0])
+		InputMap.action_add_event(currentAction, event)
+		awaitingInput = false
 		update_labels()
 
-func update_labels():
+func update_labels(): # Updatea los labels de las teclas a la tecla que este en el mapeo
 	$MoveUp/CenterContainer/Label.text = InputMap.action_get_events("Up")[0].as_text()
 	$MoveDown/CenterContainer/Label.text = InputMap.action_get_events("Down")[0].as_text()
 	$MoveLeft/CenterContainer/Label.text = InputMap.action_get_events("Left")[0].as_text()
@@ -28,50 +28,51 @@ func update_labels():
 	$HitB/CenterContainer/Label.text = InputMap.action_get_events("GolpeB")[0].as_text()
 	$Roll/CenterContainer/Label.text = InputMap.action_get_events("Roll")[0].as_text()
 
+# Al presionar el boton indicado, espera un nuevo input para mapear la tecla
 func _on_move_up_pressed():
-	if !awaiting_input:
-		awaiting_input = true
-		current_action = "Up"
+	if !awaitingInput:
+		awaitingInput = true
+		currentAction = "Up"
 		$MoveUp/CenterContainer/Label.text = "..."
 
 func _on_move_down_pressed():
-	if !awaiting_input:
-		awaiting_input = true
-		current_action = "Down"
+	if !awaitingInput:
+		awaitingInput = true
+		currentAction = "Down"
 		$MoveDown/CenterContainer/Label.text = "..."
 
 func _on_move_left_pressed():
-	if !awaiting_input:
-		awaiting_input = true
-		current_action = "Left"
+	if !awaitingInput:
+		awaitingInput = true
+		currentAction = "Left"
 		$MoveLeft/CenterContainer/Label.text = "..."
 
 func _on_move_right_pressed():
-	if !awaiting_input:
-		awaiting_input = true
-		current_action = "Right"
+	if !awaitingInput:
+		awaitingInput = true
+		currentAction = "Right"
 		$MoveRight/CenterContainer/Label.text = "..."
 
 func _on_hit_a_pressed():
-	if !awaiting_input:
-		awaiting_input = true
-		current_action = "GolpeA"
+	if !awaitingInput:
+		awaitingInput = true
+		currentAction = "GolpeA"
 		$HitA/CenterContainer/Label.text = "..."
 
 func _on_hit_b_pressed():
-	if !awaiting_input:
-		awaiting_input = true
-		current_action = "GolpeB"
+	if !awaitingInput:
+		awaitingInput = true
+		currentAction = "GolpeB"
 		$HitB/CenterContainer/Label.text = "..."
 
 func _on_roll_pressed():
-	if !awaiting_input:
-		awaiting_input = true
-		current_action = "Roll"
+	if !awaitingInput:
+		awaitingInput = true
+		currentAction = "Roll"
 		$Roll/CenterContainer/Label.text = "..."
 
 func _on_run_pressed():
-	if !awaiting_input:
-		awaiting_input = true
-		current_action = "Correr"
+	if !awaitingInput:
+		awaitingInput = true
+		currentAction = "Correr"
 		$Run/CenterContainer/Label.text = "..."

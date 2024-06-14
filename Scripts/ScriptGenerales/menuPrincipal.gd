@@ -1,6 +1,11 @@
 extends Node2D
 
+# Menu principal. Ejecuta un parallax de una ciudad destruida y una animacion del player corriendo. Al cambiar el color tambien lo cambia del titulo y del player corriendo
+# Las funciones y partes del codigo comentados son para la implementacion de una pantalla tutorial
+
 var speeds = [1, 1, 1, 1]
+var tutorial = false
+var play = false
 
 func _ready():
 	GlobalStats.partidaComenzada = false
@@ -27,16 +32,24 @@ func cambio_de_fondo(delta):
 			$ParallaxBackground/TileMap.set_layer_modulate(3 - i, Color(1, 1, 1, speeds[i]))
 		elif speeds[i] < 0:
 			speeds[i] = 0
-	
+
 func _on_start_pressed():
+	#if $Buttons/Play.visible:
+		#$Buttons/Play.visible = false
+		#$Buttons/Tutorial.visible = false
+	#else:
+		#$Buttons/Play.visible = true
+		#$Buttons/Tutorial.visible = true
 	$AnimationPlayer.play("fade")
 	$Music_SFX/StartGame.play()
 	$Buttons/StartButton/Start.disabled = true
+	$Buttons/Play/Play.disabled = true
+	$Buttons/Tutorial/Tutorial.disabled = true
 	$Buttons/AjustesButton/Ajustes.disabled = true
 	$Buttons/ExitButton/Exit.disabled = true
 	$Buttons/CreditsButton/Credits.disabled = true
 	$FadeTimer.start()
-	
+
 func _on_ajustes_pressed():
 	$Ajustes.visible = true
 
@@ -44,7 +57,7 @@ func _on_exit_pressed():
 	get_tree().quit()
 
 func _on_credits_pressed():
-	get_tree().change_scene_to_file("res://Escenas/Menus/Credits.tscn")
+	$Credits.visible = true
 
 func _on_timer_timeout():
 	if $Title/Name0.modulate == Color(GlobalStats.hexColor):
@@ -62,6 +75,10 @@ func _on_timer_timeout():
 
 func _on_fade_timer_timeout():
 	get_tree().change_scene_to_file("res://Escenas/Niveles/Pantalla1A.tscn")
+	#if tutorial:
+		#get_tree().change_scene_to_file("res://Escenas/Niveles/PantallaEntrenamiento.tscn")
+	#elif play:
+		#get_tree().change_scene_to_file("res://Escenas/Niveles/Pantalla1A.tscn")
 
 func _on_musica_menu_finished():
 	$Music_SFX/MusicaMenu.play()
@@ -69,3 +86,29 @@ func _on_musica_menu_finished():
 func _on_button_mouse_entered():
 	if !$Buttons/StartButton/Start.disabled:
 		$Music_SFX/SFXButtons.play()
+
+func _on_play_pressed():
+	#play = true
+	#$AnimationPlayer.play("fade")
+	#$Music_SFX/StartGame.play()
+	#$Buttons/StartButton/Start.disabled = true
+	#$Buttons/Play/Play.disabled = true
+	#$Buttons/Tutorial/Tutorial.disabled = true
+	#$Buttons/AjustesButton/Ajustes.disabled = true
+	#$Buttons/ExitButton/Exit.disabled = true
+	#$Buttons/CreditsButton/Credits.disabled = true
+	#$FadeTimer.start()
+	pass
+
+func _on_tutorial_pressed():
+	#tutorial = true
+	#$AnimationPlayer.play("fade")
+	#$Music_SFX/StartGame.play()
+	#$Buttons/StartButton/Start.disabled = true
+	#$Buttons/AjustesButton/Ajustes.disabled = true
+	#$Buttons/Play/Play.disabled = true
+	#$Buttons/Tutorial/Tutorial.disabled = true
+	#$Buttons/ExitButton/Exit.disabled = true
+	#$Buttons/CreditsButton/Credits.disabled = true
+	#$FadeTimer.start()
+	pass

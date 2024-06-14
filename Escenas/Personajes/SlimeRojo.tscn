@@ -412,6 +412,7 @@ wait_time = 0.7
 
 [node name="Dmg" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_uf004")
+volume_db = -5.0
 
 [connection signal="body_entered" from="FollowArea" to="." method="_on_follow_area_body_entered"]
 [connection signal="body_exited" from="FollowArea" to="." method="_on_follow_area_body_exited"]

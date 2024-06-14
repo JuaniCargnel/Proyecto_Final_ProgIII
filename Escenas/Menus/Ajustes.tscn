@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dibi57amadjkv"]
+[gd_scene load_steps=36 format=3 uid="uid://dibi57amadjkv"]
 
 [ext_resource type="Script" path="res://Scripts/ScriptGenerales/ajustes.gd" id="1_87nkk"]
 [ext_resource type="Texture2D" uid="uid://b5kvkxxxfec8l" path="res://Assets/Menus/UI Package/Windows/2-3.png" id="2_kntcw"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://vn3pke3qnt8r" path="res://Assets/Menus/UI Package/Elements/12-2.png" id="9_jysbi"]
 [ext_resource type="Texture2D" uid="uid://br1ei0fp1l55e" path="res://Assets/Menus/UI Package/Elements/12-3.png" id="10_lj70l"]
 [ext_resource type="Texture2D" uid="uid://cg0taurqina84" path="res://Assets/Menus/UI Package/Elements/12-1.png" id="11_b8hto"]
+[ext_resource type="Texture2D" uid="uid://c8dxywuakyxu6" path="res://Assets/Decoration/FullScreen.png" id="11_uvq0g"]
+[ext_resource type="Texture2D" uid="uid://bow5l74rres50" path="res://Assets/Decoration/ExitFullScreen.png" id="12_fnjkb"]
 [ext_resource type="Texture2D" uid="uid://c05kirukgabi5" path="res://Assets/Menus/UI Package/Elements/7-2.png" id="13_e715x"]
 [ext_resource type="Script" path="res://Scripts/ScriptGenerales/controlsChange.gd" id="14_5ftlc"]
 [ext_resource type="AudioStream" uid="uid://blbivdegy7x36" path="res://Assets/Sounds and Music/multi-pop-1-188165.mp3" id="17_7d4nt"]
@@ -137,16 +139,23 @@ rotation = -1.57079
 scale = Vector2(2, 1.5)
 texture = ExtResource("2_kntcw")
 
-[node name="MenuName" type="Label" parent="."]
+[node name="Name" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MenuName" type="Label" parent="Name"]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = -19.025
 anchor_top = -11.0
 anchor_right = -19.025
 anchor_bottom = -11.0
-offset_left = 37543.0
-offset_top = 12204.0
-offset_right = 38253.0
-offset_bottom = 12337.0
+offset_left = 1796.0
+offset_top = 765.0
+offset_right = 2459.0
+offset_bottom = 898.0
 theme_override_fonts/font = ExtResource("4_hhw24")
 theme_override_font_sizes/font_size = 27
 text = "AUDIO"
@@ -330,6 +339,16 @@ theme_override_font_sizes/font_size = 27
 text = "3
 "
 metadata/_edit_use_anchors_ = true
+
+[node name="FullScreen" type="TextureButton" parent="."]
+offset_left = 1842.0
+offset_top = 15.0
+offset_right = 1879.0
+offset_bottom = 48.0
+scale = Vector2(1.7, 1.7)
+toggle_mode = true
+texture_normal = ExtResource("11_uvq0g")
+texture_pressed = ExtResource("12_fnjkb")
 
 [node name="ColorChange" type="Control" parent="."]
 visible = false
@@ -783,9 +802,13 @@ bus = &"SFX"
 [connection signal="pressed" from="Buttons/2/2Button" to="." method="_on_2button_pressed"]
 [connection signal="mouse_entered" from="Buttons/3/3Button" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Buttons/3/3Button" to="." method="_on_3button_pressed"]
+[connection signal="button_down" from="FullScreen" to="." method="_on_full_screen_button_down"]
 [connection signal="color_changed" from="ColorChange/ColorPicker" to="." method="_on_color_picker_color_changed"]
+[connection signal="mouse_entered" from="SoundChange/Master" to="." method="_on_button_mouse_entered"]
 [connection signal="value_changed" from="SoundChange/Master" to="." method="_on_master_value_changed"]
+[connection signal="mouse_entered" from="SoundChange/Music" to="." method="_on_button_mouse_entered"]
 [connection signal="value_changed" from="SoundChange/Music" to="." method="_on_music_value_changed"]
+[connection signal="mouse_entered" from="SoundChange/SFX" to="." method="_on_button_mouse_entered"]
 [connection signal="value_changed" from="SoundChange/SFX" to="." method="_on_sfx_value_changed"]
 [connection signal="mouse_entered" from="ControlsChange/MoveUp" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ControlsChange/MoveUp" to="ControlsChange" method="_on_move_up_pressed"]
