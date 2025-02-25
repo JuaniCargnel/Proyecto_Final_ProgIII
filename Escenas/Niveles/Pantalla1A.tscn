@@ -1078,12 +1078,13 @@ animations = [{
 size = Vector2(60, 86)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rj6d1"]
-size = Vector2(1013, 765)
+size = Vector2(1041.5, 806.5)
 
 [node name="Pantalla1A" type="Node2D"]
 script = ExtResource("1_qguei")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 1)
 z_index = 10
 offset_left = -166.0
@@ -1116,6 +1117,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(-131100, 0, 0, -26, 393217, 0, 1900552, 0, 0, 1769478, 2, 0, 1769480, 327681, 0, 3997661, 131073, 3, 3997663, 196609, 3, 3866589, 131073, 2, 3866591, 196609, 2, 3735517, 131073, 1, 3735519, 196609, 1, 4063201, 131073, 0, 4128734, 458753, 3, 4128732, 393217, 3, 1835061, 65537, 5, 1835059, 1, 5, 1703987, 1, 4, 1703989, 65537, 4, 1966132, 327681, 3, 1966134, 393217, 3, 2097202, 327681, 2, 2097200, 262145, 2, 1966128, 262145, 1, 1966130, 327681, 1, 1572914, 458753, 0, 1638449, 393217, 0, 1507380, 393217, 1, 1638452, 393217, 2, 1507382, 458753, 1, 1638454, 458753, 2, 65539, 327681, 0, -262146, 393217, 0, -393204, 458753, 0, -393207, 196609, 0, -393211, 262145, 3, 4, 458753, 0)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-1527, -83)
 navigation_polygon = SubResource("NavigationPolygon_qe0nb")
 
 [node name="HUD" parent="." instance=ExtResource("12_qwn2g")]
@@ -1220,7 +1222,7 @@ autostart = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(689.5, 533.5)
+position = Vector2(-833, 446)
 shape = SubResource("RectangleShape2D_rj6d1")
 
 [connection signal="finished" from="MusicGameplay1" to="." method="_on_music_gameplay_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dibi57amadjkv"]
+[gd_scene load_steps=35 format=3 uid="uid://dibi57amadjkv"]
 
 [ext_resource type="Script" path="res://Scripts/ScriptGenerales/ajustes.gd" id="1_87nkk"]
 [ext_resource type="Texture2D" uid="uid://b5kvkxxxfec8l" path="res://Assets/Menus/UI Package/Windows/2-3.png" id="2_kntcw"]
@@ -19,9 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://c05kirukgabi5" path="res://Assets/Menus/UI Package/Elements/7-2.png" id="13_e715x"]
 [ext_resource type="Script" path="res://Scripts/ScriptGenerales/controlsChange.gd" id="14_5ftlc"]
 [ext_resource type="AudioStream" uid="uid://blbivdegy7x36" path="res://Assets/Sounds and Music/multi-pop-1-188165.mp3" id="17_7d4nt"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_umwhs"]
-load_path = "res://.godot/imported/1-2.png-a5cd6ba0681ed23f79c55b27c5fb2ae5.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3b556"]
 atlas = ExtResource("3_vpwaw")
@@ -250,14 +247,14 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.65
 anchor_right = 1.65
-offset_left = 732.999
-offset_top = 321.999
-offset_right = 772.999
-offset_bottom = 361.999
+offset_left = 690.0
+offset_top = 327.999
+offset_right = 774.0
+offset_bottom = 367.999
 scale = Vector2(2, 2)
-texture_normal = ExtResource("6_se3k2")
-texture_pressed = ExtResource("8_q0u08")
-texture_hover = ExtResource("7_vo6pl")
+texture_normal = ExtResource("2_u80gf")
+texture_pressed = ExtResource("5_ej2fp")
+texture_hover = ExtResource("3_ckj6g")
 
 [node name="Label" type="Label" parent="Buttons/1"]
 layout_mode = 1
@@ -266,13 +263,13 @@ anchor_left = -4.625
 anchor_top = -1.05
 anchor_right = -4.625
 anchor_bottom = -1.05
-offset_left = 1016.0
-offset_top = 353.999
-offset_right = 1178.0
-offset_bottom = 437.999
+offset_left = 968.001
+offset_top = 360.0
+offset_right = 1130.0
+offset_bottom = 444.0
 theme_override_fonts/font = ExtResource("4_hhw24")
 theme_override_font_sizes/font_size = 27
-text = "1
+text = "AUDIO
 "
 
 [node name="2" type="Control" parent="Buttons"]
@@ -282,29 +279,30 @@ offset_bottom = 40.0
 
 [node name="2Button" type="TextureButton" parent="Buttons/2"]
 layout_mode = 0
-offset_left = 728.999
-offset_top = 426.999
-offset_right = 768.999
-offset_bottom = 466.999
+offset_left = 685.0
+offset_top = 422.0
+offset_right = 769.0
+offset_bottom = 462.0
 scale = Vector2(2, 2)
-texture_normal = SubResource("CompressedTexture2D_umwhs")
-texture_pressed = ExtResource("8_q0u08")
-texture_hover = ExtResource("7_vo6pl")
+texture_normal = ExtResource("2_u80gf")
+texture_pressed = ExtResource("5_ej2fp")
+texture_hover = ExtResource("3_ckj6g")
 
 [node name="Label" type="Label" parent="Buttons/2"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -6.55
-anchor_top = 1.6
-anchor_right = -6.55
-anchor_bottom = 1.6
+anchor_left = -7.975
+anchor_top = 1.52503
+anchor_right = -7.975
+anchor_bottom = 1.52503
 offset_left = 1016.0
 offset_top = 353.999
 offset_right = 1178.0
 offset_bottom = 437.999
+scale = Vector2(0.9, 0.9)
 theme_override_fonts/font = ExtResource("4_hhw24")
 theme_override_font_sizes/font_size = 27
-text = "2"
+text = "COLORS"
 metadata/_edit_use_anchors_ = true
 
 [node name="3" type="Control" parent="Buttons"]
@@ -314,30 +312,30 @@ offset_bottom = 40.0
 
 [node name="3Button" type="TextureButton" parent="Buttons/3"]
 layout_mode = 0
-offset_left = 728.999
-offset_top = 526.999
-offset_right = 768.999
-offset_bottom = 566.999
+offset_left = 685.0
+offset_top = 513.0
+offset_right = 769.0
+offset_bottom = 553.0
 scale = Vector2(2, 2)
-texture_normal = ExtResource("6_se3k2")
-texture_pressed = ExtResource("8_q0u08")
-texture_hover = ExtResource("7_vo6pl")
+texture_normal = ExtResource("2_u80gf")
+texture_pressed = ExtResource("5_ej2fp")
+texture_hover = ExtResource("3_ckj6g")
 
 [node name="Label" type="Label" parent="Buttons/3"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -6.525
-anchor_top = 4.075
-anchor_right = -6.525
-anchor_bottom = 4.075
+anchor_left = -8.1
+anchor_top = 4.07503
+anchor_right = -6.625
+anchor_bottom = 4.07503
 offset_left = 1016.0
 offset_top = 353.999
 offset_right = 1178.0
 offset_bottom = 437.999
+scale = Vector2(0.7, 0.7)
 theme_override_fonts/font = ExtResource("4_hhw24")
 theme_override_font_sizes/font_size = 27
-text = "3
-"
+text = "CONTROLS"
 metadata/_edit_use_anchors_ = true
 
 [node name="FullScreen" type="TextureButton" parent="."]

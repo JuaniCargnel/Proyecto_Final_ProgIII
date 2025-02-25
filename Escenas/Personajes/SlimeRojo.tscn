@@ -333,16 +333,16 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_07mwf"]
-radius = 8.0
+radius = 12.0416
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_glbs7"]
 radius = 136.059
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1g17t"]
-size = Vector2(45, 15)
+size = Vector2(65, 19.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_40ccq"]
-radius = 8.06226
+radius = 12.1655
 
 [node name="SlimeRojo" type="CharacterBody2D" groups=["enemigos"]]
 z_index = 2
@@ -353,10 +353,12 @@ motion_mode = 1
 script = ExtResource("1_pibnr")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
-position = Vector2(0, 6)
+texture_filter = 1
+position = Vector2(1.54972e-06, 6)
+scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_x8442")
-animation = &"idle"
-frame_progress = 0.497336
+animation = &"death"
+frame = 13
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -376,7 +378,7 @@ debug_color = Color(0.733333, 0.627451, 1, 0.231373)
 [node name="DeathArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
-position = Vector2(0, 4)
+position = Vector2(1.5, 1.75)
 shape = SubResource("RectangleShape2D_1g17t")
 debug_color = Color(0.686275, 0, 0.168627, 0.419608)
 
