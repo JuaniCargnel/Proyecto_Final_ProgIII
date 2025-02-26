@@ -333,20 +333,21 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_07mwf"]
-radius = 12.0416
+radius = 8.89445
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_glbs7"]
-radius = 136.059
+radius = 75.3451
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1g17t"]
-size = Vector2(65, 19.5)
+size = Vector2(45, 19.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_40ccq"]
-radius = 12.1655
+radius = 8.69228
 
 [node name="SlimeRojo" type="CharacterBody2D" groups=["enemigos"]]
 z_index = 2
-position = Vector2(0, -6)
+texture_filter = 1
+scale = Vector2(1.4, 1.4)
 collision_layer = 2
 collision_mask = 2
 motion_mode = 1
@@ -355,41 +356,48 @@ script = ExtResource("1_pibnr")
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
 texture_filter = 1
 position = Vector2(1.54972e-06, 6)
-scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_x8442")
-animation = &"death"
-frame = 13
+animation = &"idle"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+texture_filter = 1
 position = Vector2(0, 4)
 rotation = -1.5708
 shape = SubResource("CircleShape2D_07mwf")
 
 [node name="SombraMark" type="Marker2D" parent="."]
+texture_filter = 1
 position = Vector2(-4, 6)
 
 [node name="FollowArea" type="Area2D" parent="."]
+texture_filter = 1
 position = Vector2(0, 6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FollowArea"]
+texture_filter = 1
 shape = SubResource("CircleShape2D_glbs7")
 debug_color = Color(0.733333, 0.627451, 1, 0.231373)
 
 [node name="DeathArea" type="Area2D" parent="."]
+texture_filter = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
-position = Vector2(1.5, 1.75)
+texture_filter = 1
+position = Vector2(-1.07143, 2)
 shape = SubResource("RectangleShape2D_1g17t")
 debug_color = Color(0.686275, 0, 0.168627, 0.419608)
 
 [node name="DmgArea" type="Area2D" parent="."]
+texture_filter = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DmgArea"]
+texture_filter = 1
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_40ccq")
 debug_color = Color(0.686275, 0, 0.168627, 0.419608)
 
 [node name="Navigation" type="Node2D" parent="."]
+texture_filter = 1
 position = Vector2(0, 6)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]

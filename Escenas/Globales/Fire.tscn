@@ -143,6 +143,7 @@ radius = 19.0
 
 [node name="Fire" type="Area2D" groups=["enemigos"]]
 z_index = 2
+texture_filter = 1
 script = ExtResource("1_hs6wr")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]

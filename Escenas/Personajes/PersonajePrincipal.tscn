@@ -33,17 +33,11 @@ motion_mode = 1
 script = ExtResource("1_svxvs")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
+texture_filter = 1
 material = SubResource("ShaderMaterial_e75ik")
 sprite_frames = ExtResource("3_nta07")
 animation = &"idle"
 metadata/SombraMark = Vector2(0, 0)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
-limit_left = 0
-limit_top = 0
-limit_right = 1400
-limit_bottom = 1080
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 11)

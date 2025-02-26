@@ -795,6 +795,7 @@ gradient = SubResource("Gradient_ehbl3")
 script = ExtResource("1_foxvc")
 
 [node name="Display" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = -17.0
@@ -819,6 +820,7 @@ scale = Vector2(1, 0.98837)
 texture = ExtResource("15_srk21")
 
 [node name="Stamina" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = 236.0
@@ -851,6 +853,7 @@ texture_under = SubResource("GradientTexture2D_qwaw1")
 texture_progress = SubResource("GradientTexture2D_m1roq")
 
 [node name="Level" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = 546.0
@@ -860,16 +863,16 @@ offset_bottom = 209.0
 
 [node name="Bar" type="Sprite2D" parent="Level"]
 modulate = Color(0.439216, 0.439216, 0.439216, 1)
-position = Vector2(466.75, -107)
+position = Vector2(-432.25, 32)
 scale = Vector2(1.41156, 1.66667)
 texture = ExtResource("17_5ejt6")
 
 [node name="LevelBar" type="TextureProgressBar" parent="Level"]
 layout_mode = 0
-offset_left = 367.399
-offset_top = -112.6
-offset_right = 565.4
-offset_bottom = -102.6
+offset_left = -531.601
+offset_top = 26.4
+offset_right = -333.6
+offset_bottom = 36.4
 max_value = 10.0
 value = 9.0
 rounded = true
@@ -884,16 +887,17 @@ anchor_left = -22.1499
 anchor_top = -0.05
 anchor_right = -22.1499
 anchor_bottom = -0.05
-offset_left = 1296.0
-offset_top = -172.0
-offset_right = 1458.0
-offset_bottom = -88.0
+offset_left = 397.0
+offset_top = -33.0
+offset_right = 559.0
+offset_bottom = 51.0
 theme_override_fonts/font = ExtResource("23_qc206")
 theme_override_font_sizes/font_size = 20
 text = "LEVEL"
 metadata/_edit_use_anchors_ = true
 
 [node name="Health" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = 237.0
@@ -926,6 +930,7 @@ texture_under = SubResource("GradientTexture2D_rx5k5")
 texture_progress = SubResource("GradientTexture2D_ovmgg")
 
 [node name="Sword" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = 305.0
@@ -960,6 +965,7 @@ texture_under = SubResource("GradientTexture2D_vi7up")
 texture_progress = SubResource("GradientTexture2D_tyds2")
 
 [node name="Label" type="Label" parent="."]
+texture_filter = 1
 anchors_preset = -1
 anchor_left = 0.149998
 anchor_top = -0.125

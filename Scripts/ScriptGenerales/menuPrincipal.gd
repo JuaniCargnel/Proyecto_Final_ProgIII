@@ -9,12 +9,10 @@ var play = false
 
 func _ready():
 	GlobalStats.partidaComenzada = false
-	$Title/Name1.modulate = GlobalStats.hexColor
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	$AnimationPlayer.play("intro")
 
 func _process(delta):
-	$ParallaxBackground/Player.modulate = GlobalStats.hexColor
 	cambio_de_fondo(delta)
 	if speeds[3] <= 0.5:
 		speeds[0] += 0.008

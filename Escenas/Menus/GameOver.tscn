@@ -62,6 +62,7 @@ _data = {
 }
 
 [node name="GameOver" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_jyfv4")
 
 [node name="Node" type="Node2D" parent="."]

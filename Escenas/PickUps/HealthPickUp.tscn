@@ -51,19 +51,23 @@ animations = [{
 radius = 13.0
 
 [node name="HeathPickUp" type="Area2D"]
+texture_filter = 1
 script = ExtResource("1_divpm")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2d5lg")
 animation = &"Idle"
 autoplay = "Idle"
 frame_progress = 0.00308662
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_m2sqp")
 
 [node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+texture_filter = 1
 stream = ExtResource("3_gjgjt")
 volume_db = 5.0
 bus = &"SFX"

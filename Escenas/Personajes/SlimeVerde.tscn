@@ -216,40 +216,47 @@ animations = [{
 radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_glbs7"]
-radius = 136.059
+radius = 61.4244
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kyngu"]
 radius = 8.06226
 
 [node name="SlimeVerde" type="CharacterBody2D" groups=["enemigos"]]
 z_index = 2
+texture_filter = 1
 position = Vector2(0, -6)
+scale = Vector2(1.4, 1.4)
 collision_layer = 2
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_m42yw")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
+texture_filter = 1
 position = Vector2(0, 6)
 sprite_frames = SubResource("SpriteFrames_x8442")
 animation = &"idle"
 frame_progress = 0.851484
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+texture_filter = 1
 position = Vector2(0, 3.99999)
 rotation = 3.14159
 shape = SubResource("CircleShape2D_tuonm")
 
 [node name="SombraMark" type="Marker2D" parent="."]
+texture_filter = 1
 position = Vector2(-4, 6)
 
 [node name="FollowArea" type="Area2D" parent="."]
+texture_filter = 1
 position = Vector2(0, 6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FollowArea"]
 shape = SubResource("CircleShape2D_glbs7")
 
 [node name="DmgArea" type="Area2D" parent="."]
+texture_filter = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DmgArea"]
 position = Vector2(0, 4)
@@ -257,6 +264,7 @@ shape = SubResource("CircleShape2D_kyngu")
 debug_color = Color(0.686275, 0, 0.168627, 0.419608)
 
 [node name="Navigation" type="Node2D" parent="."]
+texture_filter = 1
 position = Vector2(0, 6)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]

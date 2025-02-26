@@ -6,9 +6,10 @@ var player: PackedScene = preload("res://Escenas/Personajes/PersonajePrincipal.t
 var staminaPickUp: PackedScene = preload("res://Escenas/PickUps/StaminaPickUp.tscn")
 var swordPickUp: PackedScene = preload("res://Escenas/PickUps/SwordPickUp.tscn")
 var healthPickUp: PackedScene = preload("res://Escenas/PickUps/HealthPickUp.tscn")
+var fireColumn: PackedScene = preload("res://Escenas/Globales/FireColumn.tscn")
 
 var arrayPickUps = [healthPickUp, swordPickUp, staminaPickUp] 
-
+var cameraZoom = 2
 var colorPlayer = 0
 var crossPortal = false
 
@@ -20,13 +21,13 @@ func _ready(): # Inicializa el primer nivel con las variables necesarias para su
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	GlobalStats.enemyCounter = 0
-	GlobalStats.maxEnemyCounter = 10
+	GlobalStats.maxEnemyCounter = 5
 	GlobalStats.actualLevel = 1 
 	GlobalStats.enemyLifeIncrement = 1
 	GlobalStats.enemyDmgIncress = 1
-	GlobalStats.maxSlimeVerde = 12
-	GlobalStats.maxSlimeRojo = 8
-	GlobalStats.maxSlimeMage = 5
+	GlobalStats.maxSlimeVerde = 4
+	GlobalStats.maxSlimeRojo = 3
+	GlobalStats.maxSlimeMage = 2
 	GlobalStats.playerWin = false
 	
 func _process(_delta): # Procesa el fade del player, el progreso de los niveles y la muerte del jugador
@@ -52,6 +53,9 @@ func instance_player(): # Instancia al player
 
 func player_death(): # Funcion de la muerte del player
 	if !GlobalStats.alive and !GlobalStats.playerWin:
+		cameraZoom += 0.05
+		$Camera2D.global_position = GlobalStats.positionPlayer
+		$Camera2D.zoom = Vector2(cameraZoom, cameraZoom)
 		$MusicGameplay1.stop()
 		$MusicGameplay2.stop()
 		$AnimationPlayer.play("FadeOut")
@@ -61,7 +65,7 @@ func level_progress(): # Sistema de progreso de nivel. Cambia las variables glob
 	if GlobalStats.enemyCounter >= GlobalStats.maxEnemyCounter and GlobalStats.actualLevel == 1:
 		GlobalStats.selectStatistic = true
 		GlobalStats.enemyCounter = 0
-		GlobalStats.maxEnemyCounter = 15
+		GlobalStats.maxEnemyCounter = 7
 		GlobalStats.actualLevel = 2
 		GlobalStats.enemyLifeIncrement = 1.15
 		GlobalStats.enemyDmgIncress = 1.1
@@ -70,15 +74,12 @@ func level_progress(): # Sistema de progreso de nivel. Cambia las variables glob
 	elif GlobalStats.enemyCounter >= GlobalStats.maxEnemyCounter and GlobalStats.actualLevel == 2:
 		GlobalStats.selectStatistic = true
 		GlobalStats.enemyCounter = 0
-		GlobalStats.maxEnemyCounter = 20
+		GlobalStats.maxEnemyCounter = 9
 		GlobalStats.actualLevel = 3
 		GlobalStats.enemyLifeIncrement = 1.25
 		GlobalStats.enemyDmgIncress = 1.15
 		$StatSelect.visible = true
 		get_tree().paused = true
-		$SpawnPointsB.set_process_mode(Node.PROCESS_MODE_INHERIT)
-		GlobalStats.maxSlimeVerde = 25
-		GlobalStats.maxSlimeRojo = 15
 	elif GlobalStats.enemyCounter >= GlobalStats.maxEnemyCounter and GlobalStats.actualLevel == 3:
 		GlobalStats.selectStatistic = true
 		GlobalStats.enemyCounter = 0
@@ -87,13 +88,13 @@ func level_progress(): # Sistema de progreso de nivel. Cambia las variables glob
 		GlobalStats.enemyDmgIncress = 1.2
 		$StatSelect.visible = true
 		get_tree().paused = true
-		GlobalStats.maxSlimeVerde = 17
-		GlobalStats.maxSlimeRojo = 12
-		GlobalStats.maxSlimeMage = 7
+		GlobalStats.maxSlimeVerde = 8
+		GlobalStats.maxSlimeRojo = 5
+		GlobalStats.maxSlimeMage = 4
 	elif GlobalStats.enemyCounter >= GlobalStats.maxEnemyCounter and GlobalStats.actualLevel == 4:
 		GlobalStats.selectStatistic = true
 		GlobalStats.enemyCounter = 0
-		GlobalStats.maxEnemyCounter = 25
+		GlobalStats.maxEnemyCounter = 11
 		GlobalStats.actualLevel = 5
 		GlobalStats.enemyLifeIncrement = 1.50
 		GlobalStats.enemyDmgIncress = 1.25
@@ -107,9 +108,9 @@ func level_progress(): # Sistema de progreso de nivel. Cambia las variables glob
 		GlobalStats.enemyDmgIncress = 1.5
 		$StatSelect.visible = true
 		get_tree().paused = true
-		GlobalStats.maxSlimeVerde = 20
-		GlobalStats.maxSlimeRojo = 15
-		GlobalStats.maxSlimeMage = 7
+		GlobalStats.maxSlimeVerde = 10
+		GlobalStats.maxSlimeRojo = 8
+		GlobalStats.maxSlimeMage = 6
 	elif GlobalStats.enemyCounter >= GlobalStats.maxEnemyCounter and GlobalStats.actualLevel == 6:
 		GlobalStats.playerWin = true
 		GlobalStats.alive = false
@@ -132,20 +133,24 @@ func _on_animation_player_animation_finished(anim_name): # Al terminar la animac
 	if anim_name == "FadeOutFast":
 		get_tree().change_scene_to_file("res://Escenas/Menus/Win.tscn")
 
-func _on_pick_up_timer_timeout(): # Genera un pickup evitando el centro (solamente genera en las esquinas del mapa)
-	var x = randi_range(-$Area2D/CollisionShape2D.shape.extents.x, $Area2D/CollisionShape2D.shape.extents.x)
-	var y = randf_range(-$Area2D/CollisionShape2D.shape.extents.y, $Area2D/CollisionShape2D.shape.extents.y)
+func _on_pick_up_timer_timeout(): # Genera un pickup 
+	#var x = randi_range(-$Area2D/CollisionShape2D.shape.extents.x, $Area2D/CollisionShape2D.shape.extents.x)
+	#var y = randf_range(-$Area2D/CollisionShape2D.shape.extents.y, $Area2D/CollisionShape2D.shape.extents.y)
 	
-	while y >= -110 and y <= 110:
-		y = randi_range(-$Area2D/CollisionShape2D.shape.extents.y, $Area2D/CollisionShape2D.shape.extents.y)
-	while x >= -110 and x <= 110:
-		x = randi_range(-$Area2D/CollisionShape2D.shape.extents.y, $Area2D/CollisionShape2D.shape.extents.y)
+	var x = randi_range(810, 1220)
+	var y = randf_range(370, 785)
 	
 	if GlobalStats.maxPickUpsScreen.size() < 5 and !GlobalStats.playerWin: # Genera un pickup aleatorio hasta un maximo de 5 en el array
 		var pickupIndex = randi() % arrayPickUps.size()
 		var pickupInstance = arrayPickUps[pickupIndex].instantiate()
-		pickupInstance.position = Vector2(x,y) + $Area2D/CollisionShape2D.global_position
 		add_child(pickupInstance)
+		pickupInstance.global_position = Vector2(x,y) 
 		GlobalStats.maxPickUpsScreen.append(pickupInstance)
 
+# Hacer que salgan en diversas posicione del eje Y. En lo posible, ambos lados. Tambien que con lo snivele baje el tiempo 
+# En el que sale. 
+func _on_timer_timeout():
+	var fireColumnInstance = fireColumn.instantiate()
+	add_child(fireColumnInstance)
+	fireColumnInstance.global_position = Vector2(730,500)
 

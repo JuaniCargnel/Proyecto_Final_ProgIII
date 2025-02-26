@@ -100,7 +100,7 @@ func recibir_dmg(): # Al recibir dmg ejecuta el knockback en la direccion contra
 ########################################################################################
 
 func _on_timer_timeout(): # Sigue la posicion de los pies del jugador
-	navigationAgent.target_position = Vector2(GlobalStats.positionPlayer.x , GlobalStats.positionPlayer.y + 12)
+	navigationAgent.target_position = Vector2(GlobalStats.positionPlayer.x , GlobalStats.positionPlayer.y)
 
 func _on_follow_area_body_entered(body): # Sigue al jugador y deja de estar en random
 	if body.is_in_group("player"):

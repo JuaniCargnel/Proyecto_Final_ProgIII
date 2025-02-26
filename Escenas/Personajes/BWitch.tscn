@@ -359,3 +359,10 @@ shape = SubResource("CapsuleShape2D_cqu8g")
 
 [node name="SombraMark" type="Marker2D" parent="."]
 position = Vector2(-14, 24)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = 0
+limit_right = 1400
+limit_bottom = 1080

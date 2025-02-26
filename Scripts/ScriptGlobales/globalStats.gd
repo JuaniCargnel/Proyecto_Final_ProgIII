@@ -32,9 +32,9 @@ var playerWin: bool = false
 
 var enemyLifeIncrement: float = 1
 var enemyDmgIncress: float = 1
-var maxSlimeVerde: int = 12
-var maxSlimeRojo: int = 8
-var maxSlimeMage: int = 5
+var maxSlimeVerde: int = 4
+var maxSlimeRojo: int = 3
+var maxSlimeMage: int = 2
 
 var maxPickUpsScreen: Array = []
 

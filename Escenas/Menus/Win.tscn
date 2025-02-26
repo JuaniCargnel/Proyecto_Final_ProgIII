@@ -61,19 +61,24 @@ _data = {
 }
 
 [node name="Win" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_q11v0")
 
 [node name="Node" type="Node2D" parent="."]
 modulate = Color(0, 0, 0, 1)
+texture_filter = 1
 
 [node name="ColorRect" type="ColorRect" parent="Node"]
+texture_filter = 1
 offset_left = -16.0
 offset_top = -41.0
 offset_right = 1944.0
 offset_bottom = 1105.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="Node/ColorRect"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.149998
@@ -87,8 +92,10 @@ offset_bottom = 640.25
 theme_override_fonts/font = ExtResource("2_wdi2d")
 theme_override_font_sizes/font_size = 90
 text = "YOU WIN! "
+metadata/_edit_use_anchors_ = true
 
 [node name="Title2" type="Label" parent="Node/ColorRect"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.149998
@@ -102,8 +109,10 @@ offset_bottom = 834.25
 theme_override_fonts/font = ExtResource("2_wdi2d")
 theme_override_font_sizes/font_size = 50
 text = "Thanks for playing! "
+metadata/_edit_use_anchors_ = true
 
 [node name="Title3" type="Label" parent="Node/ColorRect"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.149998
@@ -117,16 +126,20 @@ offset_bottom = 959.25
 theme_override_fonts/font = ExtResource("2_wdi2d")
 theme_override_font_sizes/font_size = 20
 text = "To be continue..."
+metadata/_edit_use_anchors_ = true
 
 [node name="Menu" type="Control" parent="Node/ColorRect"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = 113.0
 offset_top = 313.0
 offset_right = 153.0
 offset_bottom = 353.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Menu" type="TextureButton" parent="Node/ColorRect/Menu"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.65
@@ -139,8 +152,10 @@ scale = Vector2(2, 2)
 texture_normal = ExtResource("3_svin2")
 texture_pressed = ExtResource("4_xra1n")
 texture_hover = ExtResource("5_t8rm8")
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Node/ColorRect/Menu/Menu"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 14.0005
 offset_top = -4.99951
@@ -151,8 +166,10 @@ theme_override_fonts/font = ExtResource("2_wdi2d")
 theme_override_font_sizes/font_size = 27
 text = "Menu"
 uppercase = true
+metadata/_edit_use_anchors_ = true
 
 [node name="SFXButtons" type="AudioStreamPlayer2D" parent="."]
+texture_filter = 1
 stream = ExtResource("6_j5rw3")
 max_polyphony = 5
 bus = &"SFX"

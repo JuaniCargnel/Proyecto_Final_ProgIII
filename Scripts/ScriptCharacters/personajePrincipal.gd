@@ -18,7 +18,6 @@ var comboB: bool = false
 
 # Variables generales
 var lookDerecha: bool = true
-var cameraZoom = 3
 var vidaAnterior = GlobalStats.playerLife
 var direccion = Vector2()
 var valorTmpRoll = Vector2()
@@ -45,7 +44,7 @@ func _ready(): # Seteo de variables globales al instanciar al jugador (En caso d
 	$Sprite.modulate = Color(GlobalStats.hexColor)
 	$Sprite.material.set_shader_parameter("modulate_color", modulate)
 	Sombra.crear_sombras($Sprite, $SombraMark)
-	global_position = Vector2(500,500)
+	global_position = Vector2(1000,550)
 
 func _process(delta): # Process del jugador - Si esta vivo - Si gano y no esta vivo (Provisorio) - Si murio
 	if GlobalStats.alive:
@@ -58,9 +57,6 @@ func _process(delta): # Process del jugador - Si esta vivo - Si gano y no esta v
 		regen_stamina()
 		estados(delta)
 		animations()
-	else:
-		cameraZoom += 0.05
-		$Camera2D.zoom = Vector2(cameraZoom, cameraZoom)
 		
 	Sombra.update_sombras() # Update de las sombras para seguir las animaciones 
 

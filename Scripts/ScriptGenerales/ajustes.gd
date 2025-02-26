@@ -28,7 +28,6 @@ func _process(_delta): # El process de los ajustes
 	$SoundChange/Music.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))
 	$SoundChange/SFX.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))
 	$SoundChange/Master.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
-	$ColorChange/ColorPicker/Player.modulate = Color(GlobalStats.hexColor)
 
 func _on_color_picker_color_changed(color): # Color Picker para el player
 	GlobalStats.hexColor = color
@@ -45,30 +44,8 @@ func _on_1button_pressed(): # Menu de audio
 	$Name/MenuName.scale = Vector2(1,1)
 	$Buttons.position = Vector2(-3,105)
 	$Window.scale = Vector2(2,1.5)
-	$ColorChange.visible = false
 	$SoundChange.visible = true
 	$ControlsChange.visible = false
-
-func _on_2button_pressed(): # Menu de cambio de color
-	if !GlobalStats.partidaComenzada:
-		$Name/MenuName.text = "COLOR CHANGE"
-		$Name/MenuName.position = Vector2(906,317)
-		$Name/MenuName.scale = Vector2(1,1)
-		$Buttons.position = Vector2(-30,100)
-		$Window.scale = Vector2(2,1.6)
-		$ColorChange.visible = true
-		$SoundChange.visible = false
-		$ControlsChange.visible = false
-	else:
-		$Name/MenuName.text = "YOU CAN'T CHANGE THE COLORS DURING THE GAME!"
-		$Name/MenuName.position = Vector2(930,450)
-		$Name/MenuName.size = Vector2(500,240)
-		$Name/MenuName.scale = Vector2(0.8,0.8)
-		$Buttons.position = Vector2(-30,100)
-		$Window.scale = Vector2(2,1.6)
-		$ColorChange.visible = false
-		$SoundChange.visible = false
-		$ControlsChange.visible = false
 
 func _on_3button_pressed(): # Menu de controles
 	$Name/MenuName.text = "CONTROLS"
@@ -77,7 +54,6 @@ func _on_3button_pressed(): # Menu de controles
 	$Buttons.position = Vector2(-125,103)
 	$Window.scale = Vector2(2,2)
 	$ControlsChange.visible = true
-	$ColorChange.visible = false
 	$SoundChange.visible = false
 
 func _on_menu_pressed(): # Boton para regresar al menu

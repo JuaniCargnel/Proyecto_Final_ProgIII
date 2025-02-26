@@ -13,6 +13,7 @@ script = ExtResource("1_te7dh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0.313726)
+texture_filter = 1
 offset_left = -16.0
 offset_top = -41.0
 offset_right = 1944.0
@@ -20,12 +21,14 @@ offset_bottom = 1105.0
 color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(995.001, 526)
 rotation = 1.5708
 scale = Vector2(3, 2.3)
 texture = ExtResource("2_4d8l7")
 
 [node name="Title" type="Label" parent="."]
+texture_filter = 1
 anchors_preset = -1
 anchor_left = 0.149998
 anchor_top = -0.125
@@ -40,6 +43,7 @@ theme_override_font_sizes/font_size = 70
 text = "CREDITS"
 
 [node name="Art" type="Label" parent="."]
+texture_filter = 1
 anchors_preset = -1
 anchor_left = 0.149998
 anchor_top = -0.125
@@ -80,6 +84,7 @@ text = "- schwarnhild - Map Tiles - ITCH.IO
 "
 
 [node name="Music" type="Label" parent="."]
+texture_filter = 1
 anchors_preset = -1
 anchor_left = 0.149998
 anchor_top = -0.125
@@ -117,6 +122,7 @@ text = "- Lightyeartraxx - KL Peach Game Over III - Pixabay
 
 [node name="Regresar" type="Control" parent="."]
 process_mode = 3
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = 454.001

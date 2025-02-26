@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmj8g0k72blrv"]
+
+[ext_resource type="PackedScene" uid="uid://bxivxintdvyo1" path="res://Escenas/Globales/Fire.tscn" id="1_b2r2t"]
+[ext_resource type="Script" path="res://Scripts/ScriptGenerales/FireColumn.gd" id="1_debt4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htdht"]
+
+[node name="FireColumn" type="Area2D"]
+script = ExtResource("1_debt4")
+
+[node name="Fire" parent="." instance=ExtResource("1_b2r2t")]
+position = Vector2(80, 0)
+
+[node name="Fire2" parent="." instance=ExtResource("1_b2r2t")]
+position = Vector2(80, 5)
+
+[node name="Fire3" parent="." instance=ExtResource("1_b2r2t")]
+position = Vector2(80, 10)
+
+[node name="Fire4" parent="." instance=ExtResource("1_b2r2t")]
+position = Vector2(80, 15)
+
+[node name="Fire5" parent="." instance=ExtResource("1_b2r2t")]
+position = Vector2(80, 20)
+
+[node name="Fire6" parent="." instance=ExtResource("1_b2r2t")]
+position = Vector2(80, 25)
+
+[node name="Fire7" parent="." instance=ExtResource("1_b2r2t")]
+position = Vector2(80, 30)
+
+[node name="Fire8" parent="." instance=ExtResource("1_b2r2t")]
+position = Vector2(80, 35)
+
+[node name="Fire9" parent="." instance=ExtResource("1_b2r2t")]
+position = Vector2(80, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_htdht")

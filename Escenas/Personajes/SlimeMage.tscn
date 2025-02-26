@@ -189,13 +189,16 @@ radius = 8.06226
 
 [node name="SlimeMage" type="CharacterBody2D" groups=["enemigos"]]
 z_index = 2
+texture_filter = 1
 position = Vector2(0, -6)
+scale = Vector2(1.4, 1.4)
 collision_layer = 2
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_ek683")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
+texture_filter = 1
 material = SubResource("ShaderMaterial_rr7ql")
 position = Vector2(0, 6)
 sprite_frames = SubResource("SpriteFrames_x8442")
@@ -203,22 +206,28 @@ animation = &"death"
 frame_progress = 0.757519
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+texture_filter = 1
 position = Vector2(0, 3.99999)
 rotation = 3.14159
 shape = SubResource("CircleShape2D_tuonm")
 
 [node name="SombraMark" type="Marker2D" parent="."]
+texture_filter = 1
 position = Vector2(-4, 6)
 
 [node name="ShootingArea" type="Area2D" parent="."]
+texture_filter = 1
 position = Vector2(0, 6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShootingArea"]
+texture_filter = 1
 shape = SubResource("CircleShape2D_glbs7")
 
 [node name="DmgArea" type="Area2D" parent="."]
+texture_filter = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DmgArea"]
+texture_filter = 1
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_kyngu")
 debug_color = Color(0.686275, 0, 0.168627, 0.419608)
