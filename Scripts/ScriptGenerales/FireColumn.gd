@@ -1,8 +1,9 @@
 extends Area2D
 
+var movimiento:int = 0
 
 func _process(_delta):
-	if $Fire != null:
-		global_position.x += 1
-	else:
+	if $Fire == null:
 		queue_free()
+	else:
+		global_position.x += movimiento

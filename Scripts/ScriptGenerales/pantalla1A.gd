@@ -147,10 +147,61 @@ func _on_pick_up_timer_timeout(): # Genera un pickup
 		pickupInstance.global_position = Vector2(x,y) 
 		GlobalStats.maxPickUpsScreen.append(pickupInstance)
 
-# Hacer que salgan en diversas posicione del eje Y. En lo posible, ambos lados. Tambien que con lo snivele baje el tiempo 
+# En lo posible, ambos lados. Tambien que con lo snivele baje el tiempo 
 # En el que sale. 
 func _on_timer_timeout():
-	var fireColumnInstance = fireColumn.instantiate()
-	add_child(fireColumnInstance)
-	fireColumnInstance.global_position = Vector2(730,500)
+	$Node2D2/Sprite.play("Ataque")
+	var tiempo
+	
+	if GlobalStats.actualLevel <= 2:
+		tiempo = randi_range(7, 10)
+	elif GlobalStats.actualLevel > 2 and GlobalStats.actualLevel <= 4:
+		tiempo = randi_range(5, 7)
+	elif GlobalStats.actualLevel > 4 and GlobalStats.actualLevel <= 6:
+		tiempo = randi_range(3, 5)
+	
+	$Node2D2/Timer.set_wait_time(tiempo)
+	print($Node2D2/Timer.get_wait_time())
 
+func _on_timer_2_timeout():
+	$Node2D/Sprite.play("Ataque")
+	var tiempo
+	
+	if GlobalStats.actualLevel <= 2:
+		tiempo = randi_range(7, 10)
+	elif GlobalStats.actualLevel > 2 and GlobalStats.actualLevel <= 4:
+		tiempo = randi_range(5, 7)
+	elif GlobalStats.actualLevel > 4 and GlobalStats.actualLevel <= 6:
+		tiempo = randi_range(3, 5)
+	
+	$Node2D/Timer2.set_wait_time(tiempo)
+	print($Node2D/Timer2.get_wait_time())
+
+
+func _on_sprite_animation_looped():
+	if $Node2D2/Sprite.get_animation() == "Ataque":
+		$Node2D2/Sprite.play("Idle")
+
+func _on_sprite_frame_changed():
+	if $Node2D2/Sprite.get_animation() == "Ataque" and $Node2D2/Sprite.frame == 8:
+		var y = randf_range(365, 738)
+		var fireColumnInstance = fireColumn.instantiate()
+		add_child(fireColumnInstance)
+		fireColumnInstance.global_position = Vector2(750,y)
+		fireColumnInstance.movimiento = 1
+
+
+
+
+func _on_sprite_animation_looped_2():
+	if $Node2D/Sprite.get_animation() == "Ataque":
+		$Node2D/Sprite.play("Idle")
+
+
+func _on_sprite_frame_changed_2():
+	if $Node2D/Sprite.get_animation() == "Ataque" and $Node2D/Sprite.frame == 8:
+		var y = randf_range(365, 738)
+		var fireColumnInstance = fireColumn.instantiate()
+		add_child(fireColumnInstance)
+		fireColumnInstance.global_position = Vector2(1135,y)
+		fireColumnInstance.movimiento = -1

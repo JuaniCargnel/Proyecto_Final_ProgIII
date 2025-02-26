@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dd1bv4ft5d738"]
+[gd_scene load_steps=46 format=3 uid="uid://dd1bv4ft5d738"]
 
 [ext_resource type="Script" path="res://Scripts/ScriptGenerales/pantalla1A.gd" id="1_qguei"]
 [ext_resource type="Texture2D" uid="uid://cpghqcjb7u1rg" path="res://Assets/Arena/lava_variation1_spritesheet.png" id="3_4f7oe"]
@@ -1081,13 +1081,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_homc5"]
 size = Vector2(60, 86)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj6d1"]
-size = Vector2(434, 453)
-
 [node name="Pantalla1A" type="Node2D"]
 texture_filter = 1
 position = Vector2(970, 513)
 script = ExtResource("1_qguei")
+metadata/_edit_vertical_guides_ = [741.0, 714.0]
+metadata/_edit_horizontal_guides_ = [363.0, 738.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(37, 101)
@@ -1095,13 +1094,12 @@ rotation = 3.14159
 zoom = Vector2(2, 2)
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 z_index = 10
 texture_filter = 1
-offset_left = 1327.0
-offset_top = -402.0
-offset_right = 3273.0
-offset_bottom = 830.0
+offset_left = -938.0
+offset_top = -552.0
+offset_right = 1008.0
+offset_bottom = 680.0
 color = Color(0, 0, 0, 1)
 
 [node name="Arena" type="TileMap" parent="."]
@@ -1197,19 +1195,10 @@ shape = SubResource("RectangleShape2D_homc5")
 wait_time = 12.0
 autostart = true
 
-[node name="Area2D" type="Area2D" parent="."]
-texture_filter = 1
-position = Vector2(70, 31)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-texture_filter = 1
-position = Vector2(-22, 32)
-shape = SubResource("RectangleShape2D_rj6d1")
-
 [node name="Node2D" parent="." instance=ExtResource("18_l3ra6")]
 position = Vector2(382, 47)
 
-[node name="Timer" type="Timer" parent="Node2D"]
+[node name="Timer2" type="Timer" parent="Node2D"]
 wait_time = 10.0
 autostart = true
 
@@ -1219,11 +1208,21 @@ position = Vector2(-256, 45)
 [node name="Sprite" parent="Node2D2" index="0"]
 flip_h = true
 
+[node name="Timer" type="Timer" parent="Node2D2"]
+wait_time = 10.0
+autostart = true
+
 [connection signal="finished" from="MusicGameplay1" to="." method="_on_music_gameplay_finished"]
 [connection signal="finished" from="MusicGameplay2" to="." method="_on_music_gameplay_2_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Portal/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="PickUpTimer" to="." method="_on_pick_up_timer_timeout"]
-[connection signal="timeout" from="Node2D/Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_looped" from="Node2D/Sprite" to="." method="_on_sprite_animation_looped_2"]
+[connection signal="frame_changed" from="Node2D/Sprite" to="." method="_on_sprite_frame_changed_2"]
+[connection signal="timeout" from="Node2D/Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="animation_looped" from="Node2D2/Sprite" to="." method="_on_sprite_animation_looped"]
+[connection signal="frame_changed" from="Node2D2/Sprite" to="." method="_on_sprite_frame_changed"]
+[connection signal="timeout" from="Node2D2/Timer" to="." method="_on_timer_timeout"]
 
+[editable path="Node2D"]
 [editable path="Node2D2"]

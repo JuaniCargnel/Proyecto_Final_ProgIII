@@ -210,4 +210,4 @@ autoplay = "Idle"
 frame_progress = 0.911466
 
 [node name="SombraMark" type="Marker2D" parent="."]
-position = Vector2(-30, 48)
+position = Vector2(-32, 50)

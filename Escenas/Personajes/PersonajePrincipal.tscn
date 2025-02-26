@@ -69,7 +69,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="RollTimer" type="Timer" parent="Timers"]
-wait_time = 2.0
+wait_time = 1.5
 one_shot = true
 
 [node name="HitB" type="Timer" parent="Timers"]

@@ -6,3 +6,7 @@ func _ready():
 
 func _process(_delta):
 	Sombra.update_sombras()
+
+
+
+

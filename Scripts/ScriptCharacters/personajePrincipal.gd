@@ -179,13 +179,13 @@ func running(): # Correr - Al igual que rodar y golpear, se puede hacer si y sol
 		animRun = false
 
 func rolling(): # Rodar
-	if Input.is_action_pressed("Roll") and canRoll and not animHitA and not animHitB and direccion != Vector2.ZERO and GlobalStats.playerStamina > 101:
+	if Input.is_action_pressed("Roll") and canRoll and not animHitA and not animHitB and direccion != Vector2.ZERO and GlobalStats.playerStamina > 51:
 		animRoll = true
 		canRoll = false
 		valorTmpRoll = direccion
 		$Timers/Roll.start()
 		$DmgArea/CollisionShape2D.disabled = true
-		GlobalStats.playerStamina -= 100
+		GlobalStats.playerStamina -= 50
 		$SFX/Roll.play()
 	elif animRoll: # Gestion de combos (Los combos son las acciones instantaneas luego de realizar una accion)
 		if Input.is_action_pressed("GolpeA"):

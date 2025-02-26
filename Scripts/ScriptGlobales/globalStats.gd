@@ -39,3 +39,5 @@ var maxSlimeMage: int = 2
 var maxPickUpsScreen: Array = []
 
 var hexColor:Color = Color("ffffff")
+
+var derecha: bool = true
