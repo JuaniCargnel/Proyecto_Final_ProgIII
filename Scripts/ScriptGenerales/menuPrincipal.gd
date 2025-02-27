@@ -32,21 +32,21 @@ func cambio_de_fondo(delta):
 			speeds[i] = 0
 
 func _on_start_pressed():
-	#if $Buttons/Play.visible:
-		#$Buttons/Play.visible = false
-		#$Buttons/Tutorial.visible = false
-	#else:
-		#$Buttons/Play.visible = true
-		#$Buttons/Tutorial.visible = true
-	$AnimationPlayer.play("fade")
-	$Music_SFX/StartGame.play()
-	$Buttons/StartButton/Start.disabled = true
-	$Buttons/Play/Play.disabled = true
-	$Buttons/Tutorial/Tutorial.disabled = true
-	$Buttons/AjustesButton/Ajustes.disabled = true
-	$Buttons/ExitButton/Exit.disabled = true
-	$Buttons/CreditsButton/Credits.disabled = true
-	$FadeTimer.start()
+	if $Buttons/Play.visible:
+		$Buttons/Play.visible = false
+		$Buttons/Tutorial.visible = false
+	else:
+		$Buttons/Play.visible = true
+		$Buttons/Tutorial.visible = true
+	#$AnimationPlayer.play("fade")
+	#$Music_SFX/StartGame.play()
+	#$Buttons/StartButton/Start.disabled = true
+	#$Buttons/Play/Play.disabled = true
+	#$Buttons/Tutorial/Tutorial.disabled = true
+	#$Buttons/AjustesButton/Ajustes.disabled = true
+	#$Buttons/ExitButton/Exit.disabled = true
+	#$Buttons/CreditsButton/Credits.disabled = true
+	#$FadeTimer.start()
 
 func _on_ajustes_pressed():
 	$Ajustes.visible = true
@@ -72,11 +72,11 @@ func _on_timer_timeout():
 		$Title/Name2.modulate = Color(0,0,0)
 
 func _on_fade_timer_timeout():
-	get_tree().change_scene_to_file("res://Escenas/Niveles/Pantalla1A.tscn")
-	#if tutorial:
-		#get_tree().change_scene_to_file("res://Escenas/Niveles/PantallaEntrenamiento.tscn")
-	#elif play:
-		#get_tree().change_scene_to_file("res://Escenas/Niveles/Pantalla1A.tscn")
+	#get_tree().change_scene_to_file("res://Escenas/Niveles/Pantalla1A.tscn")
+	if tutorial:
+		get_tree().change_scene_to_file("res://Escenas/Niveles/PantallaEntrenamiento.tscn")
+	elif play:
+		get_tree().change_scene_to_file("res://Escenas/Niveles/Pantalla1A.tscn")
 
 func _on_musica_menu_finished():
 	$Music_SFX/MusicaMenu.play()
@@ -86,27 +86,26 @@ func _on_button_mouse_entered():
 		$Music_SFX/SFXButtons.play()
 
 func _on_play_pressed():
-	#play = true
-	#$AnimationPlayer.play("fade")
-	#$Music_SFX/StartGame.play()
-	#$Buttons/StartButton/Start.disabled = true
-	#$Buttons/Play/Play.disabled = true
-	#$Buttons/Tutorial/Tutorial.disabled = true
-	#$Buttons/AjustesButton/Ajustes.disabled = true
-	#$Buttons/ExitButton/Exit.disabled = true
-	#$Buttons/CreditsButton/Credits.disabled = true
-	#$FadeTimer.start()
-	pass
+	play = true
+	$AnimationPlayer.play("fade")
+	$Music_SFX/StartGame.play()
+	$Buttons/StartButton/Start.disabled = true
+	$Buttons/Play/Play.disabled = true
+	$Buttons/Tutorial/Tutorial.disabled = true
+	$Buttons/AjustesButton/Ajustes.disabled = true
+	$Buttons/ExitButton/Exit.disabled = true
+	$Buttons/CreditsButton/Credits.disabled = true
+	$FadeTimer.start()
 
 func _on_tutorial_pressed():
-	#tutorial = true
-	#$AnimationPlayer.play("fade")
-	#$Music_SFX/StartGame.play()
-	#$Buttons/StartButton/Start.disabled = true
-	#$Buttons/AjustesButton/Ajustes.disabled = true
-	#$Buttons/Play/Play.disabled = true
-	#$Buttons/Tutorial/Tutorial.disabled = true
-	#$Buttons/ExitButton/Exit.disabled = true
-	#$Buttons/CreditsButton/Credits.disabled = true
-	#$FadeTimer.start()
-	pass
+	tutorial = true
+	$AnimationPlayer.play("fade")
+	$Music_SFX/StartGame.play()
+	$Buttons/StartButton/Start.disabled = true
+	$Buttons/AjustesButton/Ajustes.disabled = true
+	$Buttons/Play/Play.disabled = true
+	$Buttons/Tutorial/Tutorial.disabled = true
+	$Buttons/ExitButton/Exit.disabled = true
+	$Buttons/CreditsButton/Credits.disabled = true
+	$FadeTimer.start()
+

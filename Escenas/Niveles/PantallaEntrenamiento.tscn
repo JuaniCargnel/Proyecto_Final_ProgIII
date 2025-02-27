@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8i4s24m86jry"]
+[gd_scene load_steps=4 format=3 uid="uid://c8i4s24m86jry"]
 
 [ext_resource type="Script" path="res://Scripts/ScriptGenerales/pantallaEntrenamiento.gd" id="1_lq0xg"]
+[ext_resource type="PackedScene" uid="uid://owg0ex3fgrks" path="res://Escenas/Globales/texto.tscn" id="3_6io8i"]
 [ext_resource type="PackedScene" uid="uid://dpfkju1d15fk2" path="res://Escenas/Personajes/Dummy.tscn" id="3_upro0"]
 
 [node name="PantallaEntrenamiento" type="Node2D"]
@@ -12,8 +13,14 @@ offset_bottom = 983.0
 color = Color(0.588235, 0.458824, 0.560784, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(411, 437)
+position = Vector2(988, 561)
 zoom = Vector2(3, 3)
 
 [node name="Dummy" parent="." instance=ExtResource("3_upro0")]
-position = Vector2(212, 432)
+position = Vector2(636, 559)
+
+[node name="Label" parent="." instance=ExtResource("3_6io8i")]
+offset_left = 905.0
+offset_top = 463.0
+offset_right = 945.0
+offset_bottom = 486.0

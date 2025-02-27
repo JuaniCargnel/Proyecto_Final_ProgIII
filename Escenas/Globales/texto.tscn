@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://owg0ex3fgrks"]
+
+[ext_resource type="Script" path="res://Scripts/ScriptGenerales/texto.gd" id="1_hl10a"]
+[ext_resource type="FontFile" uid="uid://b4giw5b8c2ag0" path="res://Assets/Fonts/Pixeled.ttf" id="1_xkdhh"]
+
+[node name="Label" type="Label"]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("1_xkdhh")
+theme_override_font_sizes/font_size = 15
+script = ExtResource("1_hl10a")

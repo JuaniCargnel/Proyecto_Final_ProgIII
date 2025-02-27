@@ -12,11 +12,11 @@ func _process(_delta): # Si no esta visible actualiza los labels y deja de esper
 		update_labels()
 
 func _input(event): # Obtiene la tecla presionada al cumplirse las condiciones y la cambia en el mapeo
-	if awaitingInput and event is InputEventKey and event.pressed:
-		InputMap.action_erase_event(currentAction, InputMap.action_get_events(currentAction)[0])
-		InputMap.action_add_event(currentAction, event)
-		awaitingInput = false
-		update_labels()
+	if awaitingInput and (event is InputEventKey or event is InputEventMouseButton) and event.pressed:
+			InputMap.action_erase_event(currentAction, InputMap.action_get_events(currentAction)[0])
+			InputMap.action_add_event(currentAction, event)
+			awaitingInput = false
+			update_labels()
 
 func update_labels(): # Updatea los labels de las teclas a la tecla que este en el mapeo
 	$MoveUp/CenterContainer/Label.text = InputMap.action_get_events("Up")[0].as_text()
@@ -24,8 +24,21 @@ func update_labels(): # Updatea los labels de las teclas a la tecla que este en 
 	$MoveLeft/CenterContainer/Label.text = InputMap.action_get_events("Left")[0].as_text()
 	$MoveRight/CenterContainer/Label.text = InputMap.action_get_events("Right")[0].as_text()
 	$Run/CenterContainer/Label.text = InputMap.action_get_events("Correr")[0].as_text()
-	$HitA/CenterContainer/Label.text = InputMap.action_get_events("GolpeA")[0].as_text()
-	$HitB/CenterContainer/Label.text = InputMap.action_get_events("GolpeB")[0].as_text()
+	
+	if InputMap.action_get_events("GolpeA")[0].as_text() == "Left Mouse Button":
+		$HitA/CenterContainer/Label.text = "LMOUSE"
+	elif InputMap.action_get_events("GolpeA")[0].as_text() == "Right Mouse Button":
+		$HitA/CenterContainer/Label.text = "RMOUSE"
+	else:
+		$HitA/CenterContainer/Label.text = InputMap.action_get_events("GolpeA")[0].as_text()
+		
+	if InputMap.action_get_events("GolpeB")[0].as_text() == "Right Mouse Button":
+		$HitB/CenterContainer/Label.text = "RMOUSE"
+	elif InputMap.action_get_events("GolpeB")[0].as_text() == "Left Mouse Button":
+		$HitB/CenterContainer/Label.text = "LMOUSE"
+	else:
+		$HitA/CenterContainer/Label.text = InputMap.action_get_events("GolpeB")[0].as_text()
+		
 	$Roll/CenterContainer/Label.text = InputMap.action_get_events("Roll")[0].as_text()
 
 # Al presionar el boton indicado, espera un nuevo input para mapear la tecla
