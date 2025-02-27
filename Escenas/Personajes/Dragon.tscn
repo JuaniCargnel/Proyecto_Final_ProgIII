@@ -203,11 +203,9 @@ animations = [{
 position = Vector2(455, 256)
 script = ExtResource("1_f5pvh")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." groups=["sprites"]]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_kogd7")
 animation = &"Ataque"
 autoplay = "Idle"
 frame_progress = 0.911466
-
-[node name="SombraMark" type="Marker2D" parent="."]
-position = Vector2(-32, 50)
