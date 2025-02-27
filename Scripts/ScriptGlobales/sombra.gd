@@ -7,7 +7,7 @@ func crear_sombras(sprite: AnimatedSprite2D, sombraMarker: Marker2D): # Crea la 
 	var marker = sombraMarker
 	var sombra = AnimatedSprite2D.new()
 	
-	sombra.modulate = Color.BLACK
+	sombra.modulate = Color(0,0,0,0.4)
 	sombra.z_index = 0
 	sombra.z_as_relative = false
 	sombra.flip_v = true
