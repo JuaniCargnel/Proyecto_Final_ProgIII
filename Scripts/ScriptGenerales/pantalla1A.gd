@@ -7,6 +7,7 @@ var staminaPickUp: PackedScene = preload("res://Escenas/PickUps/StaminaPickUp.ts
 var swordPickUp: PackedScene = preload("res://Escenas/PickUps/SwordPickUp.tscn")
 var healthPickUp: PackedScene = preload("res://Escenas/PickUps/HealthPickUp.tscn")
 var fireColumn: PackedScene = preload("res://Escenas/Globales/FireColumn.tscn")
+var spawnPoint: PackedScene = preload("res://Escenas/Globales/SpawnPoint.tscn")
 
 var arrayPickUps = [healthPickUp, swordPickUp, staminaPickUp] 
 var cameraZoom = 2
@@ -137,8 +138,8 @@ func _on_pick_up_timer_timeout(): # Genera un pickup
 	#var x = randi_range(-$Area2D/CollisionShape2D.shape.extents.x, $Area2D/CollisionShape2D.shape.extents.x)
 	#var y = randf_range(-$Area2D/CollisionShape2D.shape.extents.y, $Area2D/CollisionShape2D.shape.extents.y)
 	
-	var x = randi_range(810, 1220)
-	var y = randf_range(370, 785)
+	var x = randi_range(750, 1350)
+	var y = randf_range(450, 800)
 	
 	if GlobalStats.maxPickUpsScreen.size() < 5 and !GlobalStats.playerWin: # Genera un pickup aleatorio hasta un maximo de 5 en el array
 		var pickupIndex = randi() % arrayPickUps.size()
@@ -147,8 +148,7 @@ func _on_pick_up_timer_timeout(): # Genera un pickup
 		pickupInstance.global_position = Vector2(x,y) 
 		GlobalStats.maxPickUpsScreen.append(pickupInstance)
 
-# En lo posible, ambos lados. Tambien que con lo snivele baje el tiempo 
-# En el que sale. 
+
 func _on_timer_timeout():
 	$Node2D2/Sprite.play("Ataque")
 	var tiempo
@@ -161,7 +161,6 @@ func _on_timer_timeout():
 		tiempo = randi_range(3, 5)
 	
 	$Node2D2/Timer.set_wait_time(tiempo)
-	print($Node2D2/Timer.get_wait_time())
 
 func _on_timer_2_timeout():
 	$Node2D/Sprite.play("Ataque")
@@ -175,7 +174,6 @@ func _on_timer_2_timeout():
 		tiempo = randi_range(3, 5)
 	
 	$Node2D/Timer2.set_wait_time(tiempo)
-	print($Node2D/Timer2.get_wait_time())
 
 
 func _on_sprite_animation_looped():
@@ -184,24 +182,29 @@ func _on_sprite_animation_looped():
 
 func _on_sprite_frame_changed():
 	if $Node2D2/Sprite.get_animation() == "Ataque" and $Node2D2/Sprite.frame == 8:
-		var y = randf_range(365, 738)
+		var y = randf_range(400, 800)
 		var fireColumnInstance = fireColumn.instantiate()
 		add_child(fireColumnInstance)
 		fireColumnInstance.global_position = Vector2(750,y)
 		fireColumnInstance.movimiento = 1
 
-
-
-
 func _on_sprite_animation_looped_2():
 	if $Node2D/Sprite.get_animation() == "Ataque":
 		$Node2D/Sprite.play("Idle")
 
-
 func _on_sprite_frame_changed_2():
 	if $Node2D/Sprite.get_animation() == "Ataque" and $Node2D/Sprite.frame == 8:
-		var y = randf_range(365, 738)
+		var y = randf_range(400, 800)
 		var fireColumnInstance = fireColumn.instantiate()
 		add_child(fireColumnInstance)
-		fireColumnInstance.global_position = Vector2(1135,y)
+		fireColumnInstance.global_position = Vector2(1250,y)
 		fireColumnInstance.movimiento = -1
+
+func _on_spawn_enemy_timeout():
+	var x = randi_range(750, 1350)
+	var y = randf_range(450, 800)
+
+	var spawnInstance = spawnPoint.instantiate()
+	add_child(spawnInstance)
+	spawnInstance.global_position = Vector2(x,y)
+	

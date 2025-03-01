@@ -44,7 +44,7 @@ func _ready(): # Seteo de variables globales al instanciar al jugador (En caso d
 	$Sprite.modulate = Color(GlobalStats.hexColor)
 	$Sprite.material.set_shader_parameter("modulate_color", modulate)
 	Sombra.crear_sombras($Sprite, $SombraMark)
-	global_position = Vector2(1000,550)
+	global_position = Vector2(1040,620)
 
 func _process(delta): # Process del jugador - Si esta vivo - Si gano y no esta vivo (Provisorio) - Si murio
 	if GlobalStats.alive:
